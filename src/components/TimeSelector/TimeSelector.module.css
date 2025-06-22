@@ -1,0 +1,63 @@
+.timeSelector {
+  width: 100%;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.tabs {
+  display: flex;
+}
+
+.tab {
+  flex: 1;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+
+.tab:first-child {
+  border-right: 1px solid #eee;
+}
+
+.tab.active {
+  background-color: #fff;
+  border-bottom: 2px solid #8a7a5a;
+  color: #8a7a5a;
+}
+
+.timeGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 0.75rem;
+  padding: 1.5rem;
+  background-color: #fff;
+}
+
+.timeSlot {
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.timeSlot:hover {
+  background-color: #f0f0f0;
+}
+
+.timeSlot.selected {
+  background-color: #8a7a5a;
+  color: #fff;
+  border-color: #8a7a5a;
+}
+
+.timeSlot.selected:hover {
+  background-color: #7c6d4f;
+  border-color: #7c6d4f;
+}
