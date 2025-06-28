@@ -1,14 +1,60 @@
-/* リセットCSS */
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
+/* kiso.cssのインポート */
+@import './kiso.css';
 
 body {
-  font-family: 'Arial', sans-serif;
-  background-color: #ffffff;
-  color: #333;
-  line-height: 1.6;
+  font-family: var(--font-sans);
+  background-color: #fff;
+  color: var(--text-color, #333);
+  line-height: 1.5;
   font-size: 16px;
+}
+
+/* フォントファミリー */
+:root {
+  --font-sans: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo,
+    sans-serif;
+}
+
+/* カラー */
+:root {
+  --color-black: #222;
+  --color-white: #fff;
+  --color-gray-05: #fafafa;
+  --color-gray-10: #eee;
+  --color-gray-20: #dbdbdb;
+  --color-gray-25: #aaa;
+}
+
+/* スペーシング */
+:root {
+  --base-unit: 0.5rem;
+
+  --spacing-xs: calc(var(--base-unit) * 1); /* 8px */
+  --spacing-sm: calc(var(--base-unit) * 2); /* 16px */
+  --spacing-md: calc(var(--base-unit) * 2.5); /* 20px */
+  --spacing-lg: calc(var(--base-unit) * 3); /* 24px */
+  --spacing-xl: calc(var(--base-unit) * 4); /* 32px */
+  --spacing-2xl: calc(var(--base-unit) * 6); /* 48px */
+}
+
+/* フォントサイズ */
+:root {
+  --font-xs: 0.75rem; /* 12px */
+  --font-sm: 0.875rem; /* 14px */
+  --font-base: 1rem; /* 16px */
+  --font-lg: 1.125rem; /* 18px */
+  --font-xl: 1.25rem; /* 20px */
+  --font-2xl: 1.5rem; /* 24px */
+  --font-3xl: 1.875rem; /* 30px */
+  --font-4xl: 2.25rem; /* 36px */
+
+  /* タブレット */
+  @media (min-width: 768px) {
+    font-size: 112.5%; /* 18px */
+  }
+
+  /* デスクトップ */
+  @media (min-width: 1024px) {
+    font-size: 125%; /* 20px */
+  }
 }
