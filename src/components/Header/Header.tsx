@@ -20,6 +20,16 @@ const Header = () => {
       return;
     }
 
+    // ホームページの場合、現在のスクロール位置を確認
+    const checkScrollPosition = () => {
+      const scrollY = window.scrollY;
+      const threshold = 52; // ヘッダーの高さ（52px）
+      setIsScrolled(scrollY > threshold);
+    };
+
+    // 初回実行で現在のスクロール位置を確認
+    checkScrollPosition();
+
     const handleScroll = () => {
       const scrollY = window.scrollY;
       const threshold = 52; // ヘッダーの高さ（52px）
