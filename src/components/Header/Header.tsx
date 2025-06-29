@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
@@ -14,7 +14,26 @@ const snsLinks = [
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
+  const isHomePage = pathname === '/';
+
+  useEffect(() => {
+    // ホームページ以外では最初から小さいサイズにする
+    if (!isHomePage) {
+      setIsScrolled(true);
+      return;
+    }
+
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const threshold = 52; // ヘッダーの高さ（52px）
+      setIsScrolled(scrollY > threshold);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isHomePage]);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -33,17 +52,15 @@ const Header = () => {
   return (
     <>
       <header className={styles.header}>
-        {pathname === '/' && (
-          <Link href="/" className={styles.logo}>
-            <Image
-              src="/images/logo-vdo.svg"
-              alt="VDO logo"
-              width={100}
-              height={60}
-              priority
-            />
-          </Link>
-        )}
+        <Link href="/" className={`${styles.logo} ${isScrolled ? styles['logo-scrolled'] : ''}`}>
+          <Image
+            src="/images/logo-vdo.svg"
+            alt="VDO logo"
+            width={100}
+            height={60}
+            priority
+          />
+        </Link>
       </header>
 
       <button onClick={toggleMenu} className={`${styles['menu-button']} ${isOpen ? styles['is-open'] : ''}`} aria-label="Menu">

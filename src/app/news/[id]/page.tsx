@@ -12,9 +12,9 @@ const allNews = [
   { id: 'professional-hair-treatment', title: 'プロフェッショナルヘアトリートメント', date: '2025-01-10', imageUrl: '/images/news-image-06.png' },
 ];
 
-
-const NewsDetailPage = ({ params }: { params: { id: string } }) => {
-  const currentArticleIndex = allNews.findIndex(article => article.id === params.id);
+const NewsDetailPage = async ({ params }: { params: Promise<{ id: string }> }) => {
+  const { id } = await params;
+  const currentArticleIndex = allNews.findIndex(article => article.id === id);
   const article = allNews[currentArticleIndex];
 
   if (!article) {
