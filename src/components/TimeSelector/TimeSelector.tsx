@@ -10,14 +10,14 @@ interface TimeSelectorProps {
 
 const timeSlots = {
   AM: ['10:00 AM', '10:30 AM', '11:00 AM', '11:30 AM'],
-  PM: ['12:00 PM', '12:30 PM', '01:00 PM', '01:30 PM', '02:00 PM', '05:00 PM', '06:00 PM', '07:00 PM'],
+  PM: ['12:00 PM', '12:30 PM', '1:00 PM', '1:30 PM', '2:00 PM', '5:00 PM', '6:00 PM', '7:00 PM'],
 };
 
 const TimeSelector: React.FC<TimeSelectorProps> = ({ selectedTime, onTimeSelect }) => {
   const [activeTab, setActiveTab] = useState<'AM' | 'PM'>('AM');
 
   return (
-    <div className={styles.timeSelector}>
+    <div className={styles['time-selector']}>
       <div className={styles.tabs}>
         <button
           className={`${styles.tab} ${activeTab === 'AM' ? styles.active : ''}`}
@@ -32,11 +32,11 @@ const TimeSelector: React.FC<TimeSelectorProps> = ({ selectedTime, onTimeSelect 
           PM
         </button>
       </div>
-      <div className={styles.timeGrid}>
+      <div className={styles['time-grid']}>
         {timeSlots[activeTab].map(time => (
           <button
             key={time}
-            className={`${styles.timeSlot} ${selectedTime === time ? styles.selected : ''}`}
+            className={`${styles['time-slot']} ${selectedTime === time ? styles.selected : ''}`}
             onClick={() => onTimeSelect(time)}
           >
             {time.split(' ')[0]}

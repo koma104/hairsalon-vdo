@@ -1,81 +1,76 @@
-.timeSelector {
+.time-selector {
   width: 100%;
-  border: 1px solid #eee;
-  border-radius: 8px;
+  border: 1px solid var(--color-gray-20);
+  border-radius: var(--spacing-xs);
   overflow: hidden;
 }
 
 .tabs {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
 }
 
 .tab {
-  flex: 1;
-  padding: 0.8rem 1rem;
-  font-size: 1rem;
-  font-weight: 500;
+  padding-block: var(--spacing-sm);
+  padding-inline: var(--spacing-md);
+  font-size: var(--font-sm);
+  color: var(--color-gray-25);
+  line-height: 1;
   border: none;
-  background-color: #f9f9f9;
+  background-color: var(--color-gray-10);
   cursor: pointer;
   border-bottom: 2px solid transparent;
+
+  &.active {
+    color: var(--color-black);
+    background-color: var(--color-white);
+    border-bottom: 2px solid var(--color-black);
+  }
 }
 
-.tab:first-child {
-  border-right: 1px solid #eee;
-}
-
-.tab.active {
-  background-color: #fff;
-  border-bottom: 2px solid #8a7a5a;
-  color: #8a7a5a;
-}
-
-.timeGrid {
+.time-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-  gap: 0.75rem;
-  padding: 1.5rem;
-  background-color: #fff;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm);
+  background-color: var(--color-white);
 }
 
-.timeSlot {
-  padding: 0.75rem;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #fff;
+.time-slot {
+  padding-block: var(--spacing-sm);
+  padding-inline: var(--spacing-xs);
+  font-size: var(--font-sm);
+  text-align: center;
+  line-height: 1;
+  border: 1px solid var(--color-gray-25);
+  border-radius: var(--spacing-xxs);
+  background-color: var(--color-white);
   cursor: pointer;
   transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 
-  &:focus-visible {
-    background-color: var(--color-hover);
-    border-color: var(--color-hover);
-    color: #fff;
-  }
-
   @media (any-hover: hover) {
-    &:hover {
+    &:hover:not(.selected) {
       background-color: var(--color-hover);
       border-color: var(--color-hover);
-      color: #fff;
+      color: var(--color-white);
     }
   }
-}
-
-.timeSlot.selected {
-  background-color: #8a7a5a;
-  color: #fff;
-  border-color: #8a7a5a;
 
   &:focus-visible {
-    background-color: var(--color-hover);
-    border-color: var(--color-hover);
+    outline: 2px solid var(--color-black);
+    outline-offset: 2px;
   }
 
-  @media (any-hover: hover) {
-    &:hover {
-      background-color: var(--color-hover);
-      border-color: var(--color-hover);
+  &.selected {
+    background-color: var(--color-select);
+    color: var(--color-white);
+    border-color: var(--color-select);
+    cursor: default;
+    pointer-events: none;
+
+    &:focus-visible {
+      outline: 2px solid var(--color-black);
+      outline-offset: 2px;
     }
   }
 }

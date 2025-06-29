@@ -20,20 +20,12 @@
 }
 
 .reserve-subtitle {
-  font-size: var(--font-base);
+  margin-block-end: var(--spacing-xs);
+  font-size: var(--font-lg);
   font-weight: var(--font-weight-regular);
   letter-spacing: 0.01em;
   text-transform: capitalize;
 }
-
-/* .calendar-placeholder,
-.time-selector-placeholder {
-  border: 1px dashed #ccc;
-  padding: 4rem 1rem;
-  text-align: center;
-  color: #888;
-  border-radius: 8px;
-} */
 
 .form-group {
   margin-bottom: 1.5rem;
