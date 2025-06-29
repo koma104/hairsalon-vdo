@@ -11,7 +11,7 @@ interface CalendarProps {
 const Calendar: React.FC<CalendarProps> = ({ selectedDate, onDateSelect }) => {
   const [currentDate, setCurrentDate] = useState(new Date());
 
-  const daysOfWeek = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+  const daysOfWeek = ['日', '月', '火', '水', '木', '金', '土'];
   const monthNames = [
     'January', 'February', 'March', 'April', 'May', 'June',
     'July', 'August', 'September', 'October', 'November', 'December'
@@ -35,16 +35,16 @@ const Calendar: React.FC<CalendarProps> = ({ selectedDate, onDateSelect }) => {
   return (
     <div className={styles.calendar}>
       <div className={styles.header}>
-        <button onClick={() => changeMonth(-1)} className={styles.navButton}>&lt;</button>
-        <div className={styles.monthYear}>
+        <button onClick={() => changeMonth(-1)} className={styles['nav-button']}>&lt;</button>
+        <div className={styles['month-year']}>
           {monthNames[month]} {year}
         </div>
-        <button onClick={() => changeMonth(1)} className={styles.navButton}>&gt;</button>
+        <button onClick={() => changeMonth(1)} className={styles['nav-button']}>&gt;</button>
       </div>
-      <div className={styles.daysOfWeek}>
+      <div className={styles['days-of-week']}>
         {daysOfWeek.map((day, index) => <div key={`${day}-${index}`}>{day}</div>)}
       </div>
-      <div className={styles.daysGrid}>
+      <div className={styles['days-grid']}>
         {Array.from({ length: firstDayOfMonth }).map((_, i) => <div key={`empty-${i}`} />)}
         {Array.from({ length: daysInMonth }).map((_, i) => {
           const day = i + 1;

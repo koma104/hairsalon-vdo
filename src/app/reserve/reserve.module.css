@@ -1,38 +1,41 @@
 .container {
-  padding: 80px 1.5rem 4rem;
-  max-width: 400px;
-  margin: 0 auto;
+  padding-block: var(--spacing-3xl) var(--spacing-3xl);
+  padding-inline: var(--spacing-lg);
 }
 
-.pageTitle {
-  font-size: 2rem;
-  font-weight: 500;
+.section-title {
+  margin-block-end: var(--spacing-lg);
+  padding-block: var(--spacing-xl) var(--spacing-sm);
+  padding-inline: var(--spacing-sm);
+  font-size: var(--font-3xl);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-gray-60);
   text-align: center;
-  margin-bottom: 3rem;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
 }
 
 .section {
-  margin-bottom: 2.5rem;
+  margin-block-end: var(--spacing-xl);
 }
 
-.sectionTitle {
-  font-size: 1rem;
-  font-weight: 500;
-  margin-bottom: 1rem;
-  color: #333;
+.reserve-subtitle {
+  font-size: var(--font-base);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: 0.01em;
+  text-transform: capitalize;
 }
 
-.calendarPlaceholder,
-.timeSelectorPlaceholder {
+/* .calendar-placeholder,
+.time-selector-placeholder {
   border: 1px dashed #ccc;
   padding: 4rem 1rem;
   text-align: center;
   color: #888;
   border-radius: 8px;
-}
+} */
 
-.formGroup {
+.form-group {
   margin-bottom: 1.5rem;
 }
 
@@ -57,11 +60,11 @@
   background-size: 1em;
 }
 
-.reserveButtonWrapper {
+.reserve-button-wrapper {
   margin-top: 3rem;
 }
 
-.reserveButton {
+.reserve-button {
   width: 100%;
   padding: 1rem;
   font-size: 1.1rem;
@@ -74,6 +77,6 @@
   transition: background-color 0.2s;
 }
 
-.reserveButton:hover {
+.reserve-button:hover {
   background-color: #7c6d4f;
 }
