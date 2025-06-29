@@ -10,7 +10,7 @@ interface TimeSelectorProps {
 
 const timeSlots = {
   AM: ['10:00 AM', '10:30 AM', '11:00 AM', '11:30 AM'],
-  PM: ['12:00 PM', '12:30 PM', '1:00 PM', '1:30 PM', '2:00 PM', '5:00 PM', '6:00 PM', '7:00 PM'],
+  PM: ['12:00 PM', '12:30 PM', '13:00 PM', '13:30 PM', '14:00 PM', '17:00 PM', '18:00 PM', '19:00 PM'],
 };
 
 const TimeSelector: React.FC<TimeSelectorProps> = ({ selectedTime, onTimeSelect }) => {

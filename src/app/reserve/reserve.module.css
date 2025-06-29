@@ -15,8 +15,8 @@
   text-transform: uppercase;
 }
 
-.section {
-  margin-block-end: var(--spacing-xl);
+.reserve-wrapper {
+  margin-bottom: var(--spacing-xl);
 }
 
 .reserve-subtitle {
@@ -28,9 +28,7 @@
 }
 
 .form-group {
-  &:not(:last-of-type) {
-    margin-bottom: var(--spacing-lg);
-  }
+  margin-block-end: var(--spacing-lg);
 }
 
 .label {
@@ -62,7 +60,7 @@
 
 /* reserve-button-wrapperの手前の要素に自動的にマージンを適用 */
 *:has(+ .reserve-button-wrapper) {
-  margin-block-end: var(--spacing-3xl);
+  margin-block-end: var(--spacing-4xl);
 }
 
 .reserve-button {

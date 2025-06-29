@@ -50,6 +50,7 @@ body {
   --spacing-xl: calc(var(--base-unit) * 4); /* 32px */
   --spacing-2xl: calc(var(--base-unit) * 6); /* 48px */
   --spacing-3xl: calc(var(--base-unit) * 8); /* 64px */
+  --spacing-4xl: calc(var(--base-unit) * 10); /* 80px */
 }
 
 /* フォントサイズ */
