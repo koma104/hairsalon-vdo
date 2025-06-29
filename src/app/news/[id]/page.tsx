@@ -26,26 +26,28 @@ const NewsDetailPage = async ({ params }: { params: Promise<{ id: string }> }) =
 
   return (
     <div className={styles.container}>
-      <article>
+      <article className={styles.article}>
         <header className={styles.header}>
-          <h1 className={styles.title}>{article.title}</h1>
+        <h1 className={styles['section-title']}>{article.title}</h1>
           <p className={styles.date}>{article.date}</p>
         </header>
 
-        <div className={styles.mainImageWrapper}>
+        <div className={styles['main-image-wrapper']}>
           <Image
             src={article.imageUrl}
             alt={article.title}
             width={750}
             height={422}
-            className={styles.mainImage}
+            className={styles['main-image']}
           />
         </div>
 
         <div className={styles.content}>
-          <p>本格、髪も心もリフレッシュしませんか？</p>
-          <p>当サロンでは、この夏限定のカラーサービスを20%オフでご提供しています。紫外線や湿気でダメージを受けやすい季節だからこそ、プロのケアでツヤと潤いを取り戻しましょう。</p>
-          <p>人気の「サマーカラー」や、透明感のあるナチュラルカラーなど、お客様一人ひとりに合わせたご提案をいたします。髪のダメージを抑えるトリートメントもセットでご利用いただけます。</p>
+          <div className={styles.wrapper}>
+            <p>本格、髪も心もリフレッシュしませんか？</p>
+            <p>当サロンでは、この夏限定のカラーサービスを20%オフでご提供しています。紫外線や湿気でダメージを受けやすい季節だからこそ、プロのケアでツヤと潤いを取り戻しましょう。</p>
+            <p>人気の「サマーカラー」や、透明感のあるナチュラルカラーなど、お客様一人ひとりに合わせたご提案をいたします。髪のダメージを抑えるトリートメントもセットでご利用いただけます。</p>
+          </div>
           
           <h2 className={styles.subtitle}>おすすめポイント</h2>
           <ul>
