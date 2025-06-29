@@ -38,7 +38,7 @@ const Header = () => {
             <Image
               src="/images/logo-vdo.svg"
               alt="VDO logo"
-              width={120}
+              width={100}
               height={60}
               priority
             />
@@ -46,29 +46,28 @@ const Header = () => {
         )}
       </header>
 
-      <button onClick={toggleMenu} className={`${styles.menuButton} ${isOpen ? styles.isOpen : ''}`} aria-label="Menu">
-        <span className={styles.menuLine}></span>
-        <span className={styles.menuLine}></span>
-        <span className={styles.menuLine}></span>
+      <button onClick={toggleMenu} className={`${styles['menu-button']} ${isOpen ? styles['is-open'] : ''}`} aria-label="Menu">
+        <span className={styles['menu-line']}></span>
+        <span className={styles['menu-line']}></span>
       </button>
 
-      <div className={`${styles.nav} ${isOpen ? styles.isOpen : ''}`}>
-        <nav className={styles.navInner}>
-          <ul className={styles.navList}>
+      <nav className={`${styles.nav} ${isOpen ? styles['is-open'] : ''}`}>
+        <div className={styles['nav-inner']}>
+          <ul className={styles['nav-list']}>
             <li><Link href="/" onClick={closeMenu}>Home</Link></li>
             <li><Link href="/news" onClick={closeMenu}>News</Link></li>
             <li><Link href="/reserve" onClick={closeMenu}>Reserve</Link></li>
             <li><Link href="/staff" onClick={closeMenu}>Staff</Link></li>
           </ul>
-          <div className={styles.snsLinks}>
+          <div className={styles['sns-links']}>
             {snsLinks.map((link) => (
               <a href={link.href} key={link.href} target="_blank" rel="noopener noreferrer">
-                <img src={link.src} alt={link.alt} width={24} height={24} className={styles.snsIcon} />
+                <img src={link.src} alt={link.alt} width={24} height={24} className={styles['sns-icon']} />
               </a>
             ))}
           </div>
-        </nav>
-      </div>
+        </div>
+      </nav>
     </>
   );
 };

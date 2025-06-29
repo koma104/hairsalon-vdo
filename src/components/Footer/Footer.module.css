@@ -1,48 +1,41 @@
 .footer {
-  background-color: #fff;
-  color: #333;
-  padding: 4rem 1.5rem;
-  border-top: 1px solid #eee;
+  padding: var(--spacing-xl);
 }
 
-.footerContent {
-  max-width: 680px;
-  margin: 0 auto;
+.footer-wrapper {
+  margin-inline: auto;
+  padding-block-start: var(--spacing-lg);
+  border-top: 1px solid var(--color-gray-10);
   text-align: center;
 }
 
-.logo {
-  font-size: 1.8rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  margin-bottom: 2rem;
+.info {
+  margin-block-end: var(--spacing-lg);
+
+  p {
+    margin-block-end: var(--spacing-md);
+    font-size: var(--font-xs);
+  }
 }
 
-.info,
 .hours {
-  margin-bottom: 1.5rem;
+  margin-block-end: var(--spacing-lg);
+
+  p {
+    margin-block-end: var(--spacing-xxs);
+    font-size: var(--font-xs);
+  }
 }
 
-.info p,
-.hours p {
-  margin: 0.5rem 0;
-  font-size: 0.9rem;
-  line-height: 1.6;
-}
-
-.snsLinks {
-  display: flex;
+.sns-links {
+  display: grid;
+  grid-auto-flow: column;
   justify-content: center;
-  gap: 1.5rem;
-  margin-bottom: 2.5rem;
-}
-
-.snsIcon {
-  /* In case you want to style the icons, e.g., with filters for color */
+  gap: var(--spacing-md);
+  margin-block-end: var(--spacing-lg);
 }
 
 .copyright {
-  margin-top: 3rem;
-  font-size: 0.8rem;
-  color: #888;
+  font-size: var(--font-xxs);
+  color: var(--color-gray-25);
 }

@@ -1,18 +1,23 @@
 /* kiso.cssのインポート */
 @import './kiso.css';
+/* LINE Seedフォントのインポート */
+@import './lineseed.css';
 
 body {
   font-family: var(--font-sans);
   background-color: #fff;
-  color: var(--text-color, #333);
+  color: var(--color-black);
   line-height: 1.5;
-  font-size: 16px;
+  font-size: var(--font-base);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: 0.02em;
 }
 
 /* フォントファミリー */
 :root {
-  --font-sans: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo,
-    sans-serif;
+  --font-sans: var(--font-lineseed);
+  --font-lineseed: 'LINE Seed JP', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans',
+    'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', Meiryo, sans-serif;
 }
 
 /* カラー */
@@ -23,22 +28,29 @@ body {
   --color-gray-10: #eee;
   --color-gray-20: #dbdbdb;
   --color-gray-25: #aaa;
+  --color-gray-30: #888;
+  --color-gray-40: #666;
+  --color-gray-50: #444;
+  --color-gray-60: #333;
 }
 
 /* スペーシング */
 :root {
   --base-unit: 0.5rem;
 
+  --spacing-xxs: calc(var(--base-unit) * 0.5); /* 4px */
   --spacing-xs: calc(var(--base-unit) * 1); /* 8px */
   --spacing-sm: calc(var(--base-unit) * 2); /* 16px */
   --spacing-md: calc(var(--base-unit) * 2.5); /* 20px */
   --spacing-lg: calc(var(--base-unit) * 3); /* 24px */
   --spacing-xl: calc(var(--base-unit) * 4); /* 32px */
   --spacing-2xl: calc(var(--base-unit) * 6); /* 48px */
+  --spacing-3xl: calc(var(--base-unit) * 8); /* 64px */
 }
 
 /* フォントサイズ */
 :root {
+  --font-xxs: 0.625rem; /* 10px */
   --font-xs: 0.75rem; /* 12px */
   --font-sm: 0.875rem; /* 14px */
   --font-base: 1rem; /* 16px */
@@ -46,7 +58,6 @@ body {
   --font-xl: 1.25rem; /* 20px */
   --font-2xl: 1.5rem; /* 24px */
   --font-3xl: 1.875rem; /* 30px */
-  --font-4xl: 2.25rem; /* 36px */
 
   /* タブレット */
   @media (min-width: 768px) {
@@ -57,4 +68,12 @@ body {
   @media (min-width: 1024px) {
     font-size: 125%; /* 20px */
   }
+}
+
+/* フォントウェイト */
+:root {
+  --font-weight-thin: 100; /* LINE Seed Thin */
+  --font-weight-regular: 400; /* LINE Seed Regular */
+  --font-weight-bold: 700; /* LINE Seed Bold */
+  --font-weight-extra-bold: 800; /* LINE Seed ExtraBold */
 }
