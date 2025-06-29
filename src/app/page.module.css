@@ -83,7 +83,7 @@
   display: grid;
   grid-auto-flow: row;
   gap: var(--spacing-xs);
-  margin-block-end: var(--spacing-sm);
+  margin-block-end: var(--spacing-md);
 }
 
 .news-item {
@@ -133,14 +133,14 @@
   text-align: center;
 }
 
-.more-button {
+.more-button,
+.news-list-button {
   background: none;
   border: none;
   border-bottom: 1px solid var(--color-black);
   cursor: pointer;
   padding-block: var(--spacing-xs);
   padding-inline: var(--spacing-xxs);
-  font-size: var(--font-base);
   line-height: 1;
   color: var(--color-black);
   text-transform: capitalize;
@@ -157,6 +157,16 @@
       border-bottom-color: var(--color-hover);
     }
   }
+}
+
+.more-button {
+  font-size: var(--font-base);
+}
+
+.news-list-button {
+  font-size: var(--font-sm);
+  text-decoration: none;
+  display: inline-block;
 }
 
 /* Menu Section Styles */

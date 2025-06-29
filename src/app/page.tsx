@@ -38,7 +38,7 @@ export default function Home() {
   const [visibleNewsCount, setVisibleNewsCount] = useState(2);
 
   const handleShowMoreNews = () => {
-    setVisibleNewsCount(6);
+    setVisibleNewsCount(5);
   };
 
   const displayedNews = newsItems.slice(0, visibleNewsCount);
@@ -107,11 +107,18 @@ export default function Home() {
               </Link>
             ))}
           </div>
-          {visibleNewsCount < 6 && newsItems.length > 2 && (
+          {visibleNewsCount < 5 && newsItems.length > 2 && (
             <div className={styles['more-button-wrapper']}>
               <button onClick={handleShowMoreNews} className={styles['more-button']}>
                 more
               </button>
+            </div>
+          )}
+          {visibleNewsCount >= 5 && (
+            <div className={styles['more-button-wrapper']}>
+              <Link href="/news" className={styles['news-list-button']}>
+                記事一覧へ
+              </Link>
             </div>
           )}
         </div>
