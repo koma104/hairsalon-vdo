@@ -54,17 +54,32 @@
   width: 36px;
   height: 36px;
   margin: auto;
-}
+  transition: background-color 0.2s ease, color 0.2s ease;
 
-.day:hover {
-  background-color: #f0f0f0;
+  &:focus-visible {
+    background-color: var(--color-hover);
+    color: #fff;
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      background-color: var(--color-hover);
+      color: #fff;
+    }
+  }
 }
 
 .selected {
   background-color: #8a7a5a;
   color: #fff;
-}
 
-.selected:hover {
-  background-color: #7c6d4f;
+  &:focus-visible {
+    background-color: var(--color-hover);
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      background-color: var(--color-hover);
+    }
+  }
 }

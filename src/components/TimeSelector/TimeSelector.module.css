@@ -45,19 +45,37 @@
   border-radius: 4px;
   background-color: #fff;
   cursor: pointer;
-}
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 
-.timeSlot:hover {
-  background-color: #f0f0f0;
+  &:focus-visible {
+    background-color: var(--color-hover);
+    border-color: var(--color-hover);
+    color: #fff;
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      background-color: var(--color-hover);
+      border-color: var(--color-hover);
+      color: #fff;
+    }
+  }
 }
 
 .timeSlot.selected {
   background-color: #8a7a5a;
   color: #fff;
   border-color: #8a7a5a;
-}
 
-.timeSlot.selected:hover {
-  background-color: #7c6d4f;
-  border-color: #7c6d4f;
+  &:focus-visible {
+    background-color: var(--color-hover);
+    border-color: var(--color-hover);
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      background-color: var(--color-hover);
+      border-color: var(--color-hover);
+    }
+  }
 }

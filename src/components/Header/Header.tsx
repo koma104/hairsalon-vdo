@@ -58,14 +58,14 @@ const Header = () => {
     <>
       <header className={styles.header}>
         <Link href="/" className={`${styles.logo} ${isScrolled ? styles['logo-scrolled'] : ''}`}>
-          <Image
-            src="/images/logo-vdo.svg"
-            alt="VDO logo"
+            <Image
+              src="/images/logo-vdo.svg"
+              alt="VDO logo"
             width={100}
-            height={60}
-            priority
-          />
-        </Link>
+              height={60}
+              priority
+            />
+          </Link>
       </header>
 
       <button onClick={toggleMenu} className={`${styles['menu-button']} ${isOpen ? styles['is-open'] : ''}`} aria-label="Menu">

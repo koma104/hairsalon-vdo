@@ -33,6 +33,21 @@
   justify-content: center;
   gap: var(--spacing-md);
   margin-block-end: var(--spacing-lg);
+
+  & a {
+    color: #707070;
+    transition: color 0.2s ease;
+
+    &:focus-visible {
+      color: var(--color-hover);
+    }
+
+    @media (any-hover: hover) {
+      &:hover {
+        color: var(--color-hover);
+      }
+    }
+  }
 }
 
 .copyright {

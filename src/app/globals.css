@@ -22,6 +22,7 @@ body {
 
 /* カラー */
 :root {
+  --color-primary: #06c755;
   --color-black: #222;
   --color-white: #fff;
   --color-gray-05: #fafafa;
@@ -32,6 +33,8 @@ body {
   --color-gray-40: #666;
   --color-gray-50: #444;
   --color-gray-60: #333;
+
+  --color-hover: var(--color-primary);
 }
 
 /* スペーシング */
