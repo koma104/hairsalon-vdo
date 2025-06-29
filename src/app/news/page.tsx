@@ -30,25 +30,25 @@ const NewsListPage = () => {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.pageTitle}>News</h1>
-      <p className={styles.pageDescription}>
+      <h1 className={styles['section-title']}>news</h1>
+      <p className={styles['page-description']}>
         最新のトレンドやアドバイス、サロンからの限定オファーをお届けします。
       </p>
 
-      <div className={styles.newsList}>
+      <div className={styles['news-list']}>
         {displayedItems.map((item) => (
-          <Link href={`/news/${item.id}`} key={item.id} className={styles.newsItem}>
-            <div className={styles.newsText}>
-              <h2 className={styles.newsTitle}>{item.title}</h2>
-              <p className={styles.newsExcerpt}>{item.excerpt}</p>
+          <Link href={`/news/${item.id}`} key={item.id} className={styles['news-item']}>
+            <div className={styles['news-text']}>
+              <h2 className={styles['news-subtitle']}>{item.title}</h2>
+              <p className={styles['news-excerpt']}>{item.excerpt}</p>
             </div>
-            <div className={styles.newsImageWrapper}>
+            <div>
               <Image
                 src={item.imageUrl}
                 alt={item.title}
                 width={100}
                 height={100}
-                className={styles.newsImage}
+                className={styles['news-image']}
               />
             </div>
           </Link>
@@ -60,7 +60,7 @@ const NewsListPage = () => {
           <button
             onClick={handlePrevPage}
             disabled={currentPage === 1}
-            className={styles.pageButton}
+            className={styles['page-button']}
           >
             &lt;
           </button>
@@ -70,7 +70,7 @@ const NewsListPage = () => {
           <button
             onClick={handleNextPage}
             disabled={currentPage === totalPages}
-            className={styles.pageButton}
+            className={styles['page-button']}
           >
             &gt;
           </button>

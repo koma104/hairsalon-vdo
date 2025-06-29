@@ -116,6 +116,7 @@
   display: grid;
   grid-auto-flow: row;
   gap: var(--spacing-xs);
+  align-content: start;
 }
 
 .news-subtitle {
@@ -137,9 +138,10 @@
   border: none;
   border-bottom: 1px solid var(--color-black);
   cursor: pointer;
-  padding-block: var(--spacing-xs) var(--spacing-xxs);
+  padding-block: var(--spacing-xs);
   padding-inline: var(--spacing-xxs);
   font-size: var(--font-base);
+  line-height: 1;
   color: var(--color-black);
   text-transform: capitalize;
   transition: color 0.2s ease, border-bottom-color 0.2s ease;
