@@ -8,6 +8,8 @@ import TimeSelector from '@/components/TimeSelector/TimeSelector';
 const ReservePage = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedTime, setSelectedTime] = useState('10:30 AM');
+  const [selectedService, setSelectedService] = useState('');
+  const [selectedStylist, setSelectedStylist] = useState('');
 
   return (
     <div className={styles.container}>
@@ -24,8 +26,13 @@ const ReservePage = () => {
         </div>
         <div className={styles['form-group']}>
           <label htmlFor="service-select" className={styles.label}>Service</label>
-          <select id="service-select" className={styles.select}>
-            <option value="">Select service</option>
+          <select 
+            id="service-select" 
+            className={`${styles.select} ${!selectedService ? styles.placeholder : ''}`}
+            value={selectedService}
+            onChange={(e) => setSelectedService(e.target.value)}
+          >
+            <option value="">選択</option>
             <option value="cut">Cut</option>
             <option value="color">Color</option>
             <option value="treatment">Treatment</option>
@@ -33,8 +40,13 @@ const ReservePage = () => {
         </div>
         <div className={styles['form-group']}>
             <label htmlFor="stylist-select" className={styles.label}>Stylist</label>
-            <select id="stylist-select" className={styles.select}>
-              <option value="">Select stylist</option>
+            <select 
+              id="stylist-select" 
+              className={`${styles.select} ${!selectedStylist ? styles.placeholder : ''}`}
+              value={selectedStylist}
+              onChange={(e) => setSelectedStylist(e.target.value)}
+            >
+              <option value="">選択</option>
               <option value="tanaka">Akari Tanaka</option>
               <option value="yamamoto">Sakura Yamamoto</option>
               <option value="nakamura">Kenji Nakamura</option>

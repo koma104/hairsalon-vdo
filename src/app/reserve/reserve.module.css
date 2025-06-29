@@ -44,13 +44,17 @@
   font-size: var(--font-md);
   line-height: 1;
   border: 1px solid var(--color-gray-20);
-  border-radius: var(--spacing-xxs);
   background-color: var(--color-white);
   appearance: none;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23333333' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
   background-repeat: no-repeat;
   background-position: right var(--spacing-md) center;
   background-size: 1em;
+}
+
+/* プレースホルダー状態の文字色を変更 */
+.select.placeholder {
+  color: var(--color-gray-25);
 }
 
 .reserve-button-wrapper {
@@ -60,14 +64,14 @@
 
 /* reserve-button-wrapperの手前の要素に自動的にマージンを適用 */
 *:has(+ .reserve-button-wrapper) {
-  margin-block-end: var(--spacing-4xl);
+  margin-block-end: var(--spacing-3xl);
 }
 
 .reserve-button {
   width: 100%;
   padding-block: var(--spacing-sm);
   padding-inline: var(--spacing-md);
-  font-size: var(--font-md);
+  font-size: var(--font-base);
   color: var(--color-white);
   text-align: center;
   letter-spacing: 0.01em;

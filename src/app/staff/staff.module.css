@@ -48,19 +48,19 @@
 }
 
 .staff-name {
-  font-size: var(--font-lg);
+  font-size: var(--font-base);
   font-weight: var(--font-weight-regular);
   text-transform: capitalize;
 }
 
 .staff-title {
-  font-size: var(--font-sm);
+  font-size: var(--font-xs);
   color: var(--color-gray-30);
   line-height: 1;
 }
 
 .staff-specialty {
-  font-size: var(--font-xs);
+  font-size: var(--font-xxs);
   color: var(--color-gray-30);
   line-height: 1;
 }

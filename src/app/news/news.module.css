@@ -79,7 +79,7 @@
   place-items: center;
   justify-content: center;
   gap: var(--spacing-md);
-  font-size: var(--font-sm);
+  font-size: var(--font-xs);
   line-height: 1;
 }
 
