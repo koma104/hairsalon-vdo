@@ -28,47 +28,59 @@
 }
 
 .form-group {
-  margin-bottom: 1.5rem;
+  &:not(:last-of-type) {
+    margin-bottom: var(--spacing-lg);
+  }
 }
 
 .label {
   display: block;
-  font-size: 1rem;
-  font-weight: 500;
-  margin-bottom: 0.5rem;
+  margin-block-end: var(--spacing-xs);
+  font-size: var(--font-lg);
 }
 
 .select {
   width: 100%;
-  padding: 0.8rem 1rem;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #fff;
+  padding-block: var(--spacing-sm);
+  padding-inline: var(--spacing-md);
+  font-size: var(--font-md);
+  line-height: 1;
+  border: 1px solid var(--color-gray-20);
+  border-radius: var(--spacing-xxs);
+  background-color: var(--color-white);
   appearance: none;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23333333' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
   background-repeat: no-repeat;
-  background-position: right 1rem center;
+  background-position: right var(--spacing-md) center;
   background-size: 1em;
 }
 
 .reserve-button-wrapper {
-  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* reserve-button-wrapperの手前の要素に自動的にマージンを適用 */
+*:has(+ .reserve-button-wrapper) {
+  margin-block-end: var(--spacing-3xl);
 }
 
 .reserve-button {
   width: 100%;
-  padding: 1rem;
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: #fff;
-  background-color: #8a7a5a;
-  border: none;
-  border-radius: 4px;
+  padding-block: var(--spacing-sm);
+  padding-inline: var(--spacing-md);
+  font-size: var(--font-md);
+  color: var(--color-white);
+  text-align: center;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  background-color: var(--color-select);
   cursor: pointer;
   transition: background-color 0.2s;
-}
 
-.reserve-button:hover {
-  background-color: #7c6d4f;
+  @media (any-hover: hover) {
+    &:hover {
+      background-color: var(--color-hover);
+    }
+  }
 }
