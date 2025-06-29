@@ -63,7 +63,7 @@
   border-radius: 50%;
   width: var(--spacing-xl);
   height: var(--spacing-xl);
-  font-size: var(--font-base);
+  font-size: var(--font-sm);
   transition: background-color 0.2s ease, color 0.2s ease;
 
   &:focus-visible {
