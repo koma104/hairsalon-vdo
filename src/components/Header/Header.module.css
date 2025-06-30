@@ -33,9 +33,9 @@
   display: grid;
   align-content: center;
   gap: var(--spacing-xs);
+  padding: 0;
   width: calc(var(--spacing-2xl) - var(--spacing-xxs));
   height: calc(var(--spacing-2xl) - var(--spacing-xxs));
-  padding-inline: 0;
   mix-blend-mode: exclusion;
 
   &.is-open {
@@ -56,7 +56,7 @@
   height: 1px;
   width: 100%;
   background-color: var(--color-black);
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
   transform-origin: center;
   filter: brightness(0) invert(1);
 
