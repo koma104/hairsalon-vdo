@@ -13,15 +13,15 @@ const ReservePage = () => {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles['section-title']}>reserve</h1>
+      <h3 className={styles['section-title']}>reserve</h3>
       
       <section>
         <div className={styles['reserve-wrapper']}>
-          <h2 className={styles['reserve-subtitle']}>date</h2>
+          <h3 className={styles['reserve-subtitle']}>date</h3>
           <Calendar selectedDate={selectedDate} onDateSelect={setSelectedDate} />
         </div>
         <div className={styles['reserve-wrapper']}>
-          <h2 className={styles['reserve-subtitle']}>time</h2>
+          <h3 className={styles['reserve-subtitle']}>time</h3>
           <TimeSelector selectedTime={selectedTime} onTimeSelect={setSelectedTime} />
         </div>
         <div className={styles['form-group']}>

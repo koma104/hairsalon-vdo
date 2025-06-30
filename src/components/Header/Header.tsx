@@ -57,15 +57,29 @@ const Header = () => {
   return (
     <>
       <header className={styles.header}>
-        <Link href="/" className={`${styles.logo} ${isScrolled ? styles['logo-scrolled'] : ''}`}>
+        {isHomePage ? (
+          <h1 className={`${styles.logo} ${isScrolled ? styles['logo-scrolled'] : ''}`}>
+            <Link href="/">
+              <Image
+                src="/images/logo-vdo.svg"
+                alt="美容室 VDO"
+                width={100}
+                height={60}
+                priority
+              />
+            </Link>
+          </h1>
+        ) : (
+          <Link href="/" className={`${styles.logo} ${isScrolled ? styles['logo-scrolled'] : ''}`}>
             <Image
               src="/images/logo-vdo.svg"
               alt="VDO logo"
-            width={100}
+              width={100}
               height={60}
               priority
             />
           </Link>
+        )}
       </header>
 
       <button onClick={toggleMenu} className={`${styles['menu-button']} ${isOpen ? styles['is-open'] : ''}`} aria-label="Menu">

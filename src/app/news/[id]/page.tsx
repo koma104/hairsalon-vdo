@@ -28,7 +28,7 @@ const NewsDetailPage = async ({ params }: { params: Promise<{ id: string }> }) =
     <div className={styles.container}>
       <article className={styles.article}>
         <header className={styles.header}>
-        <h1 className={styles['section-title']}>{article.title}</h1>
+        <h2 className={styles['section-title']}>{article.title}</h2>
           <p className={styles.date}>{article.date}</p>
         </header>
 
@@ -49,7 +49,7 @@ const NewsDetailPage = async ({ params }: { params: Promise<{ id: string }> }) =
             <p>人気の「サマーカラー」や、透明感のあるナチュラルカラーなど、お客様一人ひとりに合わせたご提案をいたします。髪のダメージを抑えるトリートメントもセットでご利用いただけます。</p>
           </div>
           
-          <h2 className={styles.subtitle}>おすすめポイント</h2>
+          <h3 className={styles.subtitle}>おすすめポイント</h3>
           <ul>
             <li>夏限定カラーが20%オフ</li>
             <li>髪のダメージをケアするトリートメント付き</li>

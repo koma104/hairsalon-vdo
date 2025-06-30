@@ -17,9 +17,9 @@
 
 .page-description {
   margin-block-end: var(--spacing-xl);
-  font-size: var(--font-base);
+  font-size: var(--font-sm);
   font-weight: var(--font-weight-regular);
-  text-align: center;
+  text-align: left;
   line-height: 1.8;
 }
 
