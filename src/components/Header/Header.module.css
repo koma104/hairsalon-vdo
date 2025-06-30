@@ -26,34 +26,44 @@
 
 .menu-button {
   position: fixed;
-  top: var(--spacing-xxs);
+  top: var(--spacing-xs);
   right: var(--spacing-sm);
   z-index: 1002;
   border: none;
   display: grid;
-  grid-auto-flow: row;
   align-content: center;
   gap: var(--spacing-xs);
   width: calc(var(--spacing-2xl) - var(--spacing-xxs));
   height: calc(var(--spacing-2xl) - var(--spacing-xxs));
-  padding-inline: var(--spacing-xxs);
+  padding-inline: 0;
+  mix-blend-mode: exclusion;
+
+  &.is-open {
+    gap: 0;
+  }
 
   &.is-open .menu-line:nth-child(1) {
-    transform: translateY(var(--spacing-xxs)) rotate(45deg);
+    transform: rotate(-45deg);
   }
 
   &.is-open .menu-line:nth-child(2) {
-    transform: translateY(calc(var(--spacing-xxs) * -1)) rotate(-45deg);
+    transform: rotate(45deg);
+    width: 100%;
   }
 }
 
 .menu-line {
-  display: block;
-  width: 100%;
   height: 1px;
+  width: 100%;
   background-color: var(--color-black);
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
   transform-origin: center;
+  filter: brightness(0) invert(1);
+
+  &:nth-child(2) {
+    width: 75%;
+    justify-self: end;
+  }
 }
 
 .nav {
