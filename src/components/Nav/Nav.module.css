@@ -31,7 +31,7 @@
   place-items: center;
 
   & a {
-    font-size: var(--font-2xl);
+    font-size: var(--font-xl);
     font-weight: var(--font-weight-regular);
     letter-spacing: 0.1em;
     text-transform: uppercase;

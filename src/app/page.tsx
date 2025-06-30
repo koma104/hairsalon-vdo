@@ -117,7 +117,7 @@ export default function Home() {
           {visibleNewsCount >= 5 && (
             <div className={styles['more-button-wrapper']}>
               <Link href="/news" className={styles['news-list-button']}>
-                記事一覧へ
+                すべて見る
               </Link>
             </div>
           )}

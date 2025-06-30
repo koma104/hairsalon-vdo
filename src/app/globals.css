@@ -22,19 +22,19 @@ body {
 
 /* カラー */
 :root {
-  --color-primary: #06c755;
-  --color-black: #222;
+  --color-accent: #06c755;
+  --color-black: #222; /* テキスト primary */
   --color-white: #fff;
-  --color-gray-05: #fafafa;
-  --color-gray-10: #eee;
-  --color-gray-20: #dbdbdb;
-  --color-gray-25: #aaa;
-  --color-gray-30: #888;
+  --color-gray-05: #fafafa; /* nav背景 */
+  --color-gray-10: #eee; /* 線 */
+  --color-gray-20: #dbdbdb; /* border */
+  --color-gray-25: #aaa; /* 非活性要素 */
+  --color-gray-30: #888; /* テキスト sub1 */
   --color-gray-40: #666;
   --color-gray-50: #444;
-  --color-gray-60: #333;
+  --color-gray-60: #333; /* タイトルテキスト */
 
-  --color-hover: var(--color-primary);
+  --color-hover: var(--color-accent);
   --color-select: var(--color-gray-60);
 }
 
