@@ -13,21 +13,21 @@ const ReservePage = () => {
 
   return (
     <div className={styles.container}>
-      <h3 className={styles['section-title']}>reserve</h3>
+      <h1 className={styles['section-title']}>reserve</h1>
       
       <section>
         <div className={styles['reserve-wrapper']}>
-          <h3 className={styles['reserve-subtitle']}>date</h3>
+          <h2 className={styles['reserve-subtitle']}>date</h2>
           <Calendar selectedDate={selectedDate} onDateSelect={setSelectedDate} />
         </div>
         <div className={styles['reserve-wrapper']}>
-          <h3 className={styles['reserve-subtitle']}>time</h3>
+          <h2 className={styles['reserve-subtitle']}>time</h2>
           <TimeSelector selectedTime={selectedTime} onTimeSelect={setSelectedTime} />
         </div>
         <div className={styles['form-group']}>
-          <label htmlFor="service-select" className={styles.label}>Service</label>
+          <h2 id="service-label" className={styles['reserve-subtitle']}>Service</h2>
           <select 
-            id="service-select" 
+            aria-labelledby="service-label"
             className={`${styles.select} ${!selectedService ? styles.placeholder : ''}`}
             value={selectedService}
             onChange={(e) => setSelectedService(e.target.value)}
@@ -39,9 +39,9 @@ const ReservePage = () => {
           </select>
         </div>
         <div className={styles['form-group']}>
-            <label htmlFor="stylist-select" className={styles.label}>Stylist</label>
+            <h2 id="stylist-label" className={styles['reserve-subtitle']}>Stylist</h2>
             <select 
-              id="stylist-select" 
+              aria-labelledby="stylist-label"
               className={`${styles.select} ${!selectedStylist ? styles.placeholder : ''}`}
               value={selectedStylist}
               onChange={(e) => setSelectedStylist(e.target.value)}

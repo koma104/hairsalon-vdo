@@ -31,12 +31,6 @@
   margin-block-end: var(--spacing-lg);
 }
 
-.label {
-  display: block;
-  margin-block-end: var(--spacing-xs);
-  font-size: var(--font-lg);
-}
-
 .select {
   width: 100%;
   padding-block: var(--spacing-sm);

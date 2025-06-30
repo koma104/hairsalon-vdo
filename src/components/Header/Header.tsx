@@ -73,7 +73,7 @@ const Header = () => {
           <Link href="/" className={`${styles.logo} ${isScrolled ? styles['logo-scrolled'] : ''}`}>
             <Image
               src="/images/logo-vdo.svg"
-              alt="VDO logo"
+              alt="美容室 VDO"
               width={100}
               height={60}
               priority

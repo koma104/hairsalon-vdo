@@ -30,7 +30,7 @@ const NewsListPage = () => {
 
   return (
     <div className={styles.container}>
-      <h2 className={styles['section-title']}>news</h2>
+      <h1 className={styles['section-title']}>news</h1>
       <p className={styles['page-description']}>
         最新のトレンドやアドバイス、サロンからの限定オファーをお届けします。
       </p>
@@ -39,7 +39,7 @@ const NewsListPage = () => {
         {displayedItems.map((item) => (
           <Link href={`/news/${item.id}`} key={item.id} className={styles['news-item']}>
             <div className={styles['news-text']}>
-              <h3 className={styles['news-subtitle']}>{item.title}</h3>
+              <h2 className={styles['news-subtitle']}>{item.title}</h2>
               <p className={styles['news-excerpt']}>{item.excerpt}</p>
             </div>
             <div>

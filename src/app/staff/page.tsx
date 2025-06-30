@@ -31,7 +31,7 @@ const staffMembers = [
 const StaffPage = () => {
   return (
     <div className={styles.container}>
-      <h2 className={styles['section-title']}>Staff</h2>
+      <h1 className={styles['section-title']}>Staff</h1>
       <div className={styles['staff-list']}>
         {staffMembers.map((staff, index) => (
           <div key={index} className={styles['staff-card']}>
@@ -45,7 +45,7 @@ const StaffPage = () => {
               />
             </div>
             <div className={styles['staff-info']}>
-              <h3 className={styles['staff-name']}>{staff.name}</h3>
+              <h2 className={styles['staff-name']}>{staff.name}</h2>
               <p className={styles['staff-title']}>{staff.title}</p>
               <p className={styles['staff-specialty']}>{staff.specialty}</p>
             </div>
