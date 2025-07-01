@@ -1,5 +1,6 @@
 .footer {
-  padding: var(--spacing-xl);
+  padding-block: var(--spacing-xl);
+  padding-inline: var(--spacing-lg);
 }
 
 .footer-wrapper {

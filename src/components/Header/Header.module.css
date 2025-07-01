@@ -36,7 +36,7 @@
   display: grid;
   align-content: center;
   gap: var(--spacing-xs);
-  padding: 0;
+  padding: var(--spacing-xxs);
   width: calc(var(--spacing-2xl) - var(--spacing-xxs));
   height: calc(var(--spacing-2xl) - var(--spacing-xxs));
   mix-blend-mode: exclusion;
