@@ -58,8 +58,7 @@
 .menu-line {
   height: 1px;
   width: 100%;
-  background-color: var(--color-black);
-  transition: transform 0.3s ease-in-out;
+  background-color: var(--color-white);
   transform-origin: center;
   filter: brightness(0) invert(1);
 
