@@ -1,5 +1,5 @@
-import Image from 'next/image';
-import styles from './staff.module.css';
+import Image from 'next/image'
+import styles from './staff.module.css'
 
 const staffMembers = [
   {
@@ -26,7 +26,7 @@ const staffMembers = [
     specialty: 'focuses on modern cuts and treatments',
     imageUrl: '/images/staff-image-04.png',
   },
-];
+]
 
 const StaffPage = () => {
   return (
@@ -53,7 +53,7 @@ const StaffPage = () => {
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default StaffPage; 
+export default StaffPage

@@ -8,7 +8,8 @@ export const newsItems = [
   {
     id: 'keratin-treatment',
     title: 'ケラチントリートメントの紹介',
-    excerpt: 'サラサラでフリズのない髪を、サロンの新しいケラチントリートメントで実現します。今すぐご予約を！',
+    excerpt:
+      'サラサラでフリズのない髪を、サロンの新しいケラチントリートメントで実現します。今すぐご予約を！',
     imageUrl: '/images/news-image-02.png',
   },
   {
@@ -32,7 +33,8 @@ export const newsItems = [
   {
     id: 'professional-hair-treatment',
     title: 'プロフェッショナルヘアトリートメント',
-    excerpt: 'プロによるヘアトリートメントの効果や、髪の健康をどのように高めてくれるのかをご紹介します。',
+    excerpt:
+      'プロによるヘアトリートメントの効果や、髪の健康をどのように高めてくれるのかをご紹介します。',
     imageUrl: '/images/news-image-06.png',
   },
   // 追加の記事データ（テスト用）
@@ -174,4 +176,4 @@ export const newsItems = [
     excerpt: '今年一年頑張った髪にご褒美を。年内に髪を綺麗に。',
     imageUrl: '/images/news-image-05.png',
   },
-]; 
+]

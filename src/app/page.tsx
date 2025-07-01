@@ -1,10 +1,10 @@
-'use client';
+'use client'
 
-import { useState } from 'react';
-import Image from "next/image";
-import Link from "next/link";
-import styles from "./page.module.css";
-import { newsItems } from '@/lib/newsData';
+import { useState } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
+import styles from './page.module.css'
+import { newsItems } from '@/lib/newsData'
 
 const menuCategories = [
   {
@@ -32,16 +32,16 @@ const menuCategories = [
       { name: 'ヘッドスパ', price: '¥5,500~' },
     ],
   },
-];
+]
 
 export default function Home() {
-  const [visibleNewsCount, setVisibleNewsCount] = useState(2);
+  const [visibleNewsCount, setVisibleNewsCount] = useState(2)
 
   const handleShowMoreNews = () => {
-    setVisibleNewsCount(5);
-  };
+    setVisibleNewsCount(5)
+  }
 
-  const displayedNews = newsItems.slice(0, visibleNewsCount);
+  const displayedNews = newsItems.slice(0, visibleNewsCount)
 
   return (
     <>
@@ -126,25 +126,24 @@ export default function Home() {
 
       <section>
         <div className={styles.container}>
-        <h2 className={styles['section-title']}>menu</h2>
-        <div className={styles['menu-wrapper']}>
-          {menuCategories.map((cat) => (
-            <div key={cat.category} className={styles['menu-category']}>
-              <h3 className={styles['menu-subtitle']}>{cat.category}</h3>
-              <ul className={styles['menu-list']}>
-                {cat.items.map((item) => (
-                  <li key={item.name} className={styles['menu-item']}>
-                    <span>{item.name}</span>
-                    <span>{item.price}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <h2 className={styles['section-title']}>menu</h2>
+          <div className={styles['menu-wrapper']}>
+            {menuCategories.map((cat) => (
+              <div key={cat.category} className={styles['menu-category']}>
+                <h3 className={styles['menu-subtitle']}>{cat.category}</h3>
+                <ul className={styles['menu-list']}>
+                  {cat.items.map((item) => (
+                    <li key={item.name} className={styles['menu-item']}>
+                      <span>{item.name}</span>
+                      <span>{item.price}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
           </div>
         </div>
       </section>
     </>
-  );
+  )
 }
-

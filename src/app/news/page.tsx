@@ -1,32 +1,32 @@
-'use client';
+'use client'
 
-import { useState } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import styles from './news.module.css';
-import { newsItems } from '@/lib/newsData';
+import { useState } from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
+import styles from './news.module.css'
+import { newsItems } from '@/lib/newsData'
 
-const ITEMS_PER_PAGE = 12;
+const ITEMS_PER_PAGE = 12
 
 const NewsListPage = () => {
-  const [currentPage, setCurrentPage] = useState(1);
-  
-  const totalPages = Math.ceil(newsItems.length / ITEMS_PER_PAGE);
-  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const endIndex = Math.min(startIndex + ITEMS_PER_PAGE, newsItems.length);
-  const displayedItems = newsItems.slice(startIndex, endIndex);
-  
+  const [currentPage, setCurrentPage] = useState(1)
+
+  const totalPages = Math.ceil(newsItems.length / ITEMS_PER_PAGE)
+  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE
+  const endIndex = Math.min(startIndex + ITEMS_PER_PAGE, newsItems.length)
+  const displayedItems = newsItems.slice(startIndex, endIndex)
+
   const handleNextPage = () => {
     if (currentPage < totalPages) {
-      setCurrentPage(prev => prev + 1);
+      setCurrentPage((prev) => prev + 1)
     }
-  };
+  }
 
   const handlePrevPage = () => {
     if (currentPage > 1) {
-      setCurrentPage(prev => prev - 1);
+      setCurrentPage((prev) => prev - 1)
     }
-  };
+  }
 
   return (
     <div className={styles.container}>
@@ -54,7 +54,7 @@ const NewsListPage = () => {
           </Link>
         ))}
       </div>
-      
+
       {totalPages > 1 && (
         <div className={styles.pagination}>
           <button
@@ -77,7 +77,7 @@ const NewsListPage = () => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default NewsListPage; 
+export default NewsListPage

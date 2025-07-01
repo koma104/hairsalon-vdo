@@ -1,20 +1,29 @@
-'use client';
+'use client'
 
-import React, { useState } from 'react';
-import styles from './TimeSelector.module.css';
+import React, { useState } from 'react'
+import styles from './TimeSelector.module.css'
 
 interface TimeSelectorProps {
-  selectedTime: string;
-  onTimeSelect: (time: string) => void;
+  selectedTime: string
+  onTimeSelect: (time: string) => void
 }
 
 const timeSlots = {
   AM: ['10:00 AM', '10:30 AM', '11:00 AM', '11:30 AM'],
-  PM: ['12:00 PM', '12:30 PM', '13:00 PM', '13:30 PM', '14:00 PM', '17:00 PM', '18:00 PM', '19:00 PM'],
-};
+  PM: [
+    '12:00 PM',
+    '12:30 PM',
+    '13:00 PM',
+    '13:30 PM',
+    '14:00 PM',
+    '17:00 PM',
+    '18:00 PM',
+    '19:00 PM',
+  ],
+}
 
 const TimeSelector: React.FC<TimeSelectorProps> = ({ selectedTime, onTimeSelect }) => {
-  const [activeTab, setActiveTab] = useState<'AM' | 'PM'>('AM');
+  const [activeTab, setActiveTab] = useState<'AM' | 'PM'>('AM')
 
   return (
     <div className={styles['time-selector']}>
@@ -33,7 +42,7 @@ const TimeSelector: React.FC<TimeSelectorProps> = ({ selectedTime, onTimeSelect 
         </button>
       </div>
       <div className={styles['time-grid']}>
-        {timeSlots[activeTab].map(time => (
+        {timeSlots[activeTab].map((time) => (
           <button
             key={time}
             className={`${styles['time-slot']} ${selectedTime === time ? styles.selected : ''}`}
@@ -44,7 +53,7 @@ const TimeSelector: React.FC<TimeSelectorProps> = ({ selectedTime, onTimeSelect 
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default TimeSelector; 
+export default TimeSelector

@@ -62,7 +62,9 @@
   width: var(--spacing-xl);
   height: var(--spacing-xl);
   font-size: var(--font-sm);
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
 
   &:focus-visible {
     background-color: var(--color-hover);
