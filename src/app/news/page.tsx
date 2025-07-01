@@ -6,7 +6,7 @@ import Image from 'next/image'
 import styles from './news.module.css'
 import { newsItems } from '@/lib/newsData'
 
-const ITEMS_PER_PAGE = 12
+const ITEMS_PER_PAGE = 10
 
 const NewsListPage = () => {
   const [currentPage, setCurrentPage] = useState(1)
