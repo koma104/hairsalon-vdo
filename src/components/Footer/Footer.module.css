@@ -30,13 +30,14 @@
 
 .sns-links {
   display: grid;
+  place-items: center;
   grid-auto-flow: column;
   justify-content: center;
-  gap: var(--spacing-md);
+  gap: var(--spacing-lg);
   margin-block-end: var(--spacing-lg);
 
   & a {
-    color: #707070;
+    color: var(--color-sns);
     transition: color 0.2s ease;
 
     &:focus-visible {
@@ -49,6 +50,15 @@
       }
     }
   }
+
+  & svg {
+    vertical-align: middle;
+  }
+}
+
+.youtube-fix {
+  display: inline-block;
+  transform: translateY(2px);
 }
 
 .copyright {
