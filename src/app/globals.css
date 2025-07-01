@@ -57,13 +57,13 @@ body {
 /* フォントサイズ */
 :root {
   --font-xxs: 0.625rem; /* 10px */
-  --font-xs: 0.75rem; /* 12px */
-  --font-sm: 0.875rem; /* 14px */
+  --font-xs: 0.75rem; /* 12px テキスト小 */
+  --font-sm: 0.875rem; /* 14px テキスト */
   --font-base: 1rem; /* 16px */
-  --font-lg: 1.125rem; /* 18px */
-  --font-xl: 1.25rem; /* 20px */
-  --font-2xl: 1.5rem; /* 24px */
-  --font-3xl: 1.875rem; /* 30px */
+  --font-lg: 1.125rem; /* 18px サブタイトル小 */
+  --font-xl: 1.25rem; /* 20px サブタイトル */
+  --font-2xl: 1.5rem; /* 24px ニュース記事タイトル */
+  --font-3xl: 1.875rem; /* 30px タイトル大 */
 
   /* タブレット */
   @media (min-width: 768px) {
