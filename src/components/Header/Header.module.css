@@ -74,52 +74,6 @@
   }
 }
 
-.nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: #f8f8f8;
-  z-index: 1001;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transform: translateY(-100%);
-  transition: transform 0.4s cubic-bezier(0.76, 0, 0.24, 1);
-
-  &.is-open {
-    transform: translateY(0);
-  }
-
-  & li {
-    margin-bottom: 2.5rem;
-  }
-
-  & a {
-    font-size: 1.8rem;
-    color: #333;
-    text-decoration: none;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-  }
-}
-
-.nav-inner {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 80%;
-  max-height: 500px;
-}
-
-.nav-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  text-align: center;
-}
-
 .sns-links {
   display: flex;
   justify-content: center;
