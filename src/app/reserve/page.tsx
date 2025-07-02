@@ -61,7 +61,7 @@ const ReservePage = () => {
       </section>
 
       <div className={styles['reserve-button-wrapper']}>
-        <Button variant="primary">Next</Button>
+        <Button variant="primary">予約確認へ</Button>
       </div>
     </div>
   )

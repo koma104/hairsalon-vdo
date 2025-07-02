@@ -127,13 +127,14 @@
 .header-reserve-button {
   position: fixed;
   top: var(--spacing-sm);
-  right: calc(var(--spacing-4xl)); /* メニューボタンの幅+余白分だけ左にずらす */
+  right: calc(var(--spacing-4xl));
   z-index: 1001;
   mix-blend-mode: exclusion;
-
+  
   & button {
     padding-block: var(--spacing-xxs);
     padding-inline: var(--spacing-xs);
     font-size: var(--font-xxs);
+    border: none;
   }
 }
