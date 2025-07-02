@@ -8,6 +8,7 @@ import { newsItems } from '@/lib/newsData'
 import Button from '@/components/Button/Button'
 import SectionTitle from '@/components/SectionTitle/SectionTitle'
 import { gsap, ScrollTrigger } from '@/lib/gsap'
+import { useRouter } from 'next/navigation'
 
 const menuCategories = [
   {
@@ -39,8 +40,12 @@ const menuCategories = [
 
 export default function Home() {
   const [visibleNewsCount, setVisibleNewsCount] = useState(2)
+  const router = useRouter();
 
   useEffect(() => {
+    // ScrollTriggerインスタンスを個別管理
+    const scrollTriggers: ScrollTrigger[] = []
+
     // GSAP ScrollTriggerの初期化
     const heroAnimation = gsap.timeline({
       scrollTrigger: {
@@ -49,7 +54,15 @@ export default function Home() {
         end: 'bottom top',
         pin: true,
         pinSpacing: false,
-        scrub: 1
+        scrub: 1,
+        pinType: 'fixed',
+        onUpdate: self => {
+          const pinElement = self.pin;
+          if (pinElement && !pinElement.parentNode) {
+            // もし親がなければ何もしない（エラー防止）
+            // console.warn('ピン要素が既に削除されています');
+          }
+        }
       }
     })
 
@@ -58,7 +71,7 @@ export default function Home() {
       y: '25vh'
     })
 
-    gsap.to(`.${styles['content-overlay']}`, {
+    const contentAnimation = gsap.to(`.${styles['content-overlay']}`, {
       scrollTrigger: {
         trigger: `.${styles['content-section']}`,
         start: 'top bottom-=100',
@@ -68,11 +81,55 @@ export default function Home() {
       y: 0
     })
 
+    // 作成されたScrollTriggerを配列に保存
+    if (heroAnimation.scrollTrigger) {
+      scrollTriggers.push(heroAnimation.scrollTrigger)
+    }
+    if (contentAnimation.scrollTrigger) {
+      scrollTriggers.push(contentAnimation.scrollTrigger)
+    }
+
+    // ページ遷移やリロード時にもkillAll
+    const handleUnload = () => {
+      ScrollTrigger.killAll();
+    };
+    window.addEventListener('beforeunload', handleUnload);
+    window.addEventListener('popstate', handleUnload);
+
     // クリーンアップ
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+      // まず全てのScrollTriggerをkill
+      ScrollTrigger.killAll();
+      window.removeEventListener('beforeunload', handleUnload);
+      window.removeEventListener('popstate', handleUnload);
+      // 個別に管理したScrollTriggerを安全にクリーンアップ
+      scrollTriggers.forEach(trigger => {
+        if (trigger && trigger.kill) {
+          try {
+            if (!trigger.pin || trigger.pin.parentNode) {
+              trigger.kill()
+            }
+          } catch (error) {
+            console.warn('ScrollTrigger cleanup error:', error)
+          }
+        }
+      })
+      if (heroAnimation) {
+        try {
+          heroAnimation.kill()
+        } catch (error) {
+          console.warn('Hero animation cleanup error:', error)
+        }
+      }
+      if (contentAnimation) {
+        try {
+          contentAnimation.kill()
+        } catch (error) {
+          console.warn('Content animation cleanup error:', error)
+        }
+      }
     }
-  }, [])
+  }, [router])
 
   const handleShowMoreNews = () => {
     setVisibleNewsCount(5)
