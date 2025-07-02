@@ -13,6 +13,7 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const pathname = usePathname()
   const isHomePage = pathname === '/'
+  const isReservePage = pathname === '/reserve'
 
   useEffect(() => {
     // ホームページ以外では最初から小さいサイズにする
@@ -70,11 +71,13 @@ const Header = () => {
           </Link>
         )}
       </header>
-        <div className={styles['header-reserve-button']}>
-          <Link href="/reserve">
-            <Button variant="secondary">reserve</Button>
-          </Link>
-        </div>
+        {!isReservePage && (
+          <div className={styles['header-reserve-button']}>
+            <Link href="/reserve">
+              <Button variant="secondary">reserve</Button>
+            </Link>
+          </div>
+        )}
 
       <button
         onClick={toggleMenu}
