@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import styles from './reserve.module.css'
 import Calendar from '@/components/Calendar/Calendar'
 import TimeSelector from '@/components/TimeSelector/TimeSelector'
+import Button from '@/components/Button/Button'
 
 const ReservePage = () => {
   const [selectedDate, setSelectedDate] = useState(new Date())
@@ -59,7 +60,7 @@ const ReservePage = () => {
       </section>
 
       <div className={styles['reserve-button-wrapper']}>
-        <button className={styles['reserve-button']}>Reserve</button>
+        <Button variant="primary">Reserve</Button>
       </div>
     </div>
   )
