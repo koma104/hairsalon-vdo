@@ -29,6 +29,8 @@
     background-color: var(--color-hover);
   }
   .secondary:hover {
-    background-color: var(--color-gray-10);
+    color: var(--color-white);
+    background-color: var(--color-hover);
+    border: 1px solid var(--color-hover);
   }
 }

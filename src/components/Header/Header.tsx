@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import Nav from '../Nav/Nav'
 import styles from './Header.module.css'
+import Button from '../Button/Button'
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -69,6 +70,11 @@ const Header = () => {
           </Link>
         )}
       </header>
+        <div className={styles['header-reserve-button']}>
+          <Link href="/reserve">
+            <Button variant="secondary">reserve</Button>
+          </Link>
+        </div>
 
       <button
         onClick={toggleMenu}

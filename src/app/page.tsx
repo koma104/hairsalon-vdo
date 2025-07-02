@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import styles from './page.module.css'
 import { newsItems } from '@/lib/newsData'
+import Button from '@/components/Button/Button'
 
 const menuCategories = [
   {
@@ -141,6 +142,11 @@ export default function Home() {
                 </ul>
               </div>
             ))}
+          </div>
+          <div className={styles['menu-button-wrapper']}>
+            <Link href="/reserve">
+              <Button variant="secondary">reserve</Button>
+            </Link>
           </div>
         </div>
       </section>
