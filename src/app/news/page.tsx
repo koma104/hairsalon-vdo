@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import styles from './news.module.css'
 import { newsItems } from '@/lib/newsData'
+import SectionTitle from '@/components/SectionTitle/SectionTitle'
 
 const ITEMS_PER_PAGE = 10
 
@@ -30,7 +31,7 @@ const NewsListPage = () => {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles['section-title']}>news</h1>
+      <SectionTitle>news</SectionTitle>
       <p className={styles['page-description']}>
         最新のトレンドやアドバイス、サロンからの限定オファーをお届けします。
       </p>

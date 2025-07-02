@@ -5,6 +5,7 @@ import styles from './reserve.module.css'
 import Calendar from '@/components/Calendar/Calendar'
 import TimeSelector from '@/components/TimeSelector/TimeSelector'
 import Button from '@/components/Button/Button'
+import SectionTitle from '@/components/SectionTitle/SectionTitle'
 
 const ReservePage = () => {
   const [selectedDate, setSelectedDate] = useState(new Date())
@@ -14,7 +15,7 @@ const ReservePage = () => {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles['section-title']}>reserve</h1>
+      <SectionTitle>reserve</SectionTitle>
 
       <section>
         <div className={styles['reserve-wrapper']}>
@@ -60,7 +61,7 @@ const ReservePage = () => {
       </section>
 
       <div className={styles['reserve-button-wrapper']}>
-        <Button variant="primary">Reserve</Button>
+        <Button variant="primary">Next</Button>
       </div>
     </div>
   )

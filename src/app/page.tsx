@@ -6,6 +6,7 @@ import Link from 'next/link'
 import styles from './page.module.css'
 import { newsItems } from '@/lib/newsData'
 import Button from '@/components/Button/Button'
+import SectionTitle from '@/components/SectionTitle/SectionTitle'
 
 const menuCategories = [
   {
@@ -59,7 +60,7 @@ export default function Home() {
 
       <section>
         <div className={styles.container}>
-          <h2 className={styles['section-title']}>concept</h2>
+          <SectionTitle tag="h2">concept</SectionTitle>
           <h3 className={styles['concept-catchphrase']}>
             髪の美しさが、あなたの毎日を
             <br />
@@ -88,7 +89,7 @@ export default function Home() {
 
       <section>
         <div className={styles.container}>
-          <h2 className={styles['section-title']}>news</h2>
+          <SectionTitle tag="h2">news</SectionTitle>
           <div className={styles['news-list']}>
             {displayedNews.map((item) => (
               <Link href={`/news/${item.id}`} key={item.id} className={styles['news-item']}>
@@ -127,7 +128,7 @@ export default function Home() {
 
       <section>
         <div className={styles.container}>
-          <h2 className={styles['section-title']}>menu</h2>
+          <SectionTitle tag="h2">menu</SectionTitle>
           <div className={styles['menu-wrapper']}>
             {menuCategories.map((cat) => (
               <div key={cat.category} className={styles['menu-category']}>
