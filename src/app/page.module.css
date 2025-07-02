@@ -10,7 +10,7 @@
 }
 
 .container {
-  padding-block: var(--spacing-xl) var(--spacing-3xl);
+  padding-block: var(--spacing-xl) var(--spacing-2xl);
   padding-inline: var(--spacing-lg);
 }
 
@@ -176,6 +176,7 @@
   display: grid;
   grid-auto-flow: row;
   gap: var(--spacing-2xl);
+  margin-block-end: var(--spacing-4xl);
 }
 
 .menu-subtitle {

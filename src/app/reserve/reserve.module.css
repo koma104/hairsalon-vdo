@@ -1,5 +1,5 @@
 .container {
-  padding-block: var(--spacing-3xl) var(--spacing-3xl);
+  padding-block: var(--spacing-3xl) var(--spacing-2xl);
   padding-inline: var(--spacing-lg);
 }
 
@@ -16,7 +16,9 @@
 }
 
 .reserve-wrapper {
-  margin-bottom: var(--spacing-xl);
+  &:not(:last-child) {
+    margin-block-end: var(--spacing-xl);
+  }
 }
 
 .reserve-subtitle {
@@ -28,7 +30,9 @@
 }
 
 .form-group {
-  margin-block-end: var(--spacing-lg);
+  &:not(:last-child) {
+    margin-block-end: var(--spacing-lg);
+  }
 }
 
 .select {
@@ -58,7 +62,7 @@
 
 /* reserve-button-wrapperの手前の要素に自動的にマージンを適用 */
 *:has(+ .reserve-button-wrapper) {
-  margin-block-end: var(--spacing-3xl);
+  margin-block-end: var(--spacing-4xl);
 }
 
 .reserve-button {
