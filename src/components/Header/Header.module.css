@@ -27,6 +27,10 @@
   top: 75%;
 }
 
+.logo-title {
+  margin: 0;
+}
+
 .menu-button {
   position: fixed;
   top: var(--spacing-xs);
