@@ -46,27 +46,25 @@ export default function Home() {
     // ScrollTriggerインスタンスを個別管理
     const scrollTriggers: ScrollTrigger[] = []
 
-    // GSAP ScrollTriggerの初期化
-    const heroAnimation = gsap.timeline({
-      scrollTrigger: {
-        trigger: `.${styles['main-visual']}`,
-        start: 'top top',
-        end: 'bottom top',
-        pin: true,
-        pinSpacing: false,
-        scrub: 1,
-        pinType: 'fixed',
-        onUpdate: self => {
-          const pinElement = self.pin;
-          if (pinElement && !pinElement.parentNode) {
-            // もし親がなければ何もしない（エラー防止）
-            // console.warn('ピン要素が既に削除されています');
-          }
-        }
-      }
-    })
+    // GSAP ScrollTriggerの初期化（ピン留めは削除）
+    // const heroAnimation = gsap.timeline({
+    //   scrollTrigger: {
+    //     trigger: `.${styles['main-visual']}`,
+    //     start: 'top top',
+    //     end: 'bottom top',
+    //     pin: true,
+    //     pinSpacing: false,
+    //     scrub: 1,
+    //     pinType: 'fixed',
+    //     onUpdate: self => {
+    //       const pinElement = self.pin;
+    //       if (pinElement && !pinElement.parentNode) {
+    //         // もし親がなければ何もしない（エラー防止）
+    //       }
+    //     }
+    //   }
+    // })
 
-    // コンテンツがヒーロー画像の上をスクロールする効果
     gsap.set(`.${styles['content-overlay']}`, {
       y: '25vh'
     })
@@ -81,10 +79,9 @@ export default function Home() {
       y: 0
     })
 
-    // 作成されたScrollTriggerを配列に保存
-    if (heroAnimation.scrollTrigger) {
-      scrollTriggers.push(heroAnimation.scrollTrigger)
-    }
+    // if (heroAnimation.scrollTrigger) {
+    //   scrollTriggers.push(heroAnimation.scrollTrigger)
+    // }
     if (contentAnimation.scrollTrigger) {
       scrollTriggers.push(contentAnimation.scrollTrigger)
     }
@@ -114,13 +111,13 @@ export default function Home() {
           }
         }
       })
-      if (heroAnimation) {
-        try {
-          heroAnimation.kill()
-        } catch (error) {
-          console.warn('Hero animation cleanup error:', error)
-        }
-      }
+      // if (heroAnimation) {
+      //   try {
+      //     heroAnimation.kill()
+      //   } catch (error) {
+      //     console.warn('Hero animation cleanup error:', error)
+      //   }
+      // }
       if (contentAnimation) {
         try {
           contentAnimation.kill()
@@ -129,7 +126,7 @@ export default function Home() {
         }
       }
     }
-  }, [router])
+  }, [])
 
   const handleShowMoreNews = () => {
     setVisibleNewsCount(5)
