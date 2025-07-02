@@ -22,11 +22,19 @@ const Header = () => {
       return
     }
 
-    // ホームページの場合、現在のスクロール位置を確認
+    // ホームページの場合、コンセプトエリアが画面の上部に付いた時にロゴアニメーションを開始
     const checkScrollPosition = () => {
       const scrollY = window.scrollY
-      const threshold = 52 // ヘッダーの高さ（52px）
-      setIsScrolled(scrollY > threshold)
+      const heroHeight = window.innerHeight // ヒーローセクションの高さ（100vh）
+      // コンセプトセクションを直接セレクターで検索
+      const conceptSection = document.querySelector('section:first-of-type')
+      
+      if (conceptSection) {
+        const conceptRect = conceptSection.getBoundingClientRect()
+        const headerHeight = 52 // ヘッダーの高さ
+        // コンセプトエリアの上端が画面の上部からヘッダーの高さ分下がった時にアニメーション開始
+        setIsScrolled(conceptRect.top <= headerHeight)
+      }
     }
 
     // 初回実行で現在のスクロール位置を確認
@@ -34,8 +42,21 @@ const Header = () => {
 
     const handleScroll = () => {
       const scrollY = window.scrollY
-      const threshold = 52 // ヘッダーの高さ（52px）
-      setIsScrolled(scrollY > threshold)
+      // コンセプトセクションを直接セレクターで検索
+      const conceptSection = document.querySelector('section:first-of-type')
+      
+      if (conceptSection) {
+        const conceptRect = conceptSection.getBoundingClientRect()
+        const headerHeight = 52 // ヘッダーの高さ
+        // コンセプトエリアの上端が画面の上部からヘッダーの高さ分下がった時にアニメーション開始
+        const shouldScroll = conceptRect.top <= headerHeight
+        setIsScrolled(shouldScroll)
+        
+        // デバッグ用ログ（開発時のみ）
+        if (process.env.NODE_ENV === 'development') {
+          console.log('Concept section top:', conceptRect.top, 'Header height:', headerHeight, 'Should scroll:', shouldScroll)
+        }
+      }
     }
 
     window.addEventListener('scroll', handleScroll)
