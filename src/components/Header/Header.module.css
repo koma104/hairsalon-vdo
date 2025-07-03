@@ -91,6 +91,6 @@
     padding-block: var(--spacing-xxs);
     padding-inline: var(--spacing-xs);
     font-size: var(--font-xxs);
-    border: none;
+    border: 1px solid var(--color-white);
   }
 }

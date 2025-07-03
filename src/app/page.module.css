@@ -7,7 +7,7 @@
   height: 100vh;
   height: 100dvh;
   overflow: hidden;
-  padding-block-start: calc(var(--spacing-2xl) + var(--spacing-xxs)); /* 固定ヘッダーの高さ分 */
+  padding-block: calc(var(--spacing-2xl) + var(--spacing-xxs)) var(--spacing-md); /* 固定ヘッダーの高さ分 */
 }
 
 .main-image {
