@@ -8,6 +8,7 @@ import { newsItems } from '@/lib/newsData'
 import Button from '@/components/Button/Button'
 import SectionTitle from '@/components/SectionTitle/SectionTitle'
 import { gsap, ScrollTrigger } from '@/lib/gsap'
+import Lenis from 'lenis'
 const menuCategories = [
   {
     category: 'cuts',
@@ -40,6 +41,23 @@ export default function Home() {
   const [visibleNewsCount, setVisibleNewsCount] = useState(2)
 
   useEffect(() => {
+    // Lenisインスタンスを作成（慣性スクロール）
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smooth: true,
+    })
+
+    // requestAnimationFrameループでLenisを更新
+    function raf(time: number) {
+      lenis.raf(time)
+      requestAnimationFrame(raf)
+    }
+    requestAnimationFrame(raf)
+
+    // ScrollTriggerにLenisのスクロールを連携
+    lenis.on('scroll', ScrollTrigger.update)
+
     // ScrollTriggerインスタンスを個別管理
     const scrollTriggers: ScrollTrigger[] = []
 
@@ -85,6 +103,11 @@ export default function Home() {
 
     // クリーンアップ
     return () => {
+      // Lenisインスタンスを破棄
+      if (lenis) {
+        lenis.destroy()
+      }
+      
       // まず全てのScrollTriggerをkill
       ScrollTrigger.killAll()
       window.removeEventListener('beforeunload', handleUnload)
