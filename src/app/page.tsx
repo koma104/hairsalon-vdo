@@ -8,8 +8,6 @@ import { newsItems } from '@/lib/newsData'
 import Button from '@/components/Button/Button'
 import SectionTitle from '@/components/SectionTitle/SectionTitle'
 import { gsap, ScrollTrigger } from '@/lib/gsap'
-import { useRouter } from 'next/navigation'
-
 const menuCategories = [
   {
     category: 'cuts',
@@ -40,33 +38,25 @@ const menuCategories = [
 
 export default function Home() {
   const [visibleNewsCount, setVisibleNewsCount] = useState(2)
-  const router = useRouter();
 
   useEffect(() => {
     // ScrollTriggerインスタンスを個別管理
     const scrollTriggers: ScrollTrigger[] = []
 
-    // GSAP ScrollTriggerの初期化（ピン留めは削除）
-    // const heroAnimation = gsap.timeline({
-    //   scrollTrigger: {
-    //     trigger: `.${styles['main-visual']}`,
-    //     start: 'top top',
-    //     end: 'bottom top',
-    //     pin: true,
-    //     pinSpacing: false,
-    //     scrub: 1,
-    //     pinType: 'fixed',
-    //     onUpdate: self => {
-    //       const pinElement = self.pin;
-    //       if (pinElement && !pinElement.parentNode) {
-    //         // もし親がなければ何もしない（エラー防止）
-    //       }
-    //     }
-    //   }
-    // })
+    // パララックス効果：ヒーロー画像のアニメーション
+    const heroParallaxAnimation = gsap.to(`.${styles['main-image']}`, {
+      yPercent: -20,
+      ease: 'none',
+      scrollTrigger: {
+        trigger: `.${styles['main-visual']}`,
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 1,
+      },
+    })
 
     gsap.set(`.${styles['content-overlay']}`, {
-      y: '25vh'
+      y: '25vh',
     })
 
     const contentAnimation = gsap.to(`.${styles['content-overlay']}`, {
@@ -74,33 +64,33 @@ export default function Home() {
         trigger: `.${styles['content-section']}`,
         start: 'top bottom-=100',
         end: 'bottom top+=100',
-        scrub: 1
+        scrub: 1,
       },
-      y: 0
+      y: 0,
     })
 
-    // if (heroAnimation.scrollTrigger) {
-    //   scrollTriggers.push(heroAnimation.scrollTrigger)
-    // }
+    if (heroParallaxAnimation.scrollTrigger) {
+      scrollTriggers.push(heroParallaxAnimation.scrollTrigger)
+    }
     if (contentAnimation.scrollTrigger) {
       scrollTriggers.push(contentAnimation.scrollTrigger)
     }
 
     // ページ遷移やリロード時にもkillAll
     const handleUnload = () => {
-      ScrollTrigger.killAll();
-    };
-    window.addEventListener('beforeunload', handleUnload);
-    window.addEventListener('popstate', handleUnload);
+      ScrollTrigger.killAll()
+    }
+    window.addEventListener('beforeunload', handleUnload)
+    window.addEventListener('popstate', handleUnload)
 
     // クリーンアップ
     return () => {
       // まず全てのScrollTriggerをkill
-      ScrollTrigger.killAll();
-      window.removeEventListener('beforeunload', handleUnload);
-      window.removeEventListener('popstate', handleUnload);
+      ScrollTrigger.killAll()
+      window.removeEventListener('beforeunload', handleUnload)
+      window.removeEventListener('popstate', handleUnload)
       // 個別に管理したScrollTriggerを安全にクリーンアップ
-      scrollTriggers.forEach(trigger => {
+      scrollTriggers.forEach((trigger) => {
         if (trigger && trigger.kill) {
           try {
             if (!trigger.pin || trigger.pin.parentNode) {
@@ -111,13 +101,13 @@ export default function Home() {
           }
         }
       })
-      // if (heroAnimation) {
-      //   try {
-      //     heroAnimation.kill()
-      //   } catch (error) {
-      //     console.warn('Hero animation cleanup error:', error)
-      //   }
-      // }
+      if (heroParallaxAnimation) {
+        try {
+          heroParallaxAnimation.kill()
+        } catch (error) {
+          console.warn('Hero parallax animation cleanup error:', error)
+        }
+      }
       if (contentAnimation) {
         try {
           contentAnimation.kill()
@@ -137,14 +127,16 @@ export default function Home() {
   return (
     <>
       <div className={styles['main-visual']}>
-        <Image
-          src="/images/hero-photo.png"
-          alt="Salon main visual"
-          width={750}
-          height={835}
-          priority={true}
-          className={styles['main-image']}
-        />
+        <div className={styles['main-visual-inner']}>
+          <Image
+            src="/images/hero-photo.png"
+            alt="Salon main visual"
+            width={750}
+            height={835}
+            priority={true}
+            className={styles['main-image']}
+          />
+        </div>
       </div>
 
       <div className={styles['content-overlay']}>
