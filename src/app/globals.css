@@ -17,8 +17,8 @@ body {
 :root {
   --font-sans: var(--font-lineseed);
   --font-lineseed:
-    'LINE Seed JP', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans',
-    'Hiragino Kaku Gothic ProN', 'Yu Gothic UI', Meiryo, sans-serif;
+    'LINE Seed JP', 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo,
+    sans-serif;
 }
 
 /* カラー */
@@ -56,6 +56,16 @@ body {
   --spacing-2xl: calc(var(--base-unit) * 6); /* 48px */
   --spacing-3xl: calc(var(--base-unit) * 8); /* 64px */
   --spacing-4xl: calc(var(--base-unit) * 10); /* 80px */
+
+  /* タブレット */
+  @media (min-width: 768px) {
+    --base-unit: 0.5625rem; /* 9px - 18pxベース */
+  }
+
+  /* デスクトップ */
+  @media (min-width: 1024px) {
+    --base-unit: 0.625rem; /* 10px - 20pxベース */
+  }
 }
 
 /* フォントサイズ */
@@ -86,4 +96,10 @@ body {
   --font-weight-regular: 400; /* LINE Seed Regular */
   --font-weight-bold: 700; /* LINE Seed Bold */
   --font-weight-extra-bold: 800; /* LINE Seed ExtraBold */
+}
+
+/* コンポーネントサイズ */
+:root {
+  --news-thumbnail-size: 6.25rem; /* 100px */
+  --container-max-width: calc(var(--spacing-4xl) * 8);
 }
