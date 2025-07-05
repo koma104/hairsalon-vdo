@@ -5,7 +5,7 @@
 
 body {
   font-family: var(--font-sans);
-  background-color: var(--color-white);
+  background-color: var(--color-base-bg);
   color: var(--color-black);
   line-height: 1.5;
   font-size: var(--font-base);
@@ -27,7 +27,7 @@ body {
   --color-black: #222; /* テキスト primary */
   --color-white: #fff;
   --color-gray-05: #fafafa; /* nav背景 */
-  --color-gray-10: #eee; /* 線 */
+  --color-gray-10: #eee;
   --color-gray-20: #dbdbdb; /* border */
   --color-gray-25: #aaa; /* 非活性要素 */
   --color-gray-30: #888; /* テキスト sub1 */
@@ -35,7 +35,10 @@ body {
   --color-gray-50: #444;
   --color-gray-60: #333; /* タイトルテキスト */
   --color-sns: #282828;
+  --color-bg: #edeae6;
 
+  --color-base-bg: var(--color-gray-05);
+  --color-nav-bg: var(--color-gray-10);
   --color-hover: var(--color-accent);
   --color-select: var(--color-gray-60);
 }

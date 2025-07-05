@@ -214,7 +214,7 @@
 .content-overlay {
   position: relative;
   z-index: 2;
-  background: var(--color-white);
+  background-color: var(--color-gray-05);
   backdrop-filter: blur(10px);
   /* margin-top: -100vh; */
   /* padding-top: 100vh; */

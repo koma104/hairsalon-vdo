@@ -73,7 +73,7 @@ export default function Home() {
     })
 
     gsap.set(`.${styles['content-overlay']}`, {
-      y: '25vh',
+      y: '0vh',
     })
 
     const contentAnimation = gsap.to(`.${styles['content-overlay']}`, {

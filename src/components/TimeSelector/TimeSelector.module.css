@@ -17,11 +17,11 @@
   line-height: 1;
   border: none;
   cursor: pointer;
-  border-bottom: 2px solid var(--color-gray-10);
+  border-bottom: 2px solid var(--color-gray-20);
 
   &.active {
     color: var(--color-black);
-    background-color: var(--color-white);
+    background-color: var(--color-gray-05);
     border-bottom: 2px solid var(--color-black);
   }
 }
@@ -31,46 +31,46 @@
   grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
   gap: var(--spacing-xs);
   padding-block: var(--spacing-sm);
-  background-color: var(--color-white);
-}
+  background-color: var(--color-gray-05);
 
-.time-slot {
-  padding-block: var(--spacing-sm);
-  padding-inline: var(--spacing-xs);
-  font-size: var(--font-sm);
-  text-align: center;
-  line-height: 1;
-  border: 1px solid var(--color-gray-20);
-  background-color: var(--color-white);
-  cursor: pointer;
-  transition:
-    background-color 0.2s ease,
-    border-color 0.2s ease,
-    color 0.2s ease;
+  .time-slot {
+    padding-block: var(--spacing-sm);
+    padding-inline: var(--spacing-xs);
+    font-size: var(--font-sm);
+    text-align: center;
+    line-height: 1;
+    border: 1px solid var(--color-gray-20);
+    background-color: var(--color-gray-05);
+    cursor: pointer;
+    transition:
+      background-color 0.2s ease,
+      border-color 0.2s ease,
+      color 0.2s ease;
 
-  @media (any-hover: hover) {
-    &:hover:not(.selected) {
-      background-color: var(--color-hover);
-      border-color: var(--color-hover);
-      color: var(--color-white);
+    @media (any-hover: hover) {
+      &:hover:not(.selected) {
+        background-color: var(--color-hover);
+        border-color: var(--color-hover);
+        color: var(--color-white);
+      }
     }
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--color-black);
-    outline-offset: 2px;
-  }
-
-  &.selected {
-    background-color: var(--color-select);
-    color: var(--color-white);
-    border-color: var(--color-select);
-    cursor: default;
-    pointer-events: none;
 
     &:focus-visible {
       outline: 2px solid var(--color-black);
       outline-offset: 2px;
+    }
+
+    &.selected {
+      background-color: var(--color-select);
+      color: var(--color-white);
+      border-color: var(--color-select);
+      cursor: default;
+      pointer-events: none;
+
+      &:focus-visible {
+        outline: 2px solid var(--color-black);
+        outline-offset: 2px;
+      }
     }
   }
 }

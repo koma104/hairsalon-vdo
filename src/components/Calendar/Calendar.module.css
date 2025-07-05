@@ -57,7 +57,7 @@
   padding-inline: var(--spacing-xxs);
   cursor: pointer;
   border: none;
-  background-color: transparent;
+  background-color: var(--color-gray-05);
   border-radius: 50%;
   width: var(--spacing-xl);
   height: var(--spacing-xl);
