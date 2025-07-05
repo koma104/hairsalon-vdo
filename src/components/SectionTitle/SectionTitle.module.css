@@ -8,4 +8,8 @@
   text-align: center;
   letter-spacing: 0.01em;
   text-transform: uppercase;
-} 
+
+  @media (min-width: 768px) {
+    font-size: var(--font-3xl);
+  }
+}

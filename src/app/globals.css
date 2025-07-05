@@ -101,5 +101,5 @@ body {
 /* コンポーネントサイズ */
 :root {
   --news-thumbnail-size: 6.25rem; /* 100px */
-  --container-max-width: calc(var(--spacing-4xl) * 8);
+  --container-max-width: calc(var(--spacing-4xl) * 9); /* 720px */
 }

@@ -32,6 +32,12 @@ const Header = () => {
       if (conceptSection) {
         const conceptRect = conceptSection.getBoundingClientRect()
         const headerHeight = 52 // ヘッダーの高さ
+        // PC表示時（768px以上）ではロゴアニメーションを無効化
+        const isPC = window.innerWidth >= 768
+        if (isPC) {
+          setIsScrolled(false)
+          return
+        }
         // コンセプトエリアの上端が画面の上部からヘッダーの高さ分下がった時にアニメーション開始
         setIsScrolled(conceptRect.top <= headerHeight)
       }
@@ -48,6 +54,12 @@ const Header = () => {
       if (conceptSection) {
         const conceptRect = conceptSection.getBoundingClientRect()
         const headerHeight = 52 // ヘッダーの高さ
+        // PC表示時（768px以上）ではロゴアニメーションを無効化
+        const isPC = window.innerWidth >= 768
+        if (isPC) {
+          setIsScrolled(false)
+          return
+        }
         // コンセプトエリアの上端が画面の上部からヘッダーの高さ分下がった時にアニメーション開始
         const shouldScroll = conceptRect.top <= headerHeight
         setIsScrolled(shouldScroll)
@@ -91,6 +103,24 @@ const Header = () => {
             <Image src="/images/logo-vdo.svg" alt="美容室 VDO" width={100} height={60} priority />
           </Link>
         )}
+        
+        {/* PC表示時のナビゲーション */}
+        <nav className={styles['header-nav']}>
+          <ul className={styles['header-nav-list']}>
+            <li>
+              <Link href="/">home</Link>
+            </li>
+            <li>
+              <Link href="/news">news</Link>
+            </li>
+            <li>
+              <Link href="/reserve">reserve</Link>
+            </li>
+            <li>
+              <Link href="/staff">staff</Link>
+            </li>
+          </ul>
+        </nav>
       </header>
         {!isReservePage && (
           <div className={styles['header-reserve-button']}>

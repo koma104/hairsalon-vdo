@@ -72,13 +72,13 @@ export default function Home() {
       },
     })
 
-    gsap.set(`.${styles['content-overlay']}`, {
+    gsap.set(`.${styles['content-wrapper']}`, {
       y: '0vh',
     })
 
-    const contentAnimation = gsap.to(`.${styles['content-overlay']}`, {
+    const contentAnimation = gsap.to(`.${styles['content-wrapper']}`, {
       scrollTrigger: {
-        trigger: `.${styles['content-section']}`,
+        trigger: `.${styles['content-wrapper']}`,
         start: 'top bottom-=100',
         end: 'bottom top+=100',
         scrub: 1,
@@ -147,7 +147,7 @@ export default function Home() {
   const displayedNews = newsItems.slice(0, visibleNewsCount)
 
   return (
-    <>
+    <div className={styles['main-container']}>
       <div className={styles['main-visual']}>
         <div className={styles['main-visual-inner']}>
           <Image
@@ -161,7 +161,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className={styles['content-overlay']}>
+              <div className={styles['content-wrapper']}>
         <section className={styles['content-section']}>
           <div className={styles.container}>
             <SectionTitle tag="h2">concept</SectionTitle>
@@ -256,6 +256,6 @@ export default function Home() {
           </div>
         </section>
       </div>
-    </>
+    </div>
   )
 }

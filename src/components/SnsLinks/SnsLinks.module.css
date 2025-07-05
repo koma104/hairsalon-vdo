@@ -4,7 +4,10 @@
   grid-auto-flow: column;
   justify-content: center;
   gap: var(--spacing-xl);
-  margin-block-end: var(--spacing-lg);
+
+  @media (min-width: 768px) {
+    justify-content: end;
+  }
 
   & a {
     color: var(--color-sns);
@@ -29,4 +32,4 @@
 .youtube-fix {
   display: inline-block;
   transform: translateY(1px);
-} 
+}

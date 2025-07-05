@@ -6,6 +6,13 @@
   height: calc(var(--spacing-2xl) + var(--spacing-xxs));
   z-index: 1000;
   mix-blend-mode: exclusion;
+
+  @media (min-width: 768px) {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    padding-inline: 5vw;
+  }
 }
 
 .logo {
@@ -21,6 +28,10 @@
     top 0.2s ease-out;
   will-change: transform, top;
   margin-block: 0;
+
+  @media (min-width: 768px) {
+    left: 5vw;
+  }
 }
 
 .logo-scrolled {
@@ -45,6 +56,10 @@
   width: calc(var(--spacing-2xl) - var(--spacing-xxs));
   height: calc(var(--spacing-2xl) - var(--spacing-xxs));
   mix-blend-mode: exclusion;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
 
   &.is-open {
     gap: 0;
@@ -80,6 +95,44 @@
   gap: 2.5rem;
 }
 
+.header-nav {
+  display: none;
+
+  @media (min-width: 768px) {
+    display: block;
+    justify-self: end;
+    align-self: center;
+  }
+}
+
+.header-nav-list {
+  display: flex;
+  gap: var(--spacing-xl);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  & a {
+    font-size: var(--font-xs);
+    font-weight: var(--font-weight-regular);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--color-white);
+    transition: color 0.2s ease;
+
+    &:focus-visible {
+      color: #f938aa;
+    }
+
+    @media (any-hover: hover) {
+      &:hover {
+        color: #f938aa;
+      }
+    }
+  }
+}
+
 .header-reserve-button {
   position: fixed;
   top: var(--spacing-sm);
@@ -87,10 +140,22 @@
   z-index: 1001;
   mix-blend-mode: exclusion;
 
+  @media (min-width: 768px) {
+    display: none;
+  }
+
   & button {
     padding-block: var(--spacing-xxs);
     padding-inline: var(--spacing-xs);
     font-size: var(--font-xxs);
     border: 1px solid var(--color-white);
+
+    @media (any-hover: hover) {
+      &:hover {
+        background-color: #f938aa;
+        border-color: #f938aa;
+        color: #000;
+      }
+    }
   }
 }
