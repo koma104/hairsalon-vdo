@@ -10,10 +10,6 @@ import Button from '../Button/Button'
 import { usePageContext } from '@/contexts/PageContext'
 import { useRouter, useSearchParams } from 'next/navigation'
 
-interface HeaderProps {
-  onPageChange?: (page: string) => void
-}
-
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
@@ -40,8 +36,6 @@ const Header = () => {
 
     // ホームページの場合、コンセプトエリアが画面の上部に付いた時にロゴアニメーションを開始
     const checkScrollPosition = () => {
-      const scrollY = window.scrollY
-      const heroHeight = window.innerHeight // ヒーローセクションの高さ（100vh）
       // コンセプトセクションを直接セレクターで検索
       const conceptSection = document.querySelector('section:first-of-type')
       
@@ -63,7 +57,6 @@ const Header = () => {
     checkScrollPosition()
 
     const handleScroll = () => {
-      const scrollY = window.scrollY
       // コンセプトセクションを直接セレクターで検索
       const conceptSection = document.querySelector('section:first-of-type')
       

@@ -78,16 +78,6 @@ export default function Home() {
     }
   }, [pathname, router])
 
-  // ニュース一覧に戻る処理
-  const handleNewsListClick = () => {
-    setCurrentPage('news')
-    setCurrentArticleId(null)
-    // クエリパラメータをクリア
-    if (searchParams.has('news')) {
-      router.replace('/')
-    }
-  }
-
   useEffect(() => {
 
     // Lenisインスタンスを作成（慣性スクロール）
