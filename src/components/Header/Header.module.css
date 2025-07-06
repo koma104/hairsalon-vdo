@@ -109,7 +109,9 @@
 }
 
 .header-nav-list {
-  display: flex;
+  display: grid;
+  grid-auto-flow: column;
+  place-items: center;
   gap: var(--spacing-xl);
   list-style: none;
   margin: 0;
