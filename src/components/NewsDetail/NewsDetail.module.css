@@ -3,7 +3,8 @@
   padding-inline: var(--spacing-lg);
 
   @media (min-width: 768px) {
-    padding-inline: 5vw;
+    padding-block: var(--spacing-4xl) var(--spacing-xl);
+    padding-inline: 6vw;
   }
 }
 
@@ -20,9 +21,9 @@
 }
 
 .section-title {
-  margin-block-end: 0;
+  margin-block: 0;
   padding-block: var(--spacing-xl) 0;
-  font-size: var(--font-2xl);
+  font-size: var(--font-3xl);
   font-weight: var(--font-weight-regular);
   color: var(--color-gray-60);
   text-align: left;
@@ -37,12 +38,25 @@
 
 .main-image-wrapper {
   margin-block-end: var(--spacing-xl);
+
+  /* PCではアスペクト比を調整 */
+  @media (min-width: 768px) {
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+  }
 }
 
 .main-image {
   width: 100%;
   height: auto;
   object-fit: cover;
+
+  /* PCではアスペクト比を固定して長方形にする */
+  @media (min-width: 768px) {
+    aspect-ratio: 16 / 9;
+    height: auto;
+    object-fit: cover;
+  }
 }
 
 .content {

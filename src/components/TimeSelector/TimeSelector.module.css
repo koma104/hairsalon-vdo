@@ -51,6 +51,10 @@
       border-color 0.2s ease,
       color 0.2s ease;
 
+    @media (min-width: 768px) {
+      padding-block: var(--spacing-xs);
+    }
+
     @media (any-hover: hover) {
       &:hover:not(.selected) {
         background-color: var(--color-hover);

@@ -28,6 +28,7 @@
   grid-template-columns: 1fr var(--news-thumbnail-size);
   gap: var(--spacing-sm);
   padding-block: var(--spacing-sm);
+  padding-inline: 0;
   text-decoration: none;
   color: inherit;
   transition: color 0.2s ease;
