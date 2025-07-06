@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Suspense } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
@@ -10,7 +10,8 @@ import Button from '../Button/Button'
 import { usePageContext } from '@/contexts/PageContext'
 import { useRouter, useSearchParams } from 'next/navigation'
 
-const Header = () => {
+// useSearchParamsを使用するコンポーネント
+function HeaderContent() {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const pathname = usePathname()
@@ -197,4 +198,11 @@ const Header = () => {
   )
 }
 
-export default Header
+// メインのHeaderコンポーネント（Suspenseでラップ）
+export default function Header() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <HeaderContent />
+    </Suspense>
+  )
+}

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
@@ -15,6 +15,7 @@ import NewsDetail from '@/components/NewsDetail/NewsDetail'
 import ReservePage from './reserve/page'
 import StaffPage from './staff/page'
 import { usePageContext } from '@/contexts/PageContext'
+
 const menuCategories = [
   {
     category: 'cuts',
@@ -43,7 +44,8 @@ const menuCategories = [
   },
 ]
 
-export default function Home() {
+// useSearchParamsを使用するコンポーネント
+function HomeContent() {
   const [visibleNewsCount, setVisibleNewsCount] = useState(2)
   const [currentArticleId, setCurrentArticleId] = useState<string | null>(null)
   const { currentPage, setCurrentPage } = usePageContext()
@@ -332,5 +334,14 @@ export default function Home() {
         )}
       </div>
     </div>
+  )
+}
+
+// メインのHomeコンポーネント（Suspenseでラップ）
+export default function Home() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <HomeContent />
+    </Suspense>
   )
 }
