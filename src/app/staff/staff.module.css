@@ -44,7 +44,7 @@
 }
 
 .staff-name {
-  font-size: var(--font-base);
+  font-size: var(--font-md);
   font-weight: var(--font-weight-regular);
   text-transform: capitalize;
 }
