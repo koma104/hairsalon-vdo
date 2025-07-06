@@ -2,6 +2,12 @@
   width: 100%;
   padding-block: var(--spacing-sm) var(--spacing-md);
   padding-inline: var(--spacing-xxs);
+
+  @media (min-width: 768px) {
+    padding-inline: 4vw;
+    max-width: calc(var(--spacing-4xl) * 6);
+    margin-inline: auto;
+  }
 }
 
 .header {

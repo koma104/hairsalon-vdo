@@ -4,7 +4,9 @@
   /* background-color: var(--color-gray-10); */
 
   @media (min-width: 768px) {
-    padding-inline: 5vw;
+    padding-inline: 6vw;
+    max-width: 1600px;
+    margin-inline: auto;
   }
 }
 

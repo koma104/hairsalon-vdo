@@ -40,8 +40,8 @@ const StaffPage = () => {
               <Image
                 src={staff.imageUrl}
                 alt={staff.name}
-                width={128}
-                height={170}
+                width={160}
+                height={213}
                 className={styles['staff-image']}
               />
             </div>

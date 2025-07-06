@@ -11,7 +11,9 @@
     display: grid;
     grid-template-columns: 1fr auto;
     align-items: end;
-    padding-inline: 5vw;
+    padding-inline: 6vw;
+    max-width: 1600px;
+    margin-inline: auto;
   }
 }
 
@@ -30,7 +32,7 @@
   margin-block: 0;
 
   @media (min-width: 768px) {
-    left: 5vw;
+    left: 6vw;
   }
 }
 
@@ -90,8 +92,9 @@
 }
 
 .sns-links {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-auto-flow: column;
+  place-items: center;
   gap: 2.5rem;
 }
 
@@ -112,7 +115,8 @@
   margin: 0;
   padding: 0;
 
-  & a {
+  & a,
+  & button {
     font-size: var(--font-xs);
     font-weight: var(--font-weight-regular);
     letter-spacing: 0.05em;
@@ -120,6 +124,10 @@
     text-decoration: none;
     color: var(--color-white);
     transition: color 0.2s ease;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
 
     &:focus-visible {
       color: #f938aa;

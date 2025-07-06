@@ -1,6 +1,11 @@
 .container {
   padding-block: var(--spacing-3xl) var(--spacing-2xl);
   padding-inline: var(--spacing-lg);
+
+  @media (min-width: 768px) {
+    padding-block: var(--spacing-4xl) var(--spacing-xl);
+    padding-inline: 6vw;
+  }
 }
 
 .reserve-wrapper {
@@ -10,7 +15,7 @@
 }
 
 .reserve-subtitle {
-  margin-block-end: var(--spacing-xs);
+  margin-block-end: var(--spacing-sm);
   font-size: var(--font-lg);
   font-weight: var(--font-weight-regular);
   letter-spacing: 0.01em;
@@ -19,7 +24,15 @@
 
 .form-group {
   &:not(:last-child) {
-    margin-block-end: var(--spacing-lg);
+    margin-block-end: var(--spacing-xl);
+  }
+}
+
+.select-wrapper {
+  width: 100%;
+
+  @media (min-width: 768px) {
+    padding-inline: 4vw;
   }
 }
 
@@ -36,6 +49,10 @@
   background-repeat: no-repeat;
   background-position: right var(--spacing-md) center;
   background-size: 1em;
+
+  @media (min-width: 768px) {
+    font-size: var(--font-sm);
+  }
 }
 
 /* プレースホルダー状態の文字色を変更 */
@@ -44,8 +61,13 @@
 }
 
 .reserve-button-wrapper {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  place-items: center;
+
+  @media (min-width: 768px) {
+    max-width: calc(var(--spacing-3xl) * 4);
+    margin: 0 auto;
+  }
 }
 
 /* reserve-button-wrapperの手前の要素に自動的にマージンを適用 */

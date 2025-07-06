@@ -7,6 +7,11 @@ import { usePathname } from 'next/navigation'
 import Nav from '../Nav/Nav'
 import styles from './Header.module.css'
 import Button from '../Button/Button'
+import { usePageContext } from '@/contexts/PageContext'
+
+interface HeaderProps {
+  onPageChange?: (page: string) => void
+}
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -14,9 +19,17 @@ const Header = () => {
   const pathname = usePathname()
   const isHomePage = pathname === '/'
   const isReservePage = pathname === '/reserve'
+  const { setCurrentPage, isSPAEnabled } = usePageContext()
 
   useEffect(() => {
-    // ホームページ以外では最初から小さいサイズにする
+    // PC表示時（768px以上）ではロゴアニメーションを無効化
+    const isPC = window.innerWidth >= 768
+    if (isPC) {
+      setIsScrolled(false)
+      return
+    }
+
+    // SPでのみ、ホームページ以外では最初から小さいサイズにする
     if (!isHomePage) {
       setIsScrolled(true)
       return
@@ -108,16 +121,52 @@ const Header = () => {
         <nav className={styles['header-nav']}>
           <ul className={styles['header-nav-list']}>
             <li>
-              <Link href="/">home</Link>
+              {isHomePage && isSPAEnabled ? (
+                <button 
+                  onClick={() => setCurrentPage('home')}
+                  className={styles['nav-button']}
+                >
+                  home
+                </button>
+              ) : (
+                <Link href="/">home</Link>
+              )}
             </li>
             <li>
-              <Link href="/news">news</Link>
+              {isHomePage && isSPAEnabled ? (
+                <button 
+                  onClick={() => setCurrentPage('news')}
+                  className={styles['nav-button']}
+                >
+                  news
+                </button>
+              ) : (
+                <Link href="/news">news</Link>
+              )}
             </li>
             <li>
-              <Link href="/reserve">reserve</Link>
+              {isHomePage && isSPAEnabled ? (
+                <button 
+                  onClick={() => setCurrentPage('reserve')}
+                  className={styles['nav-button']}
+                >
+                  reserve
+                </button>
+              ) : (
+                <Link href="/reserve">reserve</Link>
+              )}
             </li>
             <li>
-              <Link href="/staff">staff</Link>
+              {isHomePage && isSPAEnabled ? (
+                <button 
+                  onClick={() => setCurrentPage('staff')}
+                  className={styles['nav-button']}
+                >
+                  staff
+                </button>
+              ) : (
+                <Link href="/staff">staff</Link>
+              )}
             </li>
           </ul>
         </nav>

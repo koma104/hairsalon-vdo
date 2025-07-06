@@ -16,6 +16,10 @@
 .primary {
   background-color: var(--color-gray-60);
   color: var(--color-white);
+
+  @media (min-width: 768px) {
+    font-size: var(--font-sm);
+  }
 }
 
 .secondary {

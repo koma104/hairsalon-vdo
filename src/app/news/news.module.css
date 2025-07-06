@@ -1,6 +1,11 @@
 .container {
   padding-block: var(--spacing-3xl) var(--spacing-2xl);
   padding-inline: var(--spacing-lg);
+
+  @media (min-width: 768px) {
+    padding-block: var(--spacing-4xl) var(--spacing-xl);
+    padding-inline: 6vw;
+  }
 }
 
 .page-description {
@@ -20,12 +25,16 @@
 
 .news-item {
   display: grid;
-  grid-auto-flow: column;
+  grid-template-columns: 1fr var(--news-thumbnail-size);
   gap: var(--spacing-sm);
   padding-block: var(--spacing-sm);
   text-decoration: none;
   color: inherit;
   transition: color 0.2s ease;
+
+  @media (min-width: 768px) {
+    gap: var(--spacing-md);
+  }
 
   &:focus-visible {
     color: var(--color-hover);
@@ -39,9 +48,10 @@
 }
 
 .news-image {
-  width: 6.25rem;
-  height: 6.25rem;
+  width: 100%;
+  height: var(--news-thumbnail-size);
   object-fit: cover;
+  justify-self: end;
 }
 
 .news-text {
@@ -55,6 +65,10 @@
   font-size: var(--font-sm);
   font-weight: var(--font-weight-regular);
   letter-spacing: 0.01em;
+
+  @media (min-width: 768px) {
+    font-size: var(--font-base);
+  }
 }
 
 .news-excerpt {
@@ -69,6 +83,10 @@
   gap: var(--spacing-md);
   font-size: var(--font-sm);
   line-height: 1;
+
+  @media (min-width: 768px) {
+    font-size: var(--font-xs);
+  }
 }
 
 .page-button {
