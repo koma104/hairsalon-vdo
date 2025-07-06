@@ -103,7 +103,7 @@ function HomeContent() {
 
     // パララックス効果：ヒーロー画像のアニメーション
     const heroParallaxAnimation = gsap.to(`.${styles['main-image']}`, {
-      yPercent: -15,
+      yPercent: -10,
       ease: 'none',
       scrollTrigger: {
         trigger: `.${styles['main-visual']}`,
