@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 import styles from './page.module.css'
 import { newsItems } from '@/lib/newsData'
 import Button from '@/components/Button/Button'
@@ -10,6 +11,7 @@ import SectionTitle from '@/components/SectionTitle/SectionTitle'
 import { gsap, ScrollTrigger } from '@/lib/gsap'
 import Lenis from 'lenis'
 import NewsListPage from './news/page'
+import NewsDetail from '@/components/NewsDetail/NewsDetail'
 import ReservePage from './reserve/page'
 import StaffPage from './staff/page'
 import { usePageContext } from '@/contexts/PageContext'
@@ -43,9 +45,51 @@ const menuCategories = [
 
 export default function Home() {
   const [visibleNewsCount, setVisibleNewsCount] = useState(2)
+  const [currentArticleId, setCurrentArticleId] = useState<string | null>(null)
   const { currentPage, setCurrentPage } = usePageContext()
+  const router = useRouter()
+  const pathname = usePathname()
+  const searchParams = useSearchParams()
+
+  // URLパラメータを監視してニュース詳細を表示
+  useEffect(() => {
+    const newsDetailMatch = pathname.match(/^\/news\/(.+)$/)
+    const newsQueryParam = searchParams.get('news')
+    
+    if (newsDetailMatch) {
+      const articleId = newsDetailMatch[1]
+      setCurrentArticleId(articleId)
+      setCurrentPage('news')
+    } else if (newsQueryParam) {
+      setCurrentArticleId(newsQueryParam)
+      setCurrentPage('news')
+    } else {
+      setCurrentArticleId(null)
+    }
+  }, [pathname, searchParams, setCurrentPage])
+
+  // PCでの直接アクセス時の処理
+  useEffect(() => {
+    const newsDetailMatch = pathname.match(/^\/news\/(.+)$/)
+    if (newsDetailMatch && typeof window !== 'undefined' && window.innerWidth >= 768) {
+      // PCで直接アクセスした場合は即座にリダイレクト
+      const articleId = newsDetailMatch[1]
+      router.replace(`/?news=${articleId}`)
+    }
+  }, [pathname, router])
+
+  // ニュース一覧に戻る処理
+  const handleNewsListClick = () => {
+    setCurrentPage('news')
+    setCurrentArticleId(null)
+    // クエリパラメータをクリア
+    if (searchParams.has('news')) {
+      router.replace('/')
+    }
+  }
 
   useEffect(() => {
+
     // Lenisインスタンスを作成（慣性スクロール）
     const lenis = new Lenis({
       duration: 1.2,
@@ -205,7 +249,21 @@ export default function Home() {
                 <SectionTitle tag="h2">news</SectionTitle>
                 <div className={styles['news-list']}>
                   {displayedNews.map((item) => (
-                    <Link href={`/news/${item.id}`} key={item.id} className={styles['news-item']}>
+                    <button 
+                      key={item.id} 
+                      className={styles['news-item']}
+                      onClick={() => {
+                        const isMobile = window.innerWidth < 768
+                        if (isMobile) {
+                          // SPの場合は独立したページに遷移
+                          router.push(`/news/${item.id}`)
+                        } else {
+                          // PCの場合はホームページのcontent-wrapper内で表示
+                          setCurrentArticleId(item.id)
+                          setCurrentPage('news')
+                        }
+                      }}
+                    >
                       <div className={styles['news-text']}>
                         <h3 className={styles['news-subtitle']}>{item.title}</h3>
                         <p className={styles['news-excerpt']}>{item.excerpt}</p>
@@ -219,7 +277,7 @@ export default function Home() {
                           className={styles['news-image']}
                         />
                       </div>
-                    </Link>
+                    </button>
                   ))}
                 </div>
                 {visibleNewsCount < 5 && newsItems.length > 2 && (
@@ -267,8 +325,12 @@ export default function Home() {
           </>
         )}
 
-        {currentPage === 'news' && (
+        {currentPage === 'news' && !currentArticleId && (
           <NewsListPage />
+        )}
+
+        {currentPage === 'news' && currentArticleId && (
+          <NewsDetail id={currentArticleId} />
         )}
 
         {currentPage === 'reserve' && (

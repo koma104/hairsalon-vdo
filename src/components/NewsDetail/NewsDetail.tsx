@@ -1,10 +1,10 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import styles from './news-detail.module.css'
+
+import styles from './NewsDetail.module.css'
 
 // This is mock data. In a real application, you would fetch this based on the `id` param.
 const allNews = [
@@ -46,35 +46,15 @@ const allNews = [
   },
 ]
 
-const NewsDetailPage = ({ params }: { params: Promise<{ id: string }> }) => {
-  const [id, setId] = useState<string | null>(null)
-  const [isMobile, setIsMobile] = useState<boolean | null>(null)
-  const router = useRouter()
+interface NewsDetailProps {
+  id: string
+}
 
-  useEffect(() => {
-    // パラメータを取得
-    params.then(({ id }) => setId(id))
-    
-    // デバイス判定（初期化時のみ）
-    const checkMobile = () => {
-      const mobile = window.innerWidth < 768
-      setIsMobile(mobile)
-      
-      // PCの場合は即座にリダイレクト
-      if (!mobile && id) {
-        router.replace(`/?news=${id}`)
-      }
-    }
-    
-    checkMobile()
-    
-    // リサイズ時の処理は不要（初期判定のみ）
-  }, [params, id, router])
-
-  // 初期化中またはPCの場合は何も表示しない
-  if (isMobile === null || !isMobile || !id) {
-    return null
+const NewsDetail = ({ id }: NewsDetailProps) => {
+  if (!id) {
+    return <div>Article ID not found</div>
   }
+  
   const currentArticleIndex = allNews.findIndex((article) => article.id === id)
   const article = allNews[currentArticleIndex]
 
@@ -148,4 +128,4 @@ const NewsDetailPage = ({ params }: { params: Promise<{ id: string }> }) => {
   )
 }
 
-export default NewsDetailPage
+export default NewsDetail 

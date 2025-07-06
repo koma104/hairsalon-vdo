@@ -1,8 +1,9 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 import styles from './news.module.css'
 import { newsItems } from '@/lib/newsData'
 import SectionTitle from '@/components/SectionTitle/SectionTitle'
@@ -11,6 +12,20 @@ const ITEMS_PER_PAGE = 10
 
 const NewsListPage = () => {
   const [currentPage, setCurrentPage] = useState(1)
+  const [isMobile, setIsMobile] = useState<boolean | null>(null)
+  const router = useRouter()
+
+  useEffect(() => {
+    // デバイス判定
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
   const totalPages = Math.ceil(newsItems.length / ITEMS_PER_PAGE)
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE
@@ -38,7 +53,19 @@ const NewsListPage = () => {
 
       <div className={styles['news-list']}>
         {displayedItems.map((item) => (
-          <Link href={`/news/${item.id}`} key={item.id} className={styles['news-item']}>
+          <button 
+            key={item.id} 
+            className={styles['news-item']}
+            onClick={() => {
+              if (isMobile) {
+                // SPの場合は独立したページに遷移
+                router.push(`/news/${item.id}`)
+              } else {
+                // PCの場合はホームページのcontent-wrapper内で表示
+                router.push(`/?news=${item.id}`)
+              }
+            }}
+          >
             <div className={styles['news-text']}>
               <h2 className={styles['news-subtitle']}>{item.title}</h2>
               <p className={styles['news-excerpt']}>{item.excerpt}</p>
@@ -52,7 +79,7 @@ const NewsListPage = () => {
                 className={styles['news-image']}
               />
             </div>
-          </Link>
+          </button>
         ))}
       </div>
 

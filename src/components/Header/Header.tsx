@@ -8,6 +8,7 @@ import Nav from '../Nav/Nav'
 import styles from './Header.module.css'
 import Button from '../Button/Button'
 import { usePageContext } from '@/contexts/PageContext'
+import { useRouter, useSearchParams } from 'next/navigation'
 
 interface HeaderProps {
   onPageChange?: (page: string) => void
@@ -20,6 +21,8 @@ const Header = () => {
   const isHomePage = pathname === '/'
   const isReservePage = pathname === '/reserve'
   const { setCurrentPage, isSPAEnabled } = usePageContext()
+  const router = useRouter()
+  const searchParams = useSearchParams()
 
   useEffect(() => {
     // PC表示時（768px以上）ではロゴアニメーションを無効化
@@ -102,6 +105,14 @@ const Header = () => {
     document.body.style.overflow = ''
   }
 
+  const handleNewsClick = () => {
+    setCurrentPage('news')
+    // クエリパラメータをクリアしてニュース一覧を表示
+    if (searchParams.has('news')) {
+      router.replace('/')
+    }
+  }
+
   return (
     <>
       <header className={styles.header}>
@@ -135,7 +146,7 @@ const Header = () => {
             <li>
               {isHomePage && isSPAEnabled ? (
                 <button 
-                  onClick={() => setCurrentPage('news')}
+                  onClick={handleNewsClick}
                   className={styles['nav-button']}
                 >
                   news
