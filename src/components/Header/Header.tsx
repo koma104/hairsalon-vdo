@@ -73,11 +73,6 @@ function HeaderContent() {
         // コンセプトエリアの上端が画面の上部からヘッダーの高さ分下がった時にアニメーション開始
         const shouldScroll = conceptRect.top <= headerHeight
         setIsScrolled(shouldScroll)
-        
-        // デバッグ用ログ（開発時のみ）
-        if (process.env.NODE_ENV === 'development') {
-          console.log('Concept section top:', conceptRect.top, 'Header height:', headerHeight, 'Should scroll:', shouldScroll)
-        }
       }
     }
 
