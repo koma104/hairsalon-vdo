@@ -22,16 +22,40 @@
   height: 100vh;
   overflow: hidden;
   padding-block: calc(var(--spacing-2xl) + var(--spacing-xxs)) var(--spacing-xl); /* 固定ヘッダーの高さ分 */
+
+  @media (min-width: 768px) {
+    max-height: 800px; /* PCでの最大高さを指定 */
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .main-visual-inner {
-  padding-inline: var(--spacing-xs);
-  width: 100%;
+  margin-inline: auto;
+  width: calc(100% - var(--spacing-sm));
   height: 100%;
   overflow: hidden;
+  background-color: var(--color-gray-10); /* グレー背景を追加 */
 
   @media (min-width: 768px) {
-    padding-inline: 6vw 3vw;
+    width: calc(100% - (12vw));
+    background-color: transparent;
   }
 }
 
@@ -41,6 +65,18 @@
   object-fit: cover;
   object-position: center;
   transform-origin: center center;
+
+  @media (max-width: 767px) {
+    transform: scale(1.1); /* 初期状態で110%サイズ */
+    opacity: 0; /* 初期状態で透明 */
+    animation: fadeIn 4s ease-out 0.3s forwards; /* 0.3秒遅延してから開始 */
+  }
+
+  @media (min-width: 768px) {
+    transform: scale(1.1); /* PCでも初期状態で110%サイズ */
+    opacity: 0; /* PCでも初期状態で透明 */
+    animation: fadeIn 4s ease-out 0.3s forwards; /* PCでも0.3秒遅延してから開始 */
+  }
 }
 
 .container {

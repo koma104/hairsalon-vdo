@@ -81,11 +81,15 @@ function HomeContent() {
   }, [pathname, router])
 
   useEffect(() => {
+    // デバイス判定
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768
 
     // Lenisインスタンスを作成（慣性スクロール）
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: isMobile ? 0.8 : 1.2, // スマホではより短いduration
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: !isMobile, // スマホではsmoothWheelを無効化
+      wheelMultiplier: isMobile ? 0.8 : 1, // スマホではホイール感度を調整
     })
 
     // requestAnimationFrameループでLenisを更新
@@ -97,21 +101,38 @@ function HomeContent() {
 
     // ScrollTriggerにLenisのスクロールを連携
     lenis.on('scroll', ScrollTrigger.update)
-
+    
     // ScrollTriggerインスタンスを個別管理
     const scrollTriggers: ScrollTrigger[] = []
 
     // パララックス効果：ヒーロー画像のアニメーション
-    const heroParallaxAnimation = gsap.to(`.${styles['main-image']}`, {
-      yPercent: -10,
+    let heroParallaxAnimation: gsap.core.Tween | null = null
+    
+    // パララックス効果：ヒーロー画像のアニメーション（PC・スマホ両方で適用）
+    heroParallaxAnimation = gsap.to(`.${styles['main-image']}`, {
+      yPercent: isMobile ? -5 : -10, // スマホでは軽微な効果
       ease: 'none',
       scrollTrigger: {
         trigger: `.${styles['main-visual']}`,
         start: 'top top',
         end: 'bottom top',
-        scrub: 1,
+        scrub: isMobile ? 0.5 : 1, // スマホではより滑らかなスクラブ
       },
     })
+
+    // ズームアウト効果を両方のデバイスで適用
+    // 初期状態を明示的に設定
+    gsap.set(`.${styles['main-image']}`, { scale: 1.1 })
+    
+    gsap.fromTo(`.${styles['main-image']}`, 
+      { scale: 1.1 },
+      { 
+        scale: 1, 
+        duration: 4, 
+        delay: 0.3, 
+        ease: 'power2.out' 
+      }
+    )
 
     gsap.set(`.${styles['content-wrapper']}`, {
       y: '0vh',
@@ -127,7 +148,7 @@ function HomeContent() {
       y: 0,
     })
 
-    if (heroParallaxAnimation.scrollTrigger) {
+    if (heroParallaxAnimation?.scrollTrigger) {
       scrollTriggers.push(heroParallaxAnimation.scrollTrigger)
     }
     if (contentAnimation.scrollTrigger) {
