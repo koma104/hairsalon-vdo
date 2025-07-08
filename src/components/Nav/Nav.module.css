@@ -30,7 +30,7 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-flow: row;
-  gap: var(--spacing-xl);
+  gap: var(--spacing-2xl);
   place-items: center;
 
   & a {
