@@ -6,6 +6,7 @@ import Calendar from '@/components/Calendar/Calendar'
 import TimeSelector from '@/components/TimeSelector/TimeSelector'
 import Button from '@/components/Button/Button'
 import SectionTitle from '@/components/SectionTitle/SectionTitle'
+import Container from '@/components/Container/Container'
 
 const ReservePage = () => {
   const [selectedDate, setSelectedDate] = useState(new Date())
@@ -14,7 +15,7 @@ const ReservePage = () => {
   const [selectedStylist, setSelectedStylist] = useState('')
 
   return (
-    <div className={styles.container}>
+    <Container>
       <SectionTitle>reserve</SectionTitle>
 
       <section>
@@ -67,7 +68,7 @@ const ReservePage = () => {
       <div className={styles['reserve-button-wrapper']}>
         <Button variant="primary">予約確認へ</Button>
       </div>
-    </div>
+    </Container>
   )
 }
 

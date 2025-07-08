@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import styles from './staff.module.css'
 import SectionTitle from '@/components/SectionTitle/SectionTitle'
+import Container from '@/components/Container/Container'
 
 const staffMembers = [
   {
@@ -31,7 +32,7 @@ const staffMembers = [
 
 const StaffPage = () => {
   return (
-    <div className={styles.container}>
+    <Container>
       <SectionTitle>Staff</SectionTitle>
       <div className={styles['staff-list']}>
         {staffMembers.map((staff, index) => (
@@ -53,7 +54,7 @@ const StaffPage = () => {
           </div>
         ))}
       </div>
-    </div>
+    </Container>
   )
 }
 

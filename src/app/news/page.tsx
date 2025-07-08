@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation'
 import styles from './news.module.css'
 import { newsItems } from '@/lib/newsData'
 import SectionTitle from '@/components/SectionTitle/SectionTitle'
+import Container from '@/components/Container/Container'
 
 const ITEMS_PER_PAGE = 10
 
@@ -44,7 +45,7 @@ const NewsListPage = () => {
   }
 
   return (
-    <div className={styles.container}>
+    <Container>
       <SectionTitle>news</SectionTitle>
       <p className={styles['page-description']}>
         最新のトレンドやアドバイス、サロンからの限定オファーをお届けします。
@@ -103,7 +104,7 @@ const NewsListPage = () => {
           </button>
         </div>
       )}
-    </div>
+    </Container>
   )
 }
 

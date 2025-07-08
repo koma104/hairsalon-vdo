@@ -15,6 +15,7 @@ import NewsDetail from '@/components/NewsDetail/NewsDetail'
 import ReservePage from './reserve/page'
 import StaffPage from './staff/page'
 import NewsList from '@/components/NewsList/NewsList'
+import Container from '@/components/Container/Container'
 import { usePageContext } from '@/contexts/PageContext'
 
 const menuCategories = [
@@ -224,7 +225,7 @@ function HomeContent() {
         {currentPage === 'home' && (
           <>
             <section className={styles['content-section']}>
-              <div className={styles.container}>
+              <Container>
                 <SectionTitle tag="h2">concept</SectionTitle>
                 <h3 className={styles['concept-catchphrase']}>
                   髪の美しさが、あなたの毎日を
@@ -234,7 +235,7 @@ function HomeContent() {
                 <p className={styles['concept-text']}>
                   一人ひとりの髪質やライフスタイルに寄り添い、ダメージを抑えた施術と心地よい空間で、理想のヘアスタイルをご提案します。髪にやさしいケアと、少しの変化で生まれる新しい自分。毎日がもっと自信に満ちて、笑顔で過ごせるよう、私たちがサポートいたします。
                 </p>
-              </div>
+              </Container>
               <div className={styles['carousel-container']}>
                 <div className={styles['store-carousel']}>
                   {[...Array(6)].map((_, i) => (
@@ -253,7 +254,7 @@ function HomeContent() {
             </section>
 
             <section className={styles['content-section']}>
-              <div className={styles.container}>
+              <Container>
                 <SectionTitle tag="h2">news</SectionTitle>
                 <NewsList
                   items={newsItems}
@@ -270,11 +271,11 @@ function HomeContent() {
                     }
                   }}
                 />
-              </div>
+              </Container>
             </section>
 
             <section className={styles['content-section']}>
-              <div className={styles.container}>
+              <Container>
                 <SectionTitle tag="h2">menu</SectionTitle>
                 <div className={styles['menu-wrapper']}>
                   {menuCategories.map((cat) => (
@@ -296,7 +297,7 @@ function HomeContent() {
                     <Button variant="secondary">reserve</Button>
                   </Link>
                 </div>
-              </div>
+              </Container>
             </section>
           </>
         )}
