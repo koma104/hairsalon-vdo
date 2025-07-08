@@ -69,7 +69,7 @@ const NewsListPage = () => {
               <h2 className={styles['news-subtitle']}>{item.title}</h2>
               <p className={styles['news-excerpt']}>{item.excerpt}</p>
             </div>
-            <div>
+            <div className={styles['news-image-wrapper']}>
               <Image
                 src={item.imageUrl}
                 alt={item.title}
