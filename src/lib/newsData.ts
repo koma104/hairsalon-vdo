@@ -1,4 +1,11 @@
-export const newsItems = [
+export interface NewsItem {
+  id: string
+  title: string
+  excerpt: string
+  imageUrl: string
+}
+
+export const newsItems: NewsItem[] = [
   {
     id: 'summer-hair-refresh',
     title: '夏のヘアリフレッシュ',

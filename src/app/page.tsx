@@ -14,6 +14,7 @@ import NewsListPage from './news/page'
 import NewsDetail from '@/components/NewsDetail/NewsDetail'
 import ReservePage from './reserve/page'
 import StaffPage from './staff/page'
+import NewsList from '@/components/NewsList/NewsList'
 import { usePageContext } from '@/contexts/PageContext'
 
 const menuCategories = [
@@ -46,7 +47,7 @@ const menuCategories = [
 
 // useSearchParamsを使用するコンポーネント
 function HomeContent() {
-  const [visibleNewsCount, setVisibleNewsCount] = useState(2)
+  const [visibleNewsCount] = useState(2)
   const [currentArticleId, setCurrentArticleId] = useState<string | null>(null)
   const { currentPage, setCurrentPage } = usePageContext()
   const router = useRouter()
@@ -202,13 +203,7 @@ function HomeContent() {
     }
   }, [])
 
-  const handleShowMoreNews = () => {
-    setVisibleNewsCount(5)
-  }
 
-
-
-  const displayedNews = newsItems.slice(0, visibleNewsCount)
 
   return (
     <div className={styles['main-container']}>
@@ -260,53 +255,21 @@ function HomeContent() {
             <section className={styles['content-section']}>
               <div className={styles.container}>
                 <SectionTitle tag="h2">news</SectionTitle>
-                <div className={styles['news-list']}>
-                  {displayedNews.map((item) => (
-                    <button 
-                      key={item.id} 
-                      className={styles['news-item']}
-                      onClick={() => {
-                        const isMobile = window.innerWidth < 768
-                        if (isMobile) {
-                          // SPの場合は独立したページに遷移
-                          router.push(`/news/${item.id}`)
-                        } else {
-                          // PCの場合はホームページのcontent-wrapper内で表示
-                          setCurrentArticleId(item.id)
-                          setCurrentPage('news')
-                        }
-                      }}
-                    >
-                      <div className={styles['news-text']}>
-                        <h3 className={styles['news-subtitle']}>{item.title}</h3>
-                        <p className={styles['news-excerpt']}>{item.excerpt}</p>
-                      </div>
-                      <div className={styles['news-image-wrapper']}>
-                        <Image
-                          src={item.imageUrl}
-                          alt={item.title}
-                          width={100}
-                          height={100}
-                          className={styles['news-image']}
-                        />
-                      </div>
-                    </button>
-                  ))}
-                </div>
-                {visibleNewsCount < 5 && newsItems.length > 2 && (
-                  <div className={styles['more-button-wrapper']}>
-                    <button onClick={handleShowMoreNews} className={styles['more-button']}>
-                      more
-                    </button>
-                  </div>
-                )}
-                {visibleNewsCount >= 5 && (
-                  <div className={styles['more-button-wrapper']}>
-                    <Link href="/news" className={styles['news-list-button']}>
-                      すべて見る
-                    </Link>
-                  </div>
-                )}
+                <NewsList
+                  items={newsItems}
+                  maxItems={visibleNewsCount}
+                  showMoreButton={visibleNewsCount < 5 && newsItems.length > 2}
+                  showViewAllButton={visibleNewsCount >= 5}
+                  onItemClick={(item) => {
+                    const isMobile = window.innerWidth < 768
+                    if (isMobile) {
+                      router.push(`/news/${item.id}`)
+                    } else {
+                      setCurrentArticleId(item.id)
+                      setCurrentPage('news')
+                    }
+                  }}
+                />
               </div>
             </section>
 

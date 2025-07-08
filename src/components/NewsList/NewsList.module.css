@@ -1,0 +1,119 @@
+.news-list {
+  display: grid;
+  grid-auto-flow: row;
+  gap: var(--spacing-xs);
+  margin-block-end: var(--spacing-md);
+}
+
+.news-item {
+  display: grid;
+  grid-template-columns: 1fr var(--news-thumbnail-size);
+  gap: var(--spacing-sm);
+  padding-block: var(--spacing-sm);
+  padding-inline: 0;
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  font-size: inherit;
+  overflow: hidden;
+
+  @media (min-width: 768px) {
+    gap: var(--spacing-md);
+  }
+
+  &:focus-visible {
+    color: var(--color-hover);
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      color: var(--color-hover);
+
+      & .news-image-wrapper .news-image {
+        transform: scale(1.15);
+      }
+    }
+  }
+}
+
+.news-image-wrapper {
+  overflow: hidden;
+  width: var(--news-thumbnail-size);
+  height: var(--news-thumbnail-size);
+}
+
+.news-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform-origin: center center;
+}
+
+.news-text {
+  display: grid;
+  grid-auto-flow: row;
+  gap: var(--spacing-xs);
+  align-content: start;
+}
+
+.news-subtitle {
+  font-size: var(--font-sm);
+  font-weight: var(--font-weight-regular);
+  letter-spacing: 0.01em;
+
+  @media (min-width: 768px) {
+    font-size: var(--font-md);
+  }
+}
+
+.news-excerpt {
+  font-size: var(--font-xs);
+}
+
+.more-button-wrapper {
+  text-align: center;
+}
+
+.more-button,
+.news-list-button {
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--color-black);
+  cursor: pointer;
+  padding-block: var(--spacing-xs);
+  padding-inline: var(--spacing-xxs);
+  line-height: 1;
+  color: var(--color-black);
+  text-transform: capitalize;
+  transition:
+    color 0.2s ease,
+    border-bottom-color 0.2s ease;
+
+  &:focus-visible {
+    color: var(--color-hover);
+    border-bottom-color: var(--color-hover);
+  }
+
+  @media (any-hover: hover) {
+    &:hover {
+      color: var(--color-hover);
+      border-bottom-color: var(--color-hover);
+    }
+  }
+}
+
+.more-button {
+  font-size: var(--font-md);
+}
+
+.news-list-button {
+  font-size: var(--font-sm);
+  text-decoration: none;
+  display: inline-block;
+}
