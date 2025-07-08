@@ -22,7 +22,7 @@ const NewsList = ({
   showViewAllButton = false,
   onItemClick 
 }: NewsListProps) => {
-  const [visibleCount, setVisibleCount] = useState(maxItems || items.length)
+  const [visibleCount, setVisibleCount] = useState(maxItems || 2)
   const router = useRouter()
 
   const displayedItems = items.slice(0, visibleCount)
@@ -41,7 +41,7 @@ const NewsList = ({
   }
 
   const handleShowMore = () => {
-    setVisibleCount(items.length)
+    setVisibleCount(5)
   }
 
   return (
@@ -70,7 +70,7 @@ const NewsList = ({
         ))}
       </div>
       
-      {showMoreButton && visibleCount < items.length && (
+      {showMoreButton && visibleCount < 5 && visibleCount < items.length && (
         <div className={styles['more-button-wrapper']}>
           <button onClick={handleShowMore} className={styles['more-button']}>
             more
@@ -78,7 +78,7 @@ const NewsList = ({
         </div>
       )}
       
-      {showViewAllButton && visibleCount >= items.length && (
+      {showViewAllButton && visibleCount >= 5 && (
         <div className={styles['more-button-wrapper']}>
           <Link href="/news" className={styles['news-list-button']}>
             すべて見る

@@ -48,7 +48,6 @@ const menuCategories = [
 
 // useSearchParamsを使用するコンポーネント
 function HomeContent() {
-  const [visibleNewsCount] = useState(2)
   const [currentArticleId, setCurrentArticleId] = useState<string | null>(null)
   const { currentPage, setCurrentPage } = usePageContext()
   const router = useRouter()
@@ -258,9 +257,9 @@ function HomeContent() {
                 <SectionTitle tag="h2">news</SectionTitle>
                 <NewsList
                   items={newsItems}
-                  maxItems={visibleNewsCount}
-                  showMoreButton={visibleNewsCount < 5 && newsItems.length > 2}
-                  showViewAllButton={visibleNewsCount >= 5}
+                  maxItems={2}
+                  showMoreButton={true}
+                  showViewAllButton={true}
                   onItemClick={(item) => {
                     const isMobile = window.innerWidth < 768
                     if (isMobile) {
