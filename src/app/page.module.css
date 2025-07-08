@@ -3,12 +3,12 @@
   /* 768px以上で2カラムレイアウト */
   @media (min-width: 768px) {
     display: grid;
-    grid-template-columns: 40% 60%;
+    grid-template-columns: 35% 65%;
     min-height: 100vh;
     width: 100%;
     box-sizing: border-box;
     scrollbar-gutter: stable;
-    max-width: 1600px;
+    max-width: 1440px;
     margin-inline: auto;
   }
 }
@@ -21,10 +21,11 @@
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  padding-block: calc(var(--spacing-2xl) + var(--spacing-xxs)) var(--spacing-4xl); /* 固定ヘッダーの高さ分 */
+  padding-block: calc(var(--spacing-2xl) + var(--spacing-xxs)) var(--spacing-4xl);
 
   @media (min-width: 768px) {
-    max-height: 800px; /* PCでの最大高さを指定 */
+    height: auto;
+    aspect-ratio: 9 / 16;
   }
 }
 
@@ -48,13 +49,13 @@
 
 .main-visual-inner {
   margin-inline: auto;
-  width: calc(100% - var(--spacing-sm));
+  width: calc(100% - var(--spacing-sm) * 2);
   height: 100%;
   overflow: hidden;
-  background-color: var(--color-gray-10); /* グレー背景を追加 */
+  background-color: var(--color-gray-10);
 
   @media (min-width: 768px) {
-    width: calc(100% - (12vw));
+    width: calc(100% - var(--spacing-xl) * 2);
     background-color: transparent;
   }
 }
@@ -65,29 +66,20 @@
   object-fit: cover;
   object-position: center;
   transform-origin: center center;
-
-  @media (max-width: 767px) {
-    transform: scale(1.1); /* 初期状態で110%サイズ */
-    opacity: 0; /* 初期状態で透明 */
-    animation: fadeIn 4s ease-out 0.3s forwards; /* 0.3秒遅延してから開始 */
-  }
-
-  @media (min-width: 768px) {
-    transform: scale(1.1); /* PCでも初期状態で110%サイズ */
-    opacity: 0; /* PCでも初期状態で透明 */
-    animation: fadeIn 4s ease-out 0.3s forwards; /* PCでも0.3秒遅延してから開始 */
-  }
+  transform: scale(1.1);
+  opacity: 0;
+  animation: fadeIn 4s ease-out 0.3s forwards;
 }
 
 .container {
   padding-block: var(--spacing-xl) var(--spacing-2xl);
   padding-inline: var(--spacing-lg);
-  max-width: var(--container-max-width);
   margin-inline: auto;
 
   @media (min-width: 768px) {
     padding-block: var(--spacing-2xl) var(--spacing-3xl);
-    padding-inline: 6vw;
+    padding-inline: var(--spacing-3xl);
+    max-width: var(--container-max-width);
 
     &:first-child {
       padding-block-start: var(--spacing-4xl);
@@ -118,7 +110,7 @@
   width: 100%;
 
   @media (min-width: 768px) {
-    max-width: calc(var(--container-max-width) - (6vw * 2));
+    width: calc(100% - var(--spacing-3xl) * 2);
     margin-inline: auto;
   }
 }
@@ -128,7 +120,7 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(calc(-1 * ((15rem + 1rem) * 3)));
+    transform: translateX(calc(-1 * ((13rem + 1rem) * 3)));
   }
 }
 
@@ -142,6 +134,8 @@
 
   @media (min-width: 768px) {
     padding-inline-start: 0;
+
+    width: calc(2 * ((13rem + 1rem) * 3));
   }
 }
 
@@ -149,6 +143,11 @@
   width: 15rem;
   height: 15rem;
   overflow: hidden;
+
+  @media (min-width: 768px) {
+    width: 13rem;
+    height: 13rem;
+  }
 }
 
 .store-image {

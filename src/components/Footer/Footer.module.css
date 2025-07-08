@@ -1,11 +1,10 @@
 .footer {
   padding-block: var(--spacing-xl);
   padding-inline: var(--spacing-lg);
-  /* background-color: var(--color-gray-10); */
 
   @media (min-width: 768px) {
-    padding-inline: 6vw;
-    max-width: 1600px;
+    padding-inline: var(--spacing-xl);
+    max-width: 1440px;
     margin-inline: auto;
   }
 }

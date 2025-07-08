@@ -11,8 +11,8 @@
     display: grid;
     grid-template-columns: 1fr auto;
     align-items: end;
-    padding-inline: 6vw;
-    max-width: 1600px;
+    padding-inline: var(--spacing-2xl);
+    max-width: 1440px;
     margin-inline: auto;
   }
 }
@@ -32,7 +32,7 @@
   margin-block: 0;
 
   @media (min-width: 768px) {
-    left: 6vw;
+    left: var(--spacing-xl);
   }
 }
 
