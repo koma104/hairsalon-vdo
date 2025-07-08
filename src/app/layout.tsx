@@ -8,6 +8,10 @@ export const metadata: Metadata = {
   title: '美容室VDO | 渋谷のヘアサロン',
   description: '渋谷の美容室VDO。カット・カラー・パーマ・ヘッドスパなど、あなたの美しさを引き出すサロンです。ご予約・スタッフ紹介・最新ニュースも掲載。',
   keywords: ['美容室', 'ヘアサロン', '渋谷', 'カット', 'カラー', 'パーマ', 'ヘッドスパ', 'VDO'],
+  icons: {
+    icon: '/favicon.png',
+    apple: '/favicon.png',
+  },
   openGraph: {
     title: '美容室VDO | 渋谷のヘアサロン',
     description: '渋谷の美容室VDO。カット・カラー・パーマ・ヘッドスパなど、あなたの美しさを引き出すサロンです。ご予約・スタッフ紹介・最新ニュースも掲載。',
