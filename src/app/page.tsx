@@ -146,8 +146,8 @@ function HomeContent() {
       { scale: 1.1 },
       { 
         scale: 1, 
-        duration: 4, 
-        delay: 0.3, 
+        duration: 3, 
+        delay: 0.2, 
         ease: 'power2.out' 
       }
     )
@@ -191,7 +191,7 @@ function HomeContent() {
           y: 0,
           duration: 1.2,
           ease: 'power2.out'
-        }, 0.3)
+        }, 0.1) // ディレイを短縮
       }
 
       // h3キャッチフレーズ（opacity + 下から移動）
@@ -201,7 +201,7 @@ function HomeContent() {
           y: 0,
           duration: 1.3,
           ease: 'power2.out'
-        }, '-=0.9')
+        }, '-=0.7') // 重複時間を調整
       }
 
       // コンセプトテキスト（行ごとに表示）
@@ -222,7 +222,7 @@ function HomeContent() {
             opacity: 1,
             duration: 0.8,
             ease: 'power2.out'
-          }, `-=${index === 0 ? 0.7 : 0.4}`)
+          }, `-=${index === 0 ? 0.5 : 0.3}`) // 重複時間を短縮
         })
       }
     }
@@ -254,7 +254,7 @@ function HomeContent() {
           y: 0,
           duration: 1,
           ease: 'power2.out'
-        }, 0.2) // 0.2秒遅延
+        }, 0.1) // ディレイを短縮
       }
 
       // ニュースリスト（opacityのみ）
@@ -263,7 +263,7 @@ function HomeContent() {
           opacity: 1,
           duration: 1,
           ease: 'power2.out'
-        }, '-=0.5') // タイトルと少し重複
+        }, '-=0.3') // 重複時間を短縮
       }
 
       // moreボタン（opacityのみ）
@@ -272,7 +272,7 @@ function HomeContent() {
           opacity: 1,
           duration: 1,
           ease: 'power2.out'
-        }, '-=0.3') // リストと少し重複
+        }, '-=0.2') // 重複時間を短縮
       }
     }
 
@@ -303,7 +303,7 @@ function HomeContent() {
           y: 0,
           duration: 1,
           ease: 'power2.out'
-        }, 0.2) // 0.2秒遅延
+        }, 0.1) // ディレイを短縮
       }
 
       // メニューラッパー（opacityのみ）
@@ -312,7 +312,7 @@ function HomeContent() {
           opacity: 1,
           duration: 1,
           ease: 'power2.out'
-        }, '-=0.5') // タイトルと少し重複
+        }, '-=0.3') // 重複時間を短縮
       }
     }
 
