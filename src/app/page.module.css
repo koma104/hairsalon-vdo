@@ -3,7 +3,7 @@
   /* 768px以上で2カラムレイアウト */
   @media (min-width: 768px) {
     display: grid;
-    grid-template-columns: 35% 65%;
+    grid-template-columns: 32% 68%;
     min-height: 100vh;
     width: 100%;
     box-sizing: border-box;
@@ -120,44 +120,45 @@
     transform: translateX(0);
   }
   100% {
-    transform: translateX(calc(-1 * ((13rem + 1rem) * 3)));
+    transform: translateX(-100%);
   }
 }
 
 .store-carousel {
-  display: grid;
-  grid-auto-flow: column;
-  padding-inline-start: 1rem;
-  width: calc(2 * ((15rem + 1rem) * 3));
-  animation: scroll 30s linear infinite;
-  will-change: transform;
+  display: flex;
+  width: calc(2 * (15rem * 3));
+  overflow: hidden;
 
-  @media (min-width: 768px) {
-    padding-inline-start: 0;
-
-    width: calc(2 * ((13rem + 1rem) * 3));
+  > * {
+    flex: none;
   }
+
+  @media (any-hover: hover) {
+    &:hover .carousel-group {
+      animation-play-state: paused;
+    }
+  }
+}
+
+.carousel-group {
+  display: flex;
+  gap: 1rem;
+  animation: scroll 20s linear infinite;
+  will-change: transform;
+  padding-inline-end: 1rem;
+  width: calc(15rem * 3);
 }
 
 .store-image-wrapper {
   width: 15rem;
   height: 15rem;
   overflow: hidden;
-
-  @media (min-width: 768px) {
-    width: 13rem;
-    height: 13rem;
-  }
 }
 
 .store-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.store-carousel::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, and Opera */
 }
 
 /* News Section Styles */

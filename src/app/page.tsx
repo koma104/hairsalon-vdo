@@ -237,17 +237,64 @@ function HomeContent() {
               </Container>
               <div className={styles['carousel-container']}>
                 <div className={styles['store-carousel']}>
-                  {[...Array(6)].map((_, i) => (
-                    <div key={i} className={styles['store-image-wrapper']}>
+                  <div className={styles['carousel-group']}>
+                    <div className={styles['store-image-wrapper']}>
                       <Image
-                        src={`/images/store-image-0${(i % 3) + 1}.png`}
-                        alt={`Store view ${i + 1}`}
+                        src="/images/store-image-01.png"
+                        alt="Store view 1"
                         width={592}
                         height={395}
                         className={styles['store-image']}
                       />
                     </div>
-                  ))}
+                    <div className={styles['store-image-wrapper']}>
+                      <Image
+                        src="/images/store-image-02.png"
+                        alt="Store view 2"
+                        width={592}
+                        height={395}
+                        className={styles['store-image']}
+                      />
+                    </div>
+                    <div className={styles['store-image-wrapper']}>
+                      <Image
+                        src="/images/store-image-03.png"
+                        alt="Store view 3"
+                        width={592}
+                        height={395}
+                        className={styles['store-image']}
+                      />
+                    </div>
+                  </div>
+                  <div className={styles['carousel-group']} aria-hidden="true">
+                    <div className={styles['store-image-wrapper']}>
+                      <Image
+                        src="/images/store-image-01.png"
+                        alt="Store view 1"
+                        width={592}
+                        height={395}
+                        className={styles['store-image']}
+                      />
+                    </div>
+                    <div className={styles['store-image-wrapper']}>
+                      <Image
+                        src="/images/store-image-02.png"
+                        alt="Store view 2"
+                        width={592}
+                        height={395}
+                        className={styles['store-image']}
+                      />
+                    </div>
+                    <div className={styles['store-image-wrapper']}>
+                      <Image
+                        src="/images/store-image-03.png"
+                        alt="Store view 3"
+                        width={592}
+                        height={395}
+                        className={styles['store-image']}
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             </section>

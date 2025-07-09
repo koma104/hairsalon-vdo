@@ -148,4 +148,4 @@ const NewsDetailPage = ({ params }: { params: Promise<{ id: string }> }) => {
   )
 }
 
-export default NewsDetailPage
+export default NewsDetailPage 
