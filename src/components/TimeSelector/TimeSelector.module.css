@@ -3,7 +3,7 @@
   overflow: hidden;
 
   @media (min-width: 768px) {
-    padding-inline: calc(var(--spacing-xl) + var(--spacing-xs));
+    padding-inline: calc(var(--spacing-md) * 2);
   }
 }
 
@@ -34,11 +34,11 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
   gap: var(--spacing-xs);
-  padding-block: var(--spacing-sm);
+  padding-block: calc(var(--spacing-xs) * 1.5);
   background-color: var(--color-gray-05);
 
   .time-slot {
-    padding-block: var(--spacing-sm);
+    padding-block: calc(var(--spacing-xs) * 1.5);
     padding-inline: var(--spacing-xs);
     font-size: var(--font-sm);
     text-align: center;
@@ -50,10 +50,6 @@
       background-color 0.2s ease,
       border-color 0.2s ease,
       color 0.2s ease;
-
-    @media (min-width: 768px) {
-      padding-block: var(--spacing-xs);
-    }
 
     @media (any-hover: hover) {
       &:hover:not(.selected) {

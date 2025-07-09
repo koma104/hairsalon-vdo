@@ -337,10 +337,11 @@
 
 .menu-button-wrapper {
   text-align: center;
+  max-width: calc(var(--spacing-3xl) * 4);
+  margin-inline: auto;
 
   @media (min-width: 768px) {
     max-width: calc(var(--spacing-3xl) * 4);
-    margin: 0 auto;
 
     & button {
       font-size: var(--font-sm);

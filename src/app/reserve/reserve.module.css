@@ -22,7 +22,7 @@
   width: 100%;
 
   @media (min-width: 768px) {
-    padding-inline: calc(var(--spacing-xl) + var(--spacing-xs));
+    padding-inline: calc(var(--spacing-md) * 2);
   }
 }
 
@@ -30,7 +30,7 @@
   width: 100%;
   padding-block: var(--spacing-sm);
   padding-inline: var(--spacing-md);
-  font-size: var(--font-md);
+  font-size: var(--font-sm);
   line-height: 1;
   border: 1px solid var(--color-gray-20);
   background-color: var(--color-gray-05);
@@ -39,10 +39,6 @@
   background-repeat: no-repeat;
   background-position: right var(--spacing-md) center;
   background-size: 1em;
-
-  @media (min-width: 768px) {
-    font-size: var(--font-sm);
-  }
 }
 
 /* プレースホルダー状態の文字色を変更 */
@@ -53,6 +49,8 @@
 .reserve-button-wrapper {
   display: grid;
   place-items: center;
+  max-width: calc(var(--spacing-3xl) * 4);
+  margin-inline: auto;
 
   @media (min-width: 768px) {
     max-width: calc(var(--spacing-3xl) * 4);
