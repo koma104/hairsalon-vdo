@@ -57,21 +57,21 @@ const StaffPage = () => {
             if (nameElement) {
               setTimeout(() => {
                 nameElement.classList.add(styles.animate)
-              }, 400) // 画像アニメーション開始から0.4秒後
+              }, 200) // 画像アニメーション開始から0.2秒後
             }
 
             // タイトルのアニメーション（名前の後に開始）
             if (titleElement) {
               setTimeout(() => {
                 titleElement.classList.add(styles.animate)
-              }, 600) // 画像アニメーション開始から0.6秒後
+              }, 350) // 画像アニメーション開始から0.35秒後
             }
 
             // 専門分野のアニメーション（タイトルの後に開始）
             if (specialtyElement) {
               setTimeout(() => {
                 specialtyElement.classList.add(styles.animate)
-              }, 620) // 画像アニメーション開始から0.62秒後
+              }, 370) // 画像アニメーション開始から0.37秒後
             }
           }
         })

@@ -28,7 +28,7 @@
   height: 100%;
   object-fit: cover;
   clip-path: polygon(0 0, 100% 0, 100% 0%, 0 0%);
-  transition: clip-path 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: clip-path 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .staff-image.animate {
@@ -46,15 +46,15 @@
   font-weight: var(--font-weight-regular);
   text-transform: capitalize;
   opacity: 0;
-  transform: translateY(8px);
+  transform: translateY(15px);
   transition:
-    opacity 1.2s ease-out 0.4s,
-    transform 1.2s ease-out 0.4s;
+    opacity 0.8s ease-out 0.2s,
+    transform 0.8s ease-out 0.2s;
+}
 
-  &.animate {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.staff-name.animate {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .staff-title {
@@ -62,15 +62,15 @@
   color: var(--color-gray-30);
   line-height: 1;
   opacity: 0;
-  transform: translateY(8px);
+  transform: translateY(10px);
   transition:
-    opacity 1s ease-out 0.4s,
-    transform 1s ease-out 0.4s;
+    opacity 1s ease-out 0.35s,
+    transform 1s ease-out 0.35s;
+}
 
-  &.animate {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.staff-title.animate {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .staff-specialty {
@@ -78,13 +78,13 @@
   color: var(--color-gray-30);
   line-height: 1;
   opacity: 0;
-  transform: translateY(8px);
+  transform: translateY(10px);
   transition:
-    opacity 1s ease-out 0.4s,
-    transform 1s ease-out 0.4s;
+    opacity 1s ease-out 0.37s,
+    transform 1s ease-out 0.37s;
+}
 
-  &.animate {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.staff-specialty.animate {
+  opacity: 1;
+  transform: translateY(0);
 }

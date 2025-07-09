@@ -146,7 +146,7 @@ function HomeContent() {
       { scale: 1.1 },
       { 
         scale: 1, 
-        duration: 3, 
+        duration: 1.5, 
         delay: 0.2, 
         ease: 'power2.out' 
       }
@@ -189,9 +189,9 @@ function HomeContent() {
         tl.to(conceptTitleRef.current, {
           opacity: 1,
           y: 0,
-          duration: 1.2,
+          duration: 1.0,
           ease: 'power2.out'
-        }, 0.1) // ディレイを短縮
+        }, 0.05) // ディレイを短縮
       }
 
       // h3キャッチフレーズ（opacity + 下から移動）
@@ -199,9 +199,9 @@ function HomeContent() {
         tl.to(conceptCatchphraseRef.current, {
           opacity: 1,
           y: 0,
-          duration: 1.3,
+          duration: 1.1,
           ease: 'power2.out'
-        }, '-=0.7') // 重複時間を調整
+        }, '-=0.8') // 重複時間を調整
       }
 
       // コンセプトテキスト（行ごとに表示）
@@ -220,9 +220,9 @@ function HomeContent() {
         spans.forEach((span, index) => {
           tl.to(span, {
             opacity: 1,
-            duration: 0.8,
+            duration: 0.6,
             ease: 'power2.out'
-          }, `-=${index === 0 ? 0.5 : 0.3}`) // 重複時間を短縮
+          }, `-=${index === 0 ? 0.6 : 0.4}`) // 重複時間を短縮
         })
       }
     }
@@ -252,27 +252,27 @@ function HomeContent() {
         newsTl.to(newsTitleRef.current, {
           opacity: 1,
           y: 0,
-          duration: 1,
+          duration: 0.8,
           ease: 'power2.out'
-        }, 0.1) // ディレイを短縮
+        }, 0.05) // ディレイを短縮
       }
 
       // ニュースリスト（opacityのみ）
       if (newsListRef.current) {
         newsTl.to(newsListRef.current, {
           opacity: 1,
-          duration: 1,
+          duration: 0.8,
           ease: 'power2.out'
-        }, '-=0.3') // 重複時間を短縮
+        }, '-=0.4') // 重複時間を短縮
       }
 
       // moreボタン（opacityのみ）
       if (newsMoreButtonRef.current) {
         newsTl.to(newsMoreButtonRef.current, {
           opacity: 1,
-          duration: 1,
+          duration: 0.8,
           ease: 'power2.out'
-        }, '-=0.2') // 重複時間を短縮
+        }, '-=0.3') // 重複時間を短縮
       }
     }
 
@@ -301,18 +301,18 @@ function HomeContent() {
         menuTl.to(menuTitleRef.current, {
           opacity: 1,
           y: 0,
-          duration: 1,
+          duration: 0.8,
           ease: 'power2.out'
-        }, 0.1) // ディレイを短縮
+        }, 0.05) // ディレイを短縮
       }
 
       // メニューラッパー（opacityのみ）
       if (menuWrapperRef.current) {
         menuTl.to(menuWrapperRef.current, {
           opacity: 1,
-          duration: 1,
+          duration: 0.8,
           ease: 'power2.out'
-        }, '-=0.3') // 重複時間を短縮
+        }, '-=0.4') // 重複時間を短縮
       }
     }
 
