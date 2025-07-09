@@ -29,7 +29,6 @@
   object-fit: cover;
   clip-path: polygon(0 0, 100% 0, 100% 0%, 0 0%);
   transition: clip-path 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  transform: translateY(0); /* パララックス効果の初期位置 */
 }
 
 .staff-image.animate {
