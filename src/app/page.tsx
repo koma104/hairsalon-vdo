@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, Suspense } from 'react'
+import { useState, useEffect, Suspense, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
@@ -53,6 +53,23 @@ function HomeContent() {
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()
+  
+  // アニメーション用のref
+  const conceptSectionRef = useRef<HTMLElement>(null)
+  const conceptTitleRef = useRef<HTMLHeadingElement>(null)
+  const conceptCatchphraseRef = useRef<HTMLHeadingElement>(null)
+  const conceptTextRef = useRef<HTMLParagraphElement>(null)
+  
+  // ニュースセクション用のref
+  const newsSectionRef = useRef<HTMLElement>(null)
+  const newsTitleRef = useRef<HTMLHeadingElement>(null)
+  const newsListRef = useRef<HTMLDivElement>(null)
+  const newsMoreButtonRef = useRef<HTMLDivElement>(null)
+  
+  // メニューセクション用のref
+  const menuSectionRef = useRef<HTMLElement>(null)
+  const menuTitleRef = useRef<HTMLHeadingElement>(null)
+  const menuWrapperRef = useRef<HTMLDivElement>(null)
 
   // URLパラメータを監視してニュース詳細を表示
   useEffect(() => {
@@ -149,6 +166,156 @@ function HomeContent() {
       y: 0,
     })
 
+          // コンセプトセクションのアニメーション
+      if (conceptSectionRef.current) {
+        // 初期状態を設定（p要素は除外）
+        gsap.set([conceptTitleRef.current, conceptCatchphraseRef.current], {
+          opacity: 0,
+          y: 15
+        })
+
+      // 下からふわっと表示アニメーション
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: conceptSectionRef.current,
+          start: 'top bottom-=200',
+          end: 'bottom top+=100',
+          toggleActions: 'play none none reverse'
+        }
+      })
+
+      // h2タイトル（opacity + 下から移動）
+      if (conceptTitleRef.current) {
+        tl.to(conceptTitleRef.current, {
+          opacity: 1,
+          y: 0,
+          duration: 1.2,
+          ease: 'power2.out'
+        }, 0.3)
+      }
+
+      // h3キャッチフレーズ（opacity + 下から移動）
+      if (conceptCatchphraseRef.current) {
+        tl.to(conceptCatchphraseRef.current, {
+          opacity: 1,
+          y: 0,
+          duration: 1.3,
+          ease: 'power2.out'
+        }, '-=0.9')
+      }
+
+      // コンセプトテキスト（行ごとに表示）
+      if (conceptTextRef.current) {
+        // span要素を取得
+        const spans = conceptTextRef.current.querySelectorAll('span')
+        
+        // 初期状態を設定
+        spans.forEach(span => {
+          gsap.set(span, {
+            opacity: 0
+          })
+        })
+        
+        // 各行を順番にアニメーション
+        spans.forEach((span, index) => {
+          tl.to(span, {
+            opacity: 1,
+            duration: 0.8,
+            ease: 'power2.out'
+          }, `-=${index === 0 ? 0.7 : 0.4}`)
+        })
+      }
+    }
+
+    // ニュースセクションのアニメーション
+    if (newsSectionRef.current) {
+      // 初期状態を設定
+      gsap.set([newsTitleRef.current, newsListRef.current, newsMoreButtonRef.current], {
+        opacity: 0
+      })
+      gsap.set(newsTitleRef.current, {
+        y: 15
+      })
+
+      // ニュースタイトルのアニメーション
+      const newsTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: newsSectionRef.current,
+          start: 'top bottom-=200',
+          end: 'bottom top+=100',
+          toggleActions: 'play none none reverse'
+        }
+      })
+
+      // h2タイトル（opacity + 下から移動）
+      if (newsTitleRef.current) {
+        newsTl.to(newsTitleRef.current, {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: 'power2.out'
+        }, 0.2) // 0.2秒遅延
+      }
+
+      // ニュースリスト（opacityのみ）
+      if (newsListRef.current) {
+        newsTl.to(newsListRef.current, {
+          opacity: 1,
+          duration: 1,
+          ease: 'power2.out'
+        }, '-=0.5') // タイトルと少し重複
+      }
+
+      // moreボタン（opacityのみ）
+      if (newsMoreButtonRef.current) {
+        newsTl.to(newsMoreButtonRef.current, {
+          opacity: 1,
+          duration: 1,
+          ease: 'power2.out'
+        }, '-=0.3') // リストと少し重複
+      }
+    }
+
+    // メニューセクションのアニメーション
+    if (menuSectionRef.current) {
+      // 初期状態を設定
+      gsap.set([menuTitleRef.current, menuWrapperRef.current], {
+        opacity: 0
+      })
+      gsap.set(menuTitleRef.current, {
+        y: 15
+      })
+
+      // メニュータイトルのアニメーション
+      const menuTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: menuSectionRef.current,
+          start: 'top bottom-=200',
+          end: 'bottom top+=100',
+          toggleActions: 'play none none reverse'
+        }
+      })
+
+      // h2タイトル（opacity + 下から移動）
+      if (menuTitleRef.current) {
+        menuTl.to(menuTitleRef.current, {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: 'power2.out'
+        }, 0.2) // 0.2秒遅延
+      }
+
+      // メニューラッパー（opacityのみ）
+      if (menuWrapperRef.current) {
+        menuTl.to(menuWrapperRef.current, {
+          opacity: 1,
+          duration: 1,
+          ease: 'power2.out'
+        }, '-=0.5') // タイトルと少し重複
+      }
+    }
+
     if (heroParallaxAnimation?.scrollTrigger) {
       scrollTriggers.push(heroParallaxAnimation.scrollTrigger)
     }
@@ -203,8 +370,6 @@ function HomeContent() {
     }
   }, [])
 
-
-
   return (
     <div className={styles['main-container']}>
       <div className={styles['main-visual']}>
@@ -220,19 +385,21 @@ function HomeContent() {
         </div>
       </div>
 
-              <div className={styles['content-wrapper']}>
+      <div className={styles['content-wrapper']}>
         {currentPage === 'home' && (
           <>
-            <section className={styles['content-section']}>
+            <section ref={conceptSectionRef} className={styles['content-section']}>
               <Container>
-                <SectionTitle tag="h2">concept</SectionTitle>
-                <h3 className={styles['concept-catchphrase']}>
+                <SectionTitle ref={conceptTitleRef} tag="h2">concept</SectionTitle>
+                <h3 ref={conceptCatchphraseRef} className={styles['concept-catchphrase']}>
                   髪の美しさが、あなたの毎日を
                   <br />
                   もっと特別に。
                 </h3>
-                <p className={styles['concept-text']}>
-                  一人ひとりの髪質やライフスタイルに寄り添い、ダメージを抑えた施術と心地よい空間で、理想のヘアスタイルをご提案します。髪にやさしいケアと、少しの変化で生まれる新しい自分。毎日がもっと自信に満ちて、笑顔で過ごせるよう、私たちがサポートいたします。
+                <p ref={conceptTextRef} className={styles['concept-text']}>
+                  <span>一人ひとりの髪質やライフスタイルに寄り添い、ダメージを抑えた施術と心地よい空間で、理想のヘアスタイルをご提案します。</span>
+                  <span>髪にやさしいケアと、少しの変化で生まれる新しい自分。</span>
+                  <span>毎日がもっと自信に満ちて、笑顔で過ごせるよう、私たちがサポートいたします。</span>
                 </p>
               </Container>
               <div className={styles['carousel-container']}>
@@ -299,14 +466,16 @@ function HomeContent() {
               </div>
             </section>
 
-            <section className={styles['content-section']}>
+            <section ref={newsSectionRef} className={styles['content-section']}>
               <Container>
-                <SectionTitle tag="h2">news</SectionTitle>
+                <SectionTitle ref={newsTitleRef} tag="h2">news</SectionTitle>
                 <NewsList
+                  ref={newsListRef}
                   items={newsItems}
                   maxItems={2}
                   showMoreButton={true}
                   showViewAllButton={true}
+                  moreButtonRef={newsMoreButtonRef}
                   onItemClick={(item) => {
                     const isMobile = window.innerWidth < 768
                     if (isMobile) {
@@ -320,10 +489,10 @@ function HomeContent() {
               </Container>
             </section>
 
-            <section className={styles['content-section']}>
+            <section ref={menuSectionRef} className={styles['content-section']}>
               <Container>
-                <SectionTitle tag="h2">menu</SectionTitle>
-                <div className={styles['menu-wrapper']}>
+                <SectionTitle ref={menuTitleRef} tag="h2">menu</SectionTitle>
+                <div ref={menuWrapperRef} className={styles['menu-wrapper']}>
                   {menuCategories.map((cat) => (
                     <div key={cat.category} className={styles['menu-category']}>
                       <h3 className={styles['menu-subtitle']}>{cat.category}</h3>

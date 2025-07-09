@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, forwardRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -13,15 +13,17 @@ interface NewsListProps {
   showMoreButton?: boolean
   showViewAllButton?: boolean
   onItemClick?: (item: NewsItem) => void
+  moreButtonRef?: React.RefObject<HTMLDivElement | null>
 }
 
-const NewsList = ({ 
+const NewsList = forwardRef<HTMLDivElement, NewsListProps>(({ 
   items, 
   maxItems, 
   showMoreButton = false, 
   showViewAllButton = false,
-  onItemClick 
-}: NewsListProps) => {
+  onItemClick,
+  moreButtonRef
+}, ref) => {
   const [visibleCount, setVisibleCount] = useState(maxItems || 2)
   const router = useRouter()
 
@@ -45,7 +47,7 @@ const NewsList = ({
   }
 
   return (
-    <>
+    <div ref={ref}>
       <div className={styles['news-list']}>
         {displayedItems.map((item) => (
           <button 
@@ -71,7 +73,7 @@ const NewsList = ({
       </div>
       
       {showMoreButton && visibleCount < 5 && visibleCount < items.length && (
-        <div className={styles['more-button-wrapper']}>
+        <div ref={moreButtonRef} className={styles['more-button-wrapper']}>
           <button onClick={handleShowMore} className={styles['more-button']}>
             more
           </button>
@@ -79,14 +81,16 @@ const NewsList = ({
       )}
       
       {showViewAllButton && visibleCount >= 5 && (
-        <div className={styles['more-button-wrapper']}>
+        <div ref={moreButtonRef} className={styles['more-button-wrapper']}>
           <Link href="/news" className={styles['news-list-button']}>
             すべて見る
           </Link>
         </div>
       )}
-    </>
+    </div>
   )
-}
+})
+
+NewsList.displayName = 'NewsList'
 
 export default NewsList 
