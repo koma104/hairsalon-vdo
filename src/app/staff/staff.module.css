@@ -45,16 +45,46 @@
   font-size: var(--font-md);
   font-weight: var(--font-weight-regular);
   text-transform: capitalize;
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 1.2s ease-out 0.4s,
+    transform 1.2s ease-out 0.4s;
+
+  &.animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .staff-title {
   font-size: var(--font-xs);
   color: var(--color-gray-30);
   line-height: 1;
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 1s ease-out 0.4s,
+    transform 1s ease-out 0.4s;
+
+  &.animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .staff-specialty {
   font-size: var(--font-xxs);
   color: var(--color-gray-30);
   line-height: 1;
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 1s ease-out 0.4s,
+    transform 1s ease-out 0.4s;
+
+  &.animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
