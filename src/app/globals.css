@@ -95,10 +95,8 @@ body {
 
 /* フォントウェイト */
 :root {
-  --font-weight-thin: 100; /* LINE Seed Thin */
   --font-weight-regular: 400; /* LINE Seed Regular */
   --font-weight-bold: 700; /* LINE Seed Bold */
-  --font-weight-extra-bold: 800; /* LINE Seed ExtraBold */
 }
 
 /* コンポーネントサイズ */
