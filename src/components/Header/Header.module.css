@@ -165,7 +165,7 @@
       &:hover {
         background-color: var(--color-accent-blend);
         border-color: var(--color-accent-blend);
-        color: var(--color-black);
+        color: #000;
       }
     }
   }
