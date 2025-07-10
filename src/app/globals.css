@@ -39,6 +39,7 @@ body {
 
   --color-accent-blend: #f938aa;
   --color-gray-60-blend: #ccc;
+  --color-black-blend: #ddd;
 
   --color-base-bg: var(--color-gray-05);
   --color-nav-bg: var(--color-gray-10);

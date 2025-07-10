@@ -124,7 +124,7 @@
     letter-spacing: 0.05em;
     text-transform: uppercase;
     text-decoration: none;
-    color: var(--color-white);
+    color: var(--color-black-blend);
     transition: color 0.2s ease;
     background: none;
     border: none;
