@@ -11,7 +11,7 @@
 
 .footer-wrapper {
   margin-inline: auto;
-  border-top: 1px solid var(--color-gray-20);
+  border-block-start: 1px solid var(--color-gray-20);
   padding-block-start: var(--spacing-lg);
   text-align: center;
 

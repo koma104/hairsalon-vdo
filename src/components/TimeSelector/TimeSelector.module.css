@@ -21,12 +21,12 @@
   line-height: 1;
   border: none;
   cursor: pointer;
-  border-bottom: 2px solid var(--color-gray-20);
+  border-block-end: 2px solid var(--color-gray-20);
 
   &.active {
     color: var(--color-black);
     background-color: var(--color-gray-05);
-    border-bottom: 2px solid var(--color-black);
+    border-block-end: 2px solid var(--color-black);
   }
 }
 

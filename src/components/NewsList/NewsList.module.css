@@ -84,7 +84,7 @@
 .news-list-button {
   background: none;
   border: none;
-  border-bottom: 1px solid var(--color-black);
+  border-block-end: 1px solid var(--color-black);
   cursor: pointer;
   padding-block: var(--spacing-xs);
   padding-inline: var(--spacing-xxs);
@@ -93,17 +93,17 @@
   text-transform: capitalize;
   transition:
     color 0.2s ease,
-    border-bottom-color 0.2s ease;
+    border-block-end-color 0.2s ease;
 
   &:focus-visible {
     color: var(--color-hover);
-    border-bottom-color: var(--color-hover);
+    border-block-end-color: var(--color-hover);
   }
 
   @media (any-hover: hover) {
     &:hover {
       color: var(--color-hover);
-      border-bottom-color: var(--color-hover);
+      border-block-end-color: var(--color-hover);
     }
   }
 }
