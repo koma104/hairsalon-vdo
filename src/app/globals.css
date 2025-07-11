@@ -103,7 +103,7 @@ body {
 /* コンポーネントサイズ */
 :root {
   --news-thumbnail-size-sp: 6.25rem; /* 100px */
-  --news-thumbnail-size-sp-pc: 8rem; /* 128px */
+  --news-thumbnail-size-pc: 8rem; /* 128px */
   --carousel-width-sp: 15rem;
   --carousel-width-pc: 18rem;
 }

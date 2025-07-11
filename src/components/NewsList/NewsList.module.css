@@ -47,8 +47,8 @@
   height: var(--news-thumbnail-size-sp);
 
   @media (min-width: 768px) {
-    width: var(--news-thumbnail-size-sp-pc);
-    height: var(--news-thumbnail-size-sp-pc);
+    width: var(--news-thumbnail-size-pc);
+    height: var(--news-thumbnail-size-pc);
   }
 }
 
