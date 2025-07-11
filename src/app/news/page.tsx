@@ -1,12 +1,12 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import styles from './news.module.css'
 import { newsItems } from '@/lib/newsData'
 import SectionTitle from '@/components/SectionTitle/SectionTitle'
 import Container from '@/components/Container/Container'
+import NewsList from '@/components/NewsList/NewsList'
 
 const ITEMS_PER_PAGE = 10
 
@@ -51,37 +51,19 @@ const NewsListPage = () => {
         最新のトレンドやアドバイス、サロンからの限定オファーをお届けします。
       </p>
 
-      <div className={styles['news-list']}>
-        {displayedItems.map((item) => (
-          <button 
-            key={item.id} 
-            className={styles['news-item']}
-            onClick={() => {
-              if (isMobile) {
-                // SPの場合は独立したページに遷移
-                router.push(`/news/${item.id}`)
-              } else {
-                // PCの場合はホームページのcontent-wrapper内で表示
-                router.push(`/?news=${item.id}`)
-              }
-            }}
-          >
-            <div className={styles['news-text']}>
-              <h2 className={styles['news-subtitle']}>{item.title}</h2>
-              <p className={styles['news-excerpt']}>{item.excerpt}</p>
-            </div>
-            <div className={styles['news-image-wrapper']}>
-              <Image
-                src={item.imageUrl}
-                alt={item.title}
-                width={100}
-                height={100}
-                className={styles['news-image']}
-              />
-            </div>
-          </button>
-        ))}
-      </div>
+      <NewsList
+        items={displayedItems}
+        maxItems={ITEMS_PER_PAGE}
+        onItemClick={(item) => {
+          if (isMobile) {
+            // SPの場合は独立したページに遷移
+            router.push(`/news/${item.id}`)
+          } else {
+            // PCの場合はホームページのcontent-wrapper内で表示
+            router.push(`/?news=${item.id}`)
+          }
+        }}
+      />
 
       {totalPages > 1 && (
         <div className={styles.pagination}>

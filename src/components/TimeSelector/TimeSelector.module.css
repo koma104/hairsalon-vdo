@@ -3,7 +3,7 @@
   overflow: hidden;
 
   @media (min-width: 768px) {
-    padding-inline: calc(var(--spacing-md) * 2);
+    padding-inline: var(--spacing-4xl);
   }
 }
 

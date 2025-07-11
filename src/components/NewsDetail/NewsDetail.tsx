@@ -3,6 +3,7 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import Container from '@/components/Container/Container'
 
 import styles from './NewsDetail.module.css'
 
@@ -67,7 +68,7 @@ const NewsDetail = ({ id }: NewsDetailProps) => {
     currentArticleIndex < allNews.length - 1 ? allNews[currentArticleIndex + 1] : null
 
   return (
-    <div className={styles.container}>
+    <Container>
       <article className={styles.article}>
         <header className={styles.header}>
           <h1 className={styles['section-title']}>{article.title}</h1>
@@ -124,7 +125,7 @@ const NewsDetail = ({ id }: NewsDetailProps) => {
           <span className={`${styles.next} ${styles.disabled}`}>Next &gt;</span>
         )}
       </nav>
-    </div>
+    </Container>
   )
 }
 
