@@ -135,13 +135,14 @@
 .carousel-group {
   display: flex;
   gap: 1rem;
-  animation: scroll 50s linear infinite;
+  animation: scroll 60s linear infinite;
   will-change: transform;
   padding-inline-end: 1rem;
   width: calc(var(--carousel-width-sp) * 6);
 
   @media (min-width: 768px) {
     width: calc(var(--carousel-width-pc) * 6);
+    animation-duration: 80s;
   }
 }
 
