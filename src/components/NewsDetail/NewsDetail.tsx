@@ -2,7 +2,6 @@
 
 import React from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
 import Container from '@/components/Container/Container'
 
 import styles from './NewsDetail.module.css'
@@ -49,9 +48,10 @@ const allNews = [
 
 interface NewsDetailProps {
   id: string
+  onArticleChange?: (newId: string) => void
 }
 
-const NewsDetail = ({ id }: NewsDetailProps) => {
+const NewsDetail = ({ id, onArticleChange }: NewsDetailProps) => {
   if (!id) {
     return <div>Article ID not found</div>
   }
@@ -111,16 +111,52 @@ const NewsDetail = ({ id }: NewsDetailProps) => {
 
       <nav className={styles.pagination}>
         {prevArticle ? (
-          <Link href={`/news/${prevArticle.id}`} className={styles.prev}>
+          <button 
+            className={styles.prev}
+            onClick={() => {
+              // PC表示ではホームページ内で記事を切り替える
+              const isMobile = window.innerWidth < 768
+              if (isMobile) {
+                window.location.href = `/news/${prevArticle.id}`
+              } else {
+                // URLパラメータを更新
+                const url = new URL(window.location.href)
+                url.searchParams.set('news', prevArticle.id)
+                window.history.pushState({}, '', url.toString())
+                // 状態を更新して新しい記事を表示
+                if (onArticleChange) {
+                  onArticleChange(prevArticle.id)
+                }
+              }
+            }}
+          >
             &lt; Prev
-          </Link>
+          </button>
         ) : (
           <span className={`${styles.prev} ${styles.disabled}`}>&lt; Prev</span>
         )}
         {nextArticle ? (
-          <Link href={`/news/${nextArticle.id}`} className={styles.next}>
+          <button 
+            className={styles.next}
+            onClick={() => {
+              // PC表示ではホームページ内で記事を切り替える
+              const isMobile = window.innerWidth < 768
+              if (isMobile) {
+                window.location.href = `/news/${nextArticle.id}`
+              } else {
+                // URLパラメータを更新
+                const url = new URL(window.location.href)
+                url.searchParams.set('news', nextArticle.id)
+                window.history.pushState({}, '', url.toString())
+                // 状態を更新して新しい記事を表示
+                if (onArticleChange) {
+                  onArticleChange(nextArticle.id)
+                }
+              }
+            }}
+          >
             Next &gt;
-          </Link>
+          </button>
         ) : (
           <span className={`${styles.next} ${styles.disabled}`}>Next &gt;</span>
         )}

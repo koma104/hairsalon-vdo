@@ -3,7 +3,7 @@
 import { useState, useEffect, Suspense, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter, usePathname, useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import styles from './page.module.css'
 import { newsItems } from '@/lib/newsData'
 import Button from '@/components/Button/Button'
@@ -51,7 +51,6 @@ function HomeContent() {
   const [currentArticleId, setCurrentArticleId] = useState<string | null>(null)
   const { currentPage, setCurrentPage } = usePageContext()
   const router = useRouter()
-  const pathname = usePathname()
   const searchParams = useSearchParams()
   
   // アニメーション用のref
@@ -71,103 +70,103 @@ function HomeContent() {
   const menuTitleRef = useRef<HTMLHeadingElement>(null)
   const menuWrapperRef = useRef<HTMLDivElement>(null)
 
-  // URLパラメータを監視してニュース詳細を表示
+  // URLパラメータを監視してニュース詳細を表示（newsクエリパラメータのみ）
   useEffect(() => {
-    const newsDetailMatch = pathname.match(/^\/news\/(.+)$/)
     const newsQueryParam = searchParams.get('news')
     
-    if (newsDetailMatch) {
-      const articleId = newsDetailMatch[1]
-      setCurrentArticleId(articleId)
-      setCurrentPage('news')
-    } else if (newsQueryParam) {
+    if (newsQueryParam) {
       setCurrentArticleId(newsQueryParam)
       setCurrentPage('news')
     } else {
       setCurrentArticleId(null)
     }
-  }, [pathname, searchParams, setCurrentPage])
+  }, [searchParams, setCurrentPage])
 
-  // PCでの直接アクセス時の処理
-  useEffect(() => {
-    const newsDetailMatch = pathname.match(/^\/news\/(.+)$/)
-    if (newsDetailMatch && typeof window !== 'undefined' && window.innerWidth >= 768) {
-      // PCで直接アクセスした場合は即座にリダイレクト
-      const articleId = newsDetailMatch[1]
-      router.replace(`/?news=${articleId}`)
-    }
-  }, [pathname, router])
+  // PCでの直接アクセス時の処理は削除（記事詳細ページで処理する）
 
   useEffect(() => {
-    // デバイス判定
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768
+    // DOMが完全にマウントされるまで少し待つ
+    const timer = setTimeout(() => {
+      // デバイス判定
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768
 
-    // Lenisインスタンスを作成（慣性スクロール）
-    const lenis = new Lenis({
-      duration: isMobile ? 0.8 : 1.2, // スマホではより短いduration
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: !isMobile, // スマホではsmoothWheelを無効化
-      wheelMultiplier: isMobile ? 0.8 : 1, // スマホではホイール感度を調整
-    })
+      // Lenisインスタンスを作成（慣性スクロール）
+      const lenis = new Lenis({
+        duration: isMobile ? 0.8 : 1.2, // スマホではより短いduration
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smoothWheel: !isMobile, // スマホではsmoothWheelを無効化
+        wheelMultiplier: isMobile ? 0.8 : 1, // スマホではホイール感度を調整
+      })
 
-    // requestAnimationFrameループでLenisを更新
-    function raf(time: number) {
-      lenis.raf(time)
-      requestAnimationFrame(raf)
-    }
-    requestAnimationFrame(raf)
-
-    // ScrollTriggerにLenisのスクロールを連携
-    lenis.on('scroll', ScrollTrigger.update)
-    
-    // ScrollTriggerインスタンスを個別管理
-    const scrollTriggers: ScrollTrigger[] = []
-
-    // パララックス効果：ヒーロー画像のアニメーション
-    let heroParallaxAnimation: gsap.core.Tween | null = null
-    
-    // パララックス効果：ヒーロー画像のアニメーション（PC・スマホ両方で適用）
-    heroParallaxAnimation = gsap.to(`.${styles['main-image']}`, {
-      yPercent: isMobile ? -5 : -10, // スマホでは軽微な効果
-      ease: 'none',
-      scrollTrigger: {
-        trigger: `.${styles['main-visual']}`,
-        start: 'top top',
-        end: 'bottom top',
-        scrub: isMobile ? 0.5 : 1, // スマホではより滑らかなスクラブ
-      },
-    })
-
-    // ズームアウト効果を両方のデバイスで適用
-    // 初期状態を明示的に設定
-    gsap.set(`.${styles['main-image']}`, { scale: 1.1 })
-    
-    gsap.fromTo(`.${styles['main-image']}`, 
-      { scale: 1.1 },
-      { 
-        scale: 1, 
-        duration: 1.5, 
-        delay: 0.2, 
-        ease: 'power2.out' 
+      // requestAnimationFrameループでLenisを更新
+      function raf(time: number) {
+        lenis.raf(time)
+        requestAnimationFrame(raf)
       }
-    )
+      requestAnimationFrame(raf)
 
-    gsap.set(`.${styles['content-wrapper']}`, {
-      y: '0vh',
-    })
+      // ScrollTriggerにLenisのスクロールを連携
+      lenis.on('scroll', ScrollTrigger.update)
+      
+      // ScrollTriggerインスタンスを個別管理
+      const scrollTriggers: ScrollTrigger[] = []
 
-    const contentAnimation = gsap.to(`.${styles['content-wrapper']}`, {
-      scrollTrigger: {
-        trigger: `.${styles['content-wrapper']}`,
-        start: 'top bottom-=100',
-        end: 'bottom top+=100',
-        scrub: 1,
-      },
-      y: 0,
-    })
+      // パララックス効果：ヒーロー画像のアニメーション
+      let heroParallaxAnimation: gsap.core.Tween | null = null
+      
+      // 要素が存在することを確認してからアニメーションを実行
+      const mainImageElement = document.querySelector(`.${styles['main-image']}`)
+      const mainVisualElement = document.querySelector(`.${styles['main-visual']}`)
+      const contentWrapperElement = document.querySelector(`.${styles['content-wrapper']}`)
+
+      let contentAnimation: gsap.core.Tween | null = null
+
+    if (mainImageElement && mainVisualElement) {
+      // パララックス効果：ヒーロー画像のアニメーション（PC・スマホ両方で適用）
+      heroParallaxAnimation = gsap.to(mainImageElement, {
+        yPercent: isMobile ? -5 : -10, // スマホでは軽微な効果
+        ease: 'none',
+        scrollTrigger: {
+          trigger: mainVisualElement,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: isMobile ? 0.5 : 1, // スマホではより滑らかなスクラブ
+        },
+      })
+
+      // ズームアウト効果を両方のデバイスで適用
+      // 初期状態を明示的に設定
+      gsap.set(mainImageElement, { scale: 1.1 })
+      
+      gsap.fromTo(mainImageElement, 
+        { scale: 1.1 },
+        { 
+          scale: 1, 
+          duration: 1.5, 
+          delay: 0.2, 
+          ease: 'power2.out' 
+        }
+      )
+    }
+
+    if (contentWrapperElement) {
+      gsap.set(contentWrapperElement, {
+        y: '0vh',
+      })
+
+      contentAnimation = gsap.to(contentWrapperElement, {
+        scrollTrigger: {
+          trigger: contentWrapperElement,
+          start: 'top bottom-=100',
+          end: 'bottom top+=100',
+          scrub: 1,
+        },
+        y: 0,
+      })
+    }
 
           // コンセプトセクションのアニメーション
-      if (conceptSectionRef.current) {
+      if (conceptSectionRef.current && conceptTitleRef.current && conceptCatchphraseRef.current) {
         // 初期状態を設定（p要素は除外）
         gsap.set([conceptTitleRef.current, conceptCatchphraseRef.current], {
           opacity: 0,
@@ -228,7 +227,7 @@ function HomeContent() {
     }
 
     // ニュースセクションのアニメーション
-    if (newsSectionRef.current) {
+    if (newsSectionRef.current && newsTitleRef.current && newsListRef.current && newsMoreButtonRef.current) {
       // 初期状態を設定
       gsap.set([newsTitleRef.current, newsListRef.current, newsMoreButtonRef.current], {
         opacity: 0
@@ -277,7 +276,7 @@ function HomeContent() {
     }
 
     // メニューセクションのアニメーション
-    if (menuSectionRef.current) {
+    if (menuSectionRef.current && menuTitleRef.current && menuWrapperRef.current) {
       // 初期状態を設定
       gsap.set([menuTitleRef.current, menuWrapperRef.current], {
         opacity: 0
@@ -319,7 +318,7 @@ function HomeContent() {
     if (heroParallaxAnimation?.scrollTrigger) {
       scrollTriggers.push(heroParallaxAnimation.scrollTrigger)
     }
-    if (contentAnimation.scrollTrigger) {
+    if (contentAnimation?.scrollTrigger) {
       scrollTriggers.push(contentAnimation.scrollTrigger)
     }
 
@@ -367,6 +366,11 @@ function HomeContent() {
           console.warn('Content animation cleanup error:', error)
         }
       }
+    }
+      }, 100) // 100ms待ってからGSAPを初期化
+
+    return () => {
+      clearTimeout(timer)
     }
   }, [])
 
@@ -583,7 +587,12 @@ function HomeContent() {
         )}
 
         {currentPage === 'news' && currentArticleId && (
-          <NewsDetail id={currentArticleId} />
+          <NewsDetail 
+            id={currentArticleId} 
+            onArticleChange={(newId) => {
+              setCurrentArticleId(newId)
+            }}
+          />
         )}
 
         {currentPage === 'reserve' && (

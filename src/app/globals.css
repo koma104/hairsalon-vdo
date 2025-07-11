@@ -113,3 +113,17 @@ body {
   --layout-max-width: 1280px;
   --container-max-width: calc(var(--spacing-4xl) * 8);
 }
+
+/* Next.jsのスクロール動作制御 */
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  scroll-behavior: auto;
+}
+
+/* sticky/fixed要素のスクロール動作制御 */
+[data-nextjs-scroll-focus-boundary] {
+  scroll-behavior: auto;
+}

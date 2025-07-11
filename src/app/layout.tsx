@@ -55,9 +55,26 @@ export default function RootLayout({
       <body>
         <PageProvider isSPAEnabled={true}>
           <Header />
-          <main>{children}</main>
+          <main data-nextjs-scroll-focus-boundary>{children}</main>
           <Footer />
         </PageProvider>
+        {/* 開発環境でのNext.jsスクロール警告を抑制 */}
+        {process.env.NODE_ENV === 'development' && (
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                const originalWarn = console.warn;
+                console.warn = function(...args) {
+                  if (args[0] && typeof args[0] === 'string' && 
+                      args[0].includes('Skipping auto-scroll behavior due to')) {
+                    return;
+                  }
+                  originalWarn.apply(console, args);
+                };
+              `,
+            }}
+          />
+        )}
       </body>
     </html>
   )

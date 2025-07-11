@@ -3,7 +3,7 @@
 import React, { useState, useEffect, Suspense } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { usePathname } from 'next/navigation'
+import { usePathname, useSearchParams } from 'next/navigation'
 import Nav from '../Nav/Nav'
 import styles from './Header.module.css'
 import Button from '../Button/Button'
@@ -12,13 +12,24 @@ import Button from '../Button/Button'
 function HeaderContent() {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isClient, setIsClient] = useState(false)
   const pathname = usePathname()
+  const searchParams = useSearchParams()
   const isHomePage = pathname === '/'
   const isReservePage = pathname === '/reserve'
+  const hasNewsParam = searchParams.get('news') !== null
 
   useEffect(() => {
-    // ホームページ以外では最初から小さいサイズにする
-    if (!isHomePage) {
+    // クライアントサイドであることを確認
+    setIsClient(true)
+  }, [])
+
+  useEffect(() => {
+    // クライアントサイドでのみ実行
+    if (!isClient) return
+
+    // ホームページ以外、またはホームページでニュース詳細が表示されている場合は最初から小さいサイズにする
+    if (!isHomePage || hasNewsParam) {
       setIsScrolled(true)
       return
     }
@@ -54,7 +65,7 @@ function HeaderContent() {
 
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [isHomePage])
+  }, [isClient, isHomePage, hasNewsParam])
 
   const toggleMenu = () => {
     setIsOpen(!isOpen)
@@ -75,12 +86,28 @@ function HeaderContent() {
       <header className={styles.header}>
         {isHomePage ? (
           <h1 className={styles['logo-title']}>
-            <Link href="/" className={`${styles.logo} ${isScrolled ? styles['logo-scrolled'] : ''}`}>
+            <Link 
+              href="/" 
+              className={`${styles.logo} ${isScrolled ? styles['logo-scrolled'] : ''}`}
+              onClick={(e) => {
+                e.preventDefault()
+                window.location.replace('/')
+              }}
+            >
               <Image src="/images/logo-vdo.svg" alt="美容室 VDO" width={100} height={60} priority />
             </Link>
           </h1>
         ) : (
-          <Link href="/" className={`${styles.logo} ${isScrolled ? styles['logo-scrolled'] : ''}`}>
+          <Link 
+            href="/" 
+            className={`${styles.logo} ${styles['logo-scrolled']}`}
+            onClick={(e) => {
+              e.preventDefault()
+              e.stopPropagation()
+              // 確実にホームページに遷移
+              window.location.replace('/')
+            }}
+          >
             <Image src="/images/logo-vdo.svg" alt="美容室 VDO" width={100} height={60} priority />
           </Link>
         )}
@@ -89,7 +116,15 @@ function HeaderContent() {
         <nav className={styles['header-nav']}>
           <ul className={styles['header-nav-list']}>
             <li>
-              <Link href="/" onClick={() => window.scrollTo(0, 0)}>home</Link>
+              <Link 
+                href="/" 
+                onClick={(e) => {
+                  e.preventDefault()
+                  window.location.replace('/')
+                }}
+              >
+                home
+              </Link>
             </li>
             <li>
               <Link href="/news">news</Link>
