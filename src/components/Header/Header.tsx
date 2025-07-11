@@ -7,19 +7,14 @@ import { usePathname } from 'next/navigation'
 import Nav from '../Nav/Nav'
 import styles from './Header.module.css'
 import Button from '../Button/Button'
-import { usePageContext } from '@/contexts/PageContext'
-import { useRouter, useSearchParams } from 'next/navigation'
 
 // useSearchParamsを使用するコンポーネント
 function HeaderContent() {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const pathname = usePathname()
-  const { currentPage, setCurrentPage, isSPAEnabled } = usePageContext()
-  const isHomePage = pathname === '/' && currentPage === 'home'
-  const isReservePage = pathname === '/reserve' || currentPage === 'reserve'
-  const router = useRouter()
-  const searchParams = useSearchParams()
+  const isHomePage = pathname === '/'
+  const isReservePage = pathname === '/reserve'
 
   useEffect(() => {
     // ホームページ以外では最初から小さいサイズにする
@@ -59,7 +54,7 @@ function HeaderContent() {
 
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [isHomePage, currentPage])
+  }, [isHomePage])
 
   const toggleMenu = () => {
     setIsOpen(!isOpen)
@@ -75,14 +70,6 @@ function HeaderContent() {
     document.body.style.overflow = ''
   }
 
-  const handleNewsClick = () => {
-    setCurrentPage('news')
-    // クエリパラメータをクリアしてニュース一覧を表示
-    if (searchParams.has('news')) {
-      router.replace('/')
-    }
-  }
-
   return (
     <>
       <header className={styles.header}>
@@ -93,70 +80,25 @@ function HeaderContent() {
             </Link>
           </h1>
         ) : (
-          isSPAEnabled ? (
-            <button 
-              onClick={() => setCurrentPage('home')}
-              className={`${styles.logo} ${isScrolled ? styles['logo-scrolled'] : ''} ${styles['logo-button']}`}
-            >
-              <Image src="/images/logo-vdo.svg" alt="美容室 VDO" width={100} height={60} priority />
-            </button>
-          ) : (
-            <Link href="/" className={`${styles.logo} ${isScrolled ? styles['logo-scrolled'] : ''}`}>
-              <Image src="/images/logo-vdo.svg" alt="美容室 VDO" width={100} height={60} priority />
-            </Link>
-          )
+          <Link href="/" className={`${styles.logo} ${isScrolled ? styles['logo-scrolled'] : ''}`}>
+            <Image src="/images/logo-vdo.svg" alt="美容室 VDO" width={100} height={60} priority />
+          </Link>
         )}
         
         {/* PC表示時のナビゲーション */}
         <nav className={styles['header-nav']}>
           <ul className={styles['header-nav-list']}>
             <li>
-              {isSPAEnabled ? (
-                <button 
-                  onClick={() => setCurrentPage('home')}
-                  className={styles['nav-button']}
-                >
-                  home
-                </button>
-              ) : (
-                <Link href="/">home</Link>
-              )}
+              <Link href="/" onClick={() => window.scrollTo(0, 0)}>home</Link>
             </li>
             <li>
-              {isSPAEnabled ? (
-                <button 
-                  onClick={handleNewsClick}
-                  className={styles['nav-button']}
-                >
-                  news
-                </button>
-              ) : (
-                <Link href="/news">news</Link>
-              )}
+              <Link href="/news">news</Link>
             </li>
             <li>
-              {isSPAEnabled ? (
-                <button 
-                  onClick={() => setCurrentPage('reserve')}
-                  className={styles['nav-button']}
-                >
-                  reserve
-                </button>
-              ) : (
-                <Link href="/reserve">reserve</Link>
-              )}
+              <Link href="/reserve">reserve</Link>
             </li>
             <li>
-              {isSPAEnabled ? (
-                <button 
-                  onClick={() => setCurrentPage('staff')}
-                  className={styles['nav-button']}
-                >
-                  staff
-                </button>
-              ) : (
-                <Link href="/staff">staff</Link>
-              )}
+              <Link href="/staff">staff</Link>
             </li>
           </ul>
         </nav>
