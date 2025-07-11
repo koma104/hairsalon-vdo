@@ -22,14 +22,7 @@ function HeaderContent() {
   const searchParams = useSearchParams()
 
   useEffect(() => {
-    // PC表示時（768px以上）ではロゴアニメーションを無効化
-    const isPC = window.innerWidth >= 768
-    if (isPC) {
-      setIsScrolled(false)
-      return
-    }
-
-    // SPでのみ、ホームページ以外では最初から小さいサイズにする
+    // ホームページ以外では最初から小さいサイズにする
     if (!isHomePage) {
       setIsScrolled(true)
       return
@@ -43,12 +36,6 @@ function HeaderContent() {
       if (conceptSection) {
         const conceptRect = conceptSection.getBoundingClientRect()
         const headerHeight = 52 // ヘッダーの高さ
-        // PC表示時（768px以上）ではロゴアニメーションを無効化
-        const isPC = window.innerWidth >= 768
-        if (isPC) {
-          setIsScrolled(false)
-          return
-        }
         // コンセプトエリアの上端が画面の上部からヘッダーの高さ分下がった時にアニメーション開始
         setIsScrolled(conceptRect.top <= headerHeight)
       }
@@ -64,12 +51,6 @@ function HeaderContent() {
       if (conceptSection) {
         const conceptRect = conceptSection.getBoundingClientRect()
         const headerHeight = 52 // ヘッダーの高さ
-        // PC表示時（768px以上）ではロゴアニメーションを無効化
-        const isPC = window.innerWidth >= 768
-        if (isPC) {
-          setIsScrolled(false)
-          return
-        }
         // コンセプトエリアの上端が画面の上部からヘッダーの高さ分下がった時にアニメーション開始
         const shouldScroll = conceptRect.top <= headerHeight
         setIsScrolled(shouldScroll)

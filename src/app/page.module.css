@@ -1,18 +1,3 @@
-/* メインコンテナ */
-.main-container {
-  /* 768px以上で2カラムレイアウト */
-  @media (min-width: 768px) {
-    display: grid;
-    grid-template-columns: 32% 68%;
-    min-height: 100vh;
-    width: 100%;
-    box-sizing: border-box;
-    scrollbar-gutter: stable;
-    max-width: 1440px;
-    margin-inline: auto;
-  }
-}
-
 /* メインビジュアル */
 .main-visual {
   position: sticky;
@@ -22,11 +7,6 @@
   height: 100vh;
   overflow: hidden;
   padding-block: calc(var(--spacing-2xl) + var(--spacing-xxs)) var(--spacing-4xl);
-
-  @media (min-width: 768px) {
-    height: auto;
-    aspect-ratio: 9 / 16;
-  }
 }
 
 @keyframes fadeIn {
@@ -53,11 +33,6 @@
   height: 100%;
   overflow: hidden;
   background-color: var(--color-gray-10);
-
-  @media (min-width: 768px) {
-    width: calc(100% - var(--spacing-xl) * 2);
-    background-color: transparent;
-  }
 }
 
 .main-image {
@@ -75,17 +50,6 @@
   padding-block: var(--spacing-xl) var(--spacing-2xl);
   padding-inline: var(--spacing-lg);
   margin-inline: auto;
-
-  @media (min-width: 768px) {
-    padding-block: var(--spacing-2xl) var(--spacing-3xl);
-    padding-inline: var(--spacing-3xl);
-    max-width: var(--container-max-width);
-
-    &:first-child {
-      padding-block-start: var(--spacing-4xl);
-      padding-block-end: var(--spacing-xl);
-    }
-  }
 }
 
 .concept-catchphrase {
@@ -108,11 +72,6 @@
 .carousel-container {
   overflow: hidden;
   width: 100%;
-
-  @media (min-width: 768px) {
-    width: calc(100% - var(--spacing-3xl) * 2);
-    margin-inline: auto;
-  }
 }
 
 @keyframes scroll {
@@ -186,10 +145,6 @@
   font-size: inherit;
   overflow: hidden;
 
-  @media (min-width: 768px) {
-    gap: var(--spacing-md);
-  }
-
   &:focus-visible {
     color: var(--color-hover);
   }
@@ -230,10 +185,6 @@
   font-size: var(--font-sm);
   font-weight: var(--font-weight-regular);
   letter-spacing: 0.01em;
-
-  @media (min-width: 768px) {
-    font-size: var(--font-md);
-  }
 }
 
 .news-excerpt {
@@ -309,10 +260,6 @@
   gap: var(--spacing-sm);
   list-style: none;
   padding-inline: var(--spacing-sm);
-
-  @media (min-width: 768px) {
-    padding-inline: var(--spacing-md);
-  }
 }
 
 .menu-item {
@@ -343,12 +290,4 @@
   text-align: center;
   max-width: calc(var(--spacing-3xl) * 4);
   margin-inline: auto;
-
-  @media (min-width: 768px) {
-    max-width: calc(var(--spacing-3xl) * 4);
-
-    & button {
-      font-size: var(--font-sm);
-    }
-  }
 }

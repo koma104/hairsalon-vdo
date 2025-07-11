@@ -371,19 +371,21 @@ function HomeContent() {
   }, [])
 
   return (
-    <div className={styles['main-container']}>
-      <div className={styles['main-visual']}>
-        <div className={styles['main-visual-inner']}>
-          <Image
-            src="/images/hero-photo.png"
-            alt="Salon main visual"
-            width={750}
-            height={835}
-            priority={true}
-            className={styles['main-image']}
-          />
+    <>
+      {currentPage === 'home' && (
+        <div className={styles['main-visual']}>
+          <div className={styles['main-visual-inner']}>
+            <Image
+              src="/images/hero-photo.png"
+              alt="Salon main visual"
+              width={750}
+              height={835}
+              priority={true}
+              className={styles['main-image']}
+            />
+          </div>
         </div>
-      </div>
+      )}
 
       <div className={styles['content-wrapper']}>
         {currentPage === 'home' && (
@@ -533,7 +535,7 @@ function HomeContent() {
           <StaffPage />
         )}
       </div>
-    </div>
+    </>
   )
 }
 
