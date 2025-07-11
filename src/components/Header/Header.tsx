@@ -15,9 +15,9 @@ function HeaderContent() {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const pathname = usePathname()
-  const isHomePage = pathname === '/'
-  const isReservePage = pathname === '/reserve'
-  const { setCurrentPage, isSPAEnabled } = usePageContext()
+  const { currentPage, setCurrentPage, isSPAEnabled } = usePageContext()
+  const isHomePage = pathname === '/' && currentPage === 'home'
+  const isReservePage = pathname === '/reserve' || currentPage === 'reserve'
   const router = useRouter()
   const searchParams = useSearchParams()
 
@@ -59,7 +59,7 @@ function HeaderContent() {
 
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [isHomePage])
+  }, [isHomePage, currentPage])
 
   const toggleMenu = () => {
     setIsOpen(!isOpen)
@@ -102,7 +102,7 @@ function HeaderContent() {
         <nav className={styles['header-nav']}>
           <ul className={styles['header-nav-list']}>
             <li>
-              {isHomePage && isSPAEnabled ? (
+              {isSPAEnabled ? (
                 <button 
                   onClick={() => setCurrentPage('home')}
                   className={styles['nav-button']}
@@ -114,7 +114,7 @@ function HeaderContent() {
               )}
             </li>
             <li>
-              {isHomePage && isSPAEnabled ? (
+              {isSPAEnabled ? (
                 <button 
                   onClick={handleNewsClick}
                   className={styles['nav-button']}
@@ -126,7 +126,7 @@ function HeaderContent() {
               )}
             </li>
             <li>
-              {isHomePage && isSPAEnabled ? (
+              {isSPAEnabled ? (
                 <button 
                   onClick={() => setCurrentPage('reserve')}
                   className={styles['nav-button']}
@@ -138,7 +138,7 @@ function HeaderContent() {
               )}
             </li>
             <li>
-              {isHomePage && isSPAEnabled ? (
+              {isSPAEnabled ? (
                 <button 
                   onClick={() => setCurrentPage('staff')}
                   className={styles['nav-button']}
