@@ -54,7 +54,7 @@
 
   @media (min-width: 768px) {
     max-width: calc(var(--spacing-3xl) * 4);
-    margin: 0 auto;
+    margin-inline: auto;
   }
 }
 

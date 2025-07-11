@@ -65,15 +65,15 @@
 
   &.is-open {
     gap: 0;
-  }
 
-  &.is-open .menu-line:nth-child(1) {
-    transform: rotate(-45deg);
-  }
+    & .menu-line:nth-child(1) {
+      transform: rotate(-45deg);
+    }
 
-  &.is-open .menu-line:nth-child(2) {
-    transform: rotate(45deg);
-    width: 100%;
+    & .menu-line:nth-child(2) {
+      transform: rotate(45deg);
+      width: 100%;
+    }
   }
 }
 
