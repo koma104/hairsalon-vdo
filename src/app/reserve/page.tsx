@@ -7,6 +7,7 @@ import TimeSelector from '@/components/TimeSelector/TimeSelector'
 import Button from '@/components/Button/Button'
 import SectionTitle from '@/components/SectionTitle/SectionTitle'
 import Container from '@/components/Container/Container'
+import Select from '@/components/Select/Select'
 
 const ReservePage = () => {
   const [selectedDate, setSelectedDate] = useState(new Date())
@@ -32,17 +33,18 @@ const ReservePage = () => {
             Service
           </h2>
           <div className={styles['select-wrapper']}>
-            <select
-              aria-labelledby="service-label"
-              className={`${styles.select} ${!selectedService ? styles.placeholder : ''}`}
+            <Select
+              options={[
+                { value: 'cut', label: 'Cut' },
+                { value: 'color', label: 'Color' },
+                { value: 'treatment', label: 'Treatment' }
+              ]}
               value={selectedService}
-              onChange={(e) => setSelectedService(e.target.value)}
-            >
-              <option value="">選択</option>
-              <option value="cut">Cut</option>
-              <option value="color">Color</option>
-              <option value="treatment">Treatment</option>
-            </select>
+              onChange={setSelectedService}
+              placeholder="選択"
+              id="service-select"
+              name="service"
+            />
           </div>
         </div>
         <div className={styles['form-group']}>
@@ -50,17 +52,18 @@ const ReservePage = () => {
             Stylist
           </h2>
           <div className={styles['select-wrapper']}>
-            <select
-              aria-labelledby="stylist-label"
-              className={`${styles.select} ${!selectedStylist ? styles.placeholder : ''}`}
+            <Select
+              options={[
+                { value: 'tanaka', label: 'Akari Tanaka' },
+                { value: 'yamamoto', label: 'Sakura Yamamoto' },
+                { value: 'nakamura', label: 'Kenji Nakamura' }
+              ]}
               value={selectedStylist}
-              onChange={(e) => setSelectedStylist(e.target.value)}
-            >
-              <option value="">選択</option>
-              <option value="tanaka">Akari Tanaka</option>
-              <option value="yamamoto">Sakura Yamamoto</option>
-              <option value="nakamura">Kenji Nakamura</option>
-            </select>
+              onChange={setSelectedStylist}
+              placeholder="選択"
+              id="stylist-select"
+              name="stylist"
+            />
           </div>
         </div>
       </section>
