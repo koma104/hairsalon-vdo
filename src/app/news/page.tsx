@@ -27,6 +27,13 @@ const NewsListPage = () => {
     return () => window.removeEventListener('resize', checkMobile)
   }, [])
 
+  // ページが変更された時にトップにスクロール
+  useEffect(() => {
+    if (currentPage > 1) {
+      window.scrollTo(0, 0)
+    }
+  }, [currentPage])
+
   const totalPages = Math.ceil(newsItems.length / ITEMS_PER_PAGE)
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE
   const endIndex = Math.min(startIndex + ITEMS_PER_PAGE, newsItems.length)
@@ -35,12 +42,16 @@ const NewsListPage = () => {
   const handleNextPage = () => {
     if (currentPage < totalPages) {
       setCurrentPage((prev) => prev + 1)
+      // ページトップにスクロール
+      window.scrollTo(0, 0)
     }
   }
 
   const handlePrevPage = () => {
     if (currentPage > 1) {
       setCurrentPage((prev) => prev - 1)
+      // ページトップにスクロール
+      window.scrollTo(0, 0)
     }
   }
 
