@@ -93,9 +93,18 @@ function HeaderContent() {
             </Link>
           </h1>
         ) : (
-          <Link href="/" className={`${styles.logo} ${isScrolled ? styles['logo-scrolled'] : ''}`}>
-            <Image src="/images/logo-vdo.svg" alt="美容室 VDO" width={100} height={60} priority />
-          </Link>
+          isSPAEnabled ? (
+            <button 
+              onClick={() => setCurrentPage('home')}
+              className={`${styles.logo} ${isScrolled ? styles['logo-scrolled'] : ''} ${styles['logo-button']}`}
+            >
+              <Image src="/images/logo-vdo.svg" alt="美容室 VDO" width={100} height={60} priority />
+            </button>
+          ) : (
+            <Link href="/" className={`${styles.logo} ${isScrolled ? styles['logo-scrolled'] : ''}`}>
+              <Image src="/images/logo-vdo.svg" alt="美容室 VDO" width={100} height={60} priority />
+            </Link>
+          )
         )}
         
         {/* PC表示時のナビゲーション */}

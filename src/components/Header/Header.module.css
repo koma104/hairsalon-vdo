@@ -45,6 +45,14 @@
   margin: 0;
 }
 
+.logo-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+
 .menu-button {
   position: fixed;
   top: var(--spacing-xs);
