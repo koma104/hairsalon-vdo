@@ -378,10 +378,15 @@ function HomeContent() {
             <Image
               src="/images/hero-photo.png"
               alt="Salon main visual"
-              width={750}
-              height={835}
+              width={1360}
+              height={1360}
               priority={true}
               className={styles['main-image']}
+              sizes="100vw"
+              quality={90}
+              data-pc-src="/images/hero-photo2.png"
+              data-pc-width={1280}
+              data-pc-height={640}
             />
           </div>
         </div>
