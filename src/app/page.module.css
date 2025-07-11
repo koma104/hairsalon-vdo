@@ -85,7 +85,7 @@
 
 .store-carousel {
   display: flex;
-  width: calc(2 * (15rem * 3));
+  width: calc(2 * (15rem * 6));
   overflow: hidden;
 
   > * {
@@ -102,10 +102,10 @@
 .carousel-group {
   display: flex;
   gap: 1rem;
-  animation: scroll 25s linear infinite;
+  animation: scroll 50s linear infinite;
   will-change: transform;
   padding-inline-end: 1rem;
-  width: calc(15rem * 3);
+  width: calc(15rem * 6);
 }
 
 .store-image-wrapper {
