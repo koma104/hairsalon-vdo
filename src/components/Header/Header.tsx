@@ -41,7 +41,9 @@ function HeaderContent() {
       
       if (conceptSection) {
         const conceptRect = conceptSection.getBoundingClientRect()
-        const headerHeight = 52 // ヘッダーの高さ
+        // デバイス別にヘッダーの高さを設定
+        const isMobile = window.innerWidth < 768
+        const headerHeight = isMobile ? 52 : 75 // PCでは75px、SPでは52px
         // コンセプトエリアの上端が画面の上部からヘッダーの高さ分下がった時にアニメーション開始
         setIsScrolled(conceptRect.top <= headerHeight)
       }
@@ -56,7 +58,9 @@ function HeaderContent() {
       
       if (conceptSection) {
         const conceptRect = conceptSection.getBoundingClientRect()
-        const headerHeight = 52 // ヘッダーの高さ
+        // デバイス別にヘッダーの高さを設定
+        const isMobile = window.innerWidth < 768
+        const headerHeight = isMobile ? 52 : 75 // PCでは75px、SPでは52px
         // コンセプトエリアの上端が画面の上部からヘッダーの高さ分下がった時にアニメーション開始
         const shouldScroll = conceptRect.top <= headerHeight
         setIsScrolled(shouldScroll)
