@@ -299,7 +299,7 @@
   display: grid;
   gap: var(--spacing-sm);
   list-style: none;
-  padding-inline-start: var(--spacing-sm);
+  padding-inline: var(--spacing-sm);
 }
 
 .menu-item {
