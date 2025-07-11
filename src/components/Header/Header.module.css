@@ -12,7 +12,7 @@
     grid-template-columns: 1fr auto;
     align-items: end;
     padding-inline: var(--spacing-2xl);
-    max-width: 1440px;
+    max-width: 1280px;
     margin-inline: auto;
   }
 }
