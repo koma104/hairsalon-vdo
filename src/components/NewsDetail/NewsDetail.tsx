@@ -127,6 +127,8 @@ const NewsDetail = ({ id, onArticleChange }: NewsDetailProps) => {
                 if (onArticleChange) {
                   onArticleChange(prevArticle.id)
                 }
+                // ページ上部に一瞬でスクロール
+                window.scrollTo(0, 0)
               }
             }}
           >
@@ -152,6 +154,8 @@ const NewsDetail = ({ id, onArticleChange }: NewsDetailProps) => {
                 if (onArticleChange) {
                   onArticleChange(nextArticle.id)
                 }
+                // ページ上部に一瞬でスクロール
+                window.scrollTo(0, 0)
               }
             }}
           >
