@@ -11,6 +11,10 @@ body {
   font-size: var(--font-md);
   font-weight: var(--font-weight-regular);
   letter-spacing: 0.02em;
+
+  @media (min-width: 768px) {
+    line-height: 1.6;
+  }
 }
 
 select {

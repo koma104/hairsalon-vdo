@@ -80,7 +80,7 @@
   line-height: 1.8;
 
   @media (min-width: 768px) {
-    font-size: var(--font-2xl);
+    font-size: var(--font-xl);
   }
 }
 
