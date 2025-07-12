@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, forwardRef } from 'react'
+import { useState, forwardRef, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -25,9 +25,41 @@ const NewsList = forwardRef<HTMLDivElement, NewsListProps>(({
   moreButtonRef
 }, ref) => {
   const [visibleCount, setVisibleCount] = useState(maxItems || 2)
+  const [isMoreButtonVisible, setIsMoreButtonVisible] = useState(false)
   const router = useRouter()
+  const moreButtonRefInternal = useRef<HTMLButtonElement>(null)
 
   const displayedItems = items.slice(0, visibleCount)
+
+  // Intersection Observer for more button animation
+  useEffect(() => {
+    const moreButton = moreButtonRefInternal.current
+    if (!moreButton) return
+
+    let hasTriggered = false // 一度だけ発火するフラグ
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasTriggered) {
+            hasTriggered = true // 一度発火したらフラグを立てる
+            // 実機に最適化した即座の発火
+            setIsMoreButtonVisible(true) // 遅延なし
+          }
+        })
+      },
+      {
+        threshold: 0.1, // 10%で発火
+        rootMargin: '0px 0px -200px 0px'
+      }
+    )
+
+    observer.observe(moreButton)
+
+    return () => {
+      observer.disconnect()
+    }
+  }, [])
 
   const handleItemClick = (item: NewsItem) => {
     if (onItemClick) {
@@ -74,7 +106,11 @@ const NewsList = forwardRef<HTMLDivElement, NewsListProps>(({
       
       {showMoreButton && visibleCount < 5 && visibleCount < items.length && (
         <div ref={moreButtonRef} className={styles['more-button-wrapper']}>
-          <button onClick={handleShowMore} className={styles['more-button']}>
+          <button 
+            ref={moreButtonRefInternal}
+            onClick={handleShowMore} 
+            className={`${styles['more-button']} ${isMoreButtonVisible ? styles.active : ''}`}
+          >
             more
           </button>
         </div>

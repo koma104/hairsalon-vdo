@@ -89,16 +89,16 @@
 .news-list-button {
   background: none;
   border: none;
-  border-block-end: 1px solid var(--color-black);
+  background-image: linear-gradient(var(--color-black), var(--color-black));
+  background-size: 100% 1px;
+  background-position: bottom right;
+  background-repeat: no-repeat;
   cursor: pointer;
   padding-block: var(--spacing-xs);
   padding-inline: var(--spacing-xxs);
   color: var(--color-black);
   line-height: 1;
   text-transform: capitalize;
-  transition:
-    color 0.2s ease,
-    border-block-end-color 0.2s ease;
 
   &:focus-visible {
     color: var(--color-hover);
@@ -115,6 +115,16 @@
 
 .more-button {
   font-size: var(--font-md);
+  background-size: 0 1px;
+  background-position: bottom right;
+  transition:
+    color 0.2s ease,
+    background-size 0.3s ease-in-out;
+
+  &.active {
+    background-size: 100% 1px;
+    background-position: bottom left;
+  }
 }
 
 .news-list-button {
