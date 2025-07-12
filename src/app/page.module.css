@@ -129,11 +129,11 @@
     flex: none;
   }
 
-  @media (any-hover: hover) {
+  /* @media (any-hover: hover) {
     &:hover .carousel-group {
       animation-play-state: paused;
     }
-  }
+  } */
 }
 
 .carousel-group {
@@ -145,6 +145,8 @@
   width: calc(var(--carousel-width-sp) * 3);
 
   @media (min-width: 768px) {
+    gap: 1.6rem;
+    padding-inline-end: 1.6rem;
     width: calc(var(--carousel-width-pc) * 3);
     animation-duration: 45s;
   }
@@ -157,7 +159,7 @@
 
   @media (min-width: 768px) {
     width: var(--carousel-width-pc);
-    height: calc(var(--carousel-width-pc) - 1rem);
+    height: calc(var(--carousel-width-pc) - 1.6rem);
   }
 }
 
