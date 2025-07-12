@@ -246,7 +246,6 @@
   cursor: pointer;
   padding-block: var(--spacing-xs);
   padding-inline: var(--spacing-xxs);
-  line-height: 1;
   color: var(--color-black);
   text-transform: capitalize;
   transition:

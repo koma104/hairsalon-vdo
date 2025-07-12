@@ -29,16 +29,16 @@
   object-fit: cover;
   clip-path: polygon(0 0, 100% 0, 100% 0%, 0 0%);
   transition: clip-path 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
 
-.staff-image.animate {
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  &.animate {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
 }
 
 .staff-info {
   display: grid;
   grid-auto-flow: row;
-  gap: var(--spacing-xs);
+  gap: var(--spacing-xxs);
 }
 
 .staff-name {
@@ -50,41 +50,41 @@
   transition:
     opacity 0.8s ease-out 0.2s,
     transform 0.8s ease-out 0.2s;
-}
 
-.staff-name.animate {
-  opacity: 1;
-  transform: translateY(0);
+  &.animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .staff-title {
   font-size: var(--font-xs);
   color: var(--color-gray-30);
-  line-height: 1;
+
   opacity: 0;
   transform: translateY(10px);
   transition:
-    opacity 1s ease-out 0.35s,
-    transform 1s ease-out 0.35s;
-}
+    opacity 1s ease-out 0.2s,
+    transform 1s ease-out 0.2s;
 
-.staff-title.animate {
-  opacity: 1;
-  transform: translateY(0);
+  &.animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .staff-specialty {
   font-size: var(--font-xxs);
   color: var(--color-gray-30);
-  line-height: 1;
+
   opacity: 0;
   transform: translateY(10px);
   transition:
-    opacity 1s ease-out 0.37s,
-    transform 1s ease-out 0.37s;
-}
+    opacity 1s ease-out 0.24s,
+    transform 1s ease-out 0.24s;
 
-.staff-specialty.animate {
-  opacity: 1;
-  transform: translateY(0);
+  &.animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
