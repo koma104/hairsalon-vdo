@@ -436,35 +436,8 @@ function HomeContent() {
                     </div>
                     <div className={styles['store-image-wrapper']}>
                       <Image
-                        src="/images/store-image-03.png"
-                        alt="Store view 3"
-                        width={592}
-                        height={395}
-                        className={styles['store-image']}
-                      />
-                    </div>
-                    <div className={styles['store-image-wrapper']}>
-                      <Image
                         src="/images/store-image-04.png"
                         alt="Store view 4"
-                        width={592}
-                        height={395}
-                        className={styles['store-image']}
-                      />
-                    </div>
-                    <div className={styles['store-image-wrapper']}>
-                      <Image
-                        src="/images/store-image-05.png"
-                        alt="Store view 5"
-                        width={592}
-                        height={395}
-                        className={styles['store-image']}
-                      />
-                    </div>
-                    <div className={styles['store-image-wrapper']}>
-                      <Image
-                        src="/images/store-image-06.png"
-                        alt="Store view 6"
                         width={592}
                         height={395}
                         className={styles['store-image']}
@@ -492,35 +465,8 @@ function HomeContent() {
                     </div>
                     <div className={styles['store-image-wrapper']}>
                       <Image
-                        src="/images/store-image-03.png"
-                        alt="Store view 3"
-                        width={592}
-                        height={395}
-                        className={styles['store-image']}
-                      />
-                    </div>
-                    <div className={styles['store-image-wrapper']}>
-                      <Image
                         src="/images/store-image-04.png"
                         alt="Store view 4"
-                        width={592}
-                        height={395}
-                        className={styles['store-image']}
-                      />
-                    </div>
-                    <div className={styles['store-image-wrapper']}>
-                      <Image
-                        src="/images/store-image-05.png"
-                        alt="Store view 5"
-                        width={592}
-                        height={395}
-                        className={styles['store-image']}
-                      />
-                    </div>
-                    <div className={styles['store-image-wrapper']}>
-                      <Image
-                        src="/images/store-image-06.png"
-                        alt="Store view 6"
                         width={592}
                         height={395}
                         className={styles['store-image']}

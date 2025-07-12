@@ -114,11 +114,11 @@
 
 .store-carousel {
   display: flex;
-  width: calc(2 * (var(--carousel-width-sp) * 6));
+  width: calc(2 * (var(--carousel-width-sp) * 3));
   overflow: hidden;
 
   @media (min-width: 768px) {
-    width: calc(2 * (var(--carousel-width-pc) * 6));
+    width: calc(2 * (var(--carousel-width-pc) * 3));
   }
 
   > * {
@@ -135,14 +135,14 @@
 .carousel-group {
   display: flex;
   gap: 1rem;
-  animation: scroll 60s linear infinite;
+  animation: scroll 35s linear infinite;
   will-change: transform;
   padding-inline-end: 1rem;
-  width: calc(var(--carousel-width-sp) * 6);
+  width: calc(var(--carousel-width-sp) * 3);
 
   @media (min-width: 768px) {
-    width: calc(var(--carousel-width-pc) * 6);
-    animation-duration: 80s;
+    width: calc(var(--carousel-width-pc) * 3);
+    animation-duration: 45s;
   }
 }
 
