@@ -294,6 +294,10 @@
   text-align: left;
   letter-spacing: 0.01em;
   text-transform: capitalize;
+
+  @media (min-width: 768px) {
+    font-size: var(--font-xl);
+  }
 }
 
 .menu-list {
