@@ -19,6 +19,10 @@
 .month-year {
   font-size: var(--font-sm);
   text-align: center;
+
+  @media (min-width: 768px) {
+    font-size: var(--font-md);
+  }
 }
 
 .nav-button {
@@ -52,6 +56,10 @@
   margin-block-end: var(--spacing-sm);
   font-size: var(--font-xs);
   color: var(--color-gray-30);
+
+  @media (min-width: 768px) {
+    font-size: var(--font-sm);
+  }
 }
 
 .day {
@@ -69,6 +77,10 @@
   transition:
     background-color 0.2s ease,
     color 0.2s ease;
+
+  @media (min-width: 768px) {
+    font-size: var(--font-sm);
+  }
 
   &:focus-visible {
     background-color: var(--color-hover);

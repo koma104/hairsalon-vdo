@@ -91,6 +91,10 @@
   span {
     display: block;
   }
+
+  @media (min-width: 768px) {
+    font-size: var(--font-sm);
+  }
 }
 
 .carousel-container {
@@ -308,6 +312,10 @@
   grid-auto-flow: column;
   justify-content: space-between;
   font-size: var(--font-xs);
+
+  @media (min-width: 768px) {
+    font-size: var(--font-sm);
+  }
 }
 
 .menu {

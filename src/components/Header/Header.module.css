@@ -129,8 +129,7 @@
   margin: 0;
   padding: 0;
 
-  & a,
-  & button {
+  & a {
     font-size: var(--font-xs);
     font-weight: var(--font-weight-regular);
     letter-spacing: 0.05em;
@@ -138,10 +137,10 @@
     text-decoration: none;
     color: var(--color-black-blend);
     transition: color 0.2s ease;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
+
+    @media (min-width: 768px) {
+      font-size: var(--font-sm);
+    }
 
     &:focus-visible {
       color: #f938aa;

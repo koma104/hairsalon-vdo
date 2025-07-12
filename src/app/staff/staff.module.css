@@ -19,7 +19,7 @@
   position: relative;
 
   @media (min-width: 768px) {
-    width: 10rem;
+    width: 11rem;
   }
 }
 

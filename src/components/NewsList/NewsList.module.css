@@ -79,6 +79,10 @@
 
 .news-excerpt {
   font-size: var(--font-xs);
+
+  @media (min-width: 768px) {
+    font-size: var(--font-sm);
+  }
 }
 
 .more-button-wrapper {

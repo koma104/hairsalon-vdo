@@ -5,10 +5,6 @@
   justify-content: center;
   gap: var(--spacing-md);
   font-size: var(--font-sm);
-
-  @media (min-width: 768px) {
-    font-size: var(--font-xs);
-  }
 }
 
 .page-button {
