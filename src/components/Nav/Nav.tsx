@@ -7,7 +7,14 @@ const Nav = ({ isOpen, closeMenu }: { isOpen: boolean; closeMenu: () => void }) 
     <div className={styles['nav-inner']}>
       <ul className={styles['nav-list']}>
         <li>
-          <Link href="/" onClick={closeMenu}>
+          <Link 
+            href="/" 
+            onClick={(e) => {
+              e.preventDefault()
+              closeMenu()
+              window.location.replace('/')
+            }}
+          >
             home
           </Link>
         </li>
