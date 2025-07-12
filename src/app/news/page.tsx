@@ -58,10 +58,6 @@ const NewsListPage = () => {
   return (
     <Container>
       <SectionTitle>news</SectionTitle>
-      <p className={styles['page-description']}>
-        最新のトレンドやアドバイス、サロンからの限定オファーをお届けします。
-      </p>
-
       <NewsList
         items={displayedItems}
         maxItems={ITEMS_PER_PAGE}
