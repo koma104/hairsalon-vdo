@@ -6,11 +6,14 @@
 
 .reserve-subtitle {
   margin-block-end: var(--spacing-sm);
-  padding-inline: var(--spacing-xl);
   font-size: var(--font-lg);
   font-weight: var(--font-weight-regular);
   letter-spacing: 0.01em;
   text-transform: capitalize;
+
+  @media (min-width: 768px) {
+    padding-inline: var(--spacing-xl);
+  }
 }
 
 .form-group {
