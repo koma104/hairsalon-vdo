@@ -128,12 +128,6 @@
   > * {
     flex: none;
   }
-
-  /* @media (any-hover: hover) {
-    &:hover .carousel-group {
-      animation-play-state: paused;
-    }
-  } */
 }
 
 .carousel-group {
