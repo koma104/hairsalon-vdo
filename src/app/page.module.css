@@ -39,9 +39,9 @@
   height: 100%;
   overflow: hidden;
   background-color: var(--color-gray-10);
+  display: flex;
 
   @media (min-width: 768px) {
-    /* padding-block-end: var(--spacing-2xl); */
     width: 90vw;
   }
 }
@@ -70,12 +70,69 @@
   z-index: -1;
 }
 
+.main-image-wrapper {
+  @media (min-width: 768px) {
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: stretch;
+  }
+}
+
 @media (min-width: 768px) {
   .main-image {
-    content: url('/images/hero-photo2.png');
     width: 100%;
+    height: 100%;
     object-fit: cover;
     object-position: left center;
+  }
+}
+
+.main-visual-text {
+  display: none;
+
+  @media (min-width: 768px) {
+    position: absolute;
+    bottom: 5%;
+    right: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    place-items: center;
+    padding-inline-end: 2cqh;
+    z-index: 2;
+    font-size: var(--font-2xl);
+    white-space: nowrap;
+
+    & .standard,
+    & .italic {
+      opacity: 0;
+      transform: translateX(15px);
+      animation: fadeInText 1s 1.8s forwards;
+    }
+
+    & .standard {
+      font-family: var(--font-figtree);
+      font-weight: 600;
+      color: var(--color-black);
+      font-style: normal;
+      letter-spacing: 0em;
+    }
+
+    & .italic {
+      font-family: var(--font-playfair-italic);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--color-black);
+      letter-spacing: 0.04em;
+    }
+  }
+}
+
+@keyframes fadeInText {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 

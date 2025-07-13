@@ -70,6 +70,9 @@ function HomeContent() {
   const menuTitleRef = useRef<HTMLHeadingElement>(null)
   const menuWrapperRef = useRef<HTMLDivElement>(null)
 
+  // ヒーローテキスト用のref
+  const mainVisualTextRef = useRef<HTMLDivElement>(null);
+
   // URLパラメータを監視してニュース詳細を表示（newsクエリパラメータのみ）
   useEffect(() => {
     const newsQueryParam = searchParams.get('news')
@@ -133,10 +136,6 @@ function HomeContent() {
           scrub: isMobile ? 0.5 : 1, // スマホではより滑らかなスクラブ
         },
       })
-
-      // ズームアウト効果を両方のデバイスで適用
-      // 初期状態を明示的に設定
-      gsap.set(mainImageElement, { scale: 1.1 })
       
       gsap.fromTo(mainImageElement, 
         { scale: 1.1 },
@@ -377,24 +376,27 @@ function HomeContent() {
   return (
     <>
       {currentPage === 'home' && (
-        <div className={styles['main-visual']}>
-          <div className={styles['main-visual-inner']}>
-            <Image
-              src="/images/hero-photo.png"
-              alt="Salon main visual"
-              width={1360}
-              height={1360}
-              priority={true}
-              className={styles['main-image']}
-              sizes="100vw"
-              quality={90}
-              data-pc-src="/images/hero-photo2.png"
-              data-pc-width={1280}
-              data-pc-height={640}
-            />
+        <div className={styles['main-visual']}> 
+            <div className={styles['main-visual-inner']}>
+              <div className={styles['main-image-wrapper']}>
+                <Image
+                  src="/images/hero-photo.png"
+                  alt="Salon main visual"
+                  width={1360}
+                  height={1360}
+                  priority={true}
+                  className={styles['main-image']}
+                  sizes="100vw"
+                  quality={90}
+                />
+              </div>
+              <div className={styles['main-visual-text']} ref={mainVisualTextRef}>
+                <span className={styles['standard']}>A New You,</span>
+                <span className={styles['italic']}>Every Day</span>
+              </div>
+            </div>
+            <div className={styles['border-line']}></div>
           </div>
-          <div className={styles['border-line']}></div>
-        </div>
       )}
 
       <div className={styles['content-wrapper']}>
