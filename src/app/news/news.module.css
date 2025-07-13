@@ -33,3 +33,12 @@
     cursor: not-allowed;
   }
 }
+
+.arrow-svg {
+  display: inline-block;
+  vertical-align: middle;
+  color: inherit;
+  width: 2em;
+  height: 2em;
+  pointer-events: none;
+}

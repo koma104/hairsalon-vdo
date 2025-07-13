@@ -13,7 +13,7 @@
 .section-title {
   margin-block: 0;
   padding-block: var(--spacing-xl) 0;
-  font-size: var(--font-3xl);
+  font-size: var(--font-2xl);
   font-weight: var(--font-weight-regular);
   color: var(--color-gray-60);
   text-align: left;
@@ -22,7 +22,7 @@
 }
 
 .date {
-  font-size: var(--font-xs);
+  font-size: var(--font-xxs);
   color: var(--color-gray-30);
 }
 
@@ -50,7 +50,7 @@
 }
 
 .content {
-  font-size: var(--font-sm);
+  font-size: var(--font-xs);
   line-height: 2;
 
   & p:not(:last-child) {
@@ -75,7 +75,7 @@
 }
 
 .subtitle {
-  font-size: var(--font-xl);
+  font-size: var(--font-lg);
   font-weight: var(--font-weight-regular);
   margin-block-end: var(--spacing-md);
   border-block-end: 1px solid var(--color-gray-20);
@@ -83,9 +83,9 @@
 }
 
 .pagination {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  justify-content: space-between;
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-2xl);
   padding-inline: var(--spacing-sm);
 }
 
@@ -96,16 +96,15 @@
   border: none;
   background: none;
   cursor: pointer;
-  padding: 0;
+  padding: var(--spacing-xs) var(--spacing-sm);
   color: inherit;
-}
+  transition: color 0.2s ease;
 
-.prev {
-  justify-self: start;
-}
-
-.next {
-  justify-self: end;
+  @media (any-hover: hover) {
+    &:hover {
+      color: var(--color-hover);
+    }
+  }
 }
 
 .disabled {

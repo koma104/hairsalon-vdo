@@ -129,20 +129,36 @@ const NewsDetailPage = ({ params }: { params: Promise<{ id: string }> }) => {
             href={`/news/${prevArticle.id}`} 
             className={styles.prev}
           >
-            &lt; Prev
+            <svg width="40" height="40" viewBox="0 0 32 32" className="arrow-svg">
+              <polyline points="20,8 12,16 20,24" fill="none" stroke="currentColor" strokeWidth="1.2" />
+            </svg>
+            Prev
           </Link>
         ) : (
-          <span className={`${styles.prev} ${styles.disabled}`}>&lt; Prev</span>
+          <span className={`${styles.prev} ${styles.disabled}`}>
+            <svg width="40" height="40" viewBox="0 0 32 32" className="arrow-svg">
+              <polyline points="20,8 12,16 20,24" fill="none" stroke="currentColor" strokeWidth="1.2" />
+            </svg>
+            Prev
+          </span>
         )}
         {nextArticle ? (
           <Link 
             href={`/news/${nextArticle.id}`} 
             className={styles.next}
           >
-            Next &gt;
+            Next
+            <svg width="40" height="40" viewBox="0 0 32 32" className="arrow-svg">
+              <polyline points="12,8 20,16 12,24" fill="none" stroke="currentColor" strokeWidth="1.2" />
+            </svg>
           </Link>
         ) : (
-          <span className={`${styles.next} ${styles.disabled}`}>Next &gt;</span>
+          <span className={`${styles.next} ${styles.disabled}`}>
+            Next
+            <svg width="40" height="40" viewBox="0 0 32 32" className="arrow-svg">
+              <polyline points="12,8 20,16 12,24" fill="none" stroke="currentColor" strokeWidth="1.2" />
+            </svg>
+          </span>
         )}
       </nav>
     </div>

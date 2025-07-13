@@ -42,6 +42,7 @@
 }
 
 .staff-name {
+  font-family: var(--font-figtree);
   font-size: var(--font-md);
   font-weight: var(--font-weight-regular);
   text-transform: capitalize;
@@ -58,6 +59,8 @@
 }
 
 .staff-title {
+  font-family: var(--font-playfair-italic);
+  font-style: italic;
   font-size: var(--font-xs);
   color: var(--color-gray-30);
   line-height: 1.2;
@@ -74,6 +77,8 @@
 }
 
 .staff-specialty {
+  font-family: var(--font-playfair-italic);
+  font-style: italic;
   font-size: var(--font-xxs);
   color: var(--color-gray-30);
   line-height: 1.2;

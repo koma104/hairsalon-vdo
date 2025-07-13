@@ -79,7 +79,9 @@ const NewsListPage = () => {
             disabled={currentPage === 1}
             className={styles['page-button']}
           >
-            &lt;
+            <svg width="32" height="32" viewBox="0 0 32 32" className={styles['arrow-svg']}>
+              <polyline points="20,8 12,16 20,24" fill="none" stroke="currentColor" strokeWidth="1.2" />
+            </svg>
           </button>
           <span>
             {currentPage} / {totalPages} ページ
@@ -89,7 +91,9 @@ const NewsListPage = () => {
             disabled={currentPage === totalPages}
             className={styles['page-button']}
           >
-            &gt;
+            <svg width="32" height="32" viewBox="0 0 32 32" className={styles['arrow-svg']}>
+              <polyline points="12,8 20,16 12,24" fill="none" stroke="currentColor" strokeWidth="1.2" />
+            </svg>
           </button>
         </div>
       )}

@@ -1,7 +1,5 @@
 /* kiso.cssのインポート */
 @import './kiso.css';
-/* LINE Seedフォントのインポート */
-@import './lineseed.css';
 
 body {
   font-family: var(--font-sans);
@@ -23,10 +21,13 @@ select {
 
 /* フォントファミリー */
 :root {
-  --font-sans: var(--font-lineseed);
-  --font-lineseed:
-    'LINE Seed JP', 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo,
+  --font-sans: var(--font-noto-sans);
+  --font-noto-sans:
+    'Noto Sans JP', 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo,
     sans-serif;
+  --font-figtree: 'Figtree', 'Helvetica Neue', Arial, sans-serif;
+  --font-playfair: 'Playfair Display', Georgia, serif;
+  --font-playfair-italic: 'Playfair Display', Georgia, serif;
 }
 
 /* カラー */
@@ -53,6 +54,7 @@ select {
   --color-nav-bg: var(--color-gray-10);
   --color-hover: var(--color-accent);
   --color-select: var(--color-gray-60);
+  --color-container-inline: var(--color-gray-20);
 }
 
 /* スペーシング */
@@ -104,8 +106,9 @@ select {
 
 /* フォントウェイト */
 :root {
-  --font-weight-regular: 400; /* LINE Seed Regular */
-  --font-weight-bold: 700; /* LINE Seed Bold */
+  --font-weight-regular: 400; /* Noto Sans JP Regular */
+  --font-weight-medium: 500; /* Noto Sans JP Medium */
+  --font-weight-bold: 700; /* Noto Sans JP Bold */
 }
 
 /* コンポーネントサイズ */
@@ -119,7 +122,7 @@ select {
 /* レイアウトサイズ */
 :root {
   --layout-max-width: 1280px;
-  --container-max-width: calc(var(--spacing-3xl) * 8);
+  --container-max-width: calc(var(--spacing-3xl) * 9);
 }
 
 /* Next.jsのスクロール動作制御 */

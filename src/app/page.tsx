@@ -393,6 +393,7 @@ function HomeContent() {
               data-pc-height={640}
             />
           </div>
+          <div className={styles['border-line']}></div>
         </div>
       )}
 

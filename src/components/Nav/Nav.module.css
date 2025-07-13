@@ -29,12 +29,13 @@
 .nav-list {
   display: grid;
   grid-template-columns: 1fr;
-  grid-auto-flow: row;
-  gap: var(--spacing-2xl);
+  gap: var(--spacing-xl);
   place-items: center;
 
   & a {
-    font-size: var(--font-xl);
+    font-family: var(--font-playfair-italic);
+    font-style: italic;
+    font-size: var(--font-2xl);
     font-weight: var(--font-weight-regular);
     letter-spacing: 0.1em;
     text-transform: uppercase;

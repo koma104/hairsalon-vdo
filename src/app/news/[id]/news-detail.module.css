@@ -78,13 +78,16 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   justify-content: space-between;
-  padding-inline: var(--spacing-sm);
 }
 
 .prev,
 .next {
+  font-family: var(--font-figtree);
   font-size: var(--font-sm);
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
 }
 
 .prev {

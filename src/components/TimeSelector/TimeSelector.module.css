@@ -37,7 +37,7 @@
   background-color: var(--color-gray-05);
 
   .time-slot {
-    padding-block: calc(var(--spacing-xs) * 1.5);
+    padding-block: var(--spacing-xs);
     padding-inline: var(--spacing-xs);
     font-size: var(--font-sm);
     text-align: center;

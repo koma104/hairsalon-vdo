@@ -10,6 +10,7 @@
   font-weight: var(--font-weight-regular);
   letter-spacing: 0.01em;
   text-transform: capitalize;
+  font-family: var(--font-figtree);
 
   @media (min-width: 768px) {
     padding-inline: var(--spacing-2xl);

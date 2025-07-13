@@ -46,13 +46,17 @@ const Calendar: React.FC<CalendarProps> = ({ selectedDate, onDateSelect }) => {
     <div className={styles.calendar}>
       <div className={styles.header}>
         <button onClick={() => changeMonth(-1)} className={styles['nav-button']}>
-          &lt;
+          <svg width="24" height="24" viewBox="0 0 32 32" className={styles['arrow-svg']}>
+            <polyline points="20,8 12,16 20,24" fill="none" stroke="currentColor" strokeWidth="2" />
+          </svg>
         </button>
         <div className={styles['month-year']}>
           {monthNames[month]} {year}
         </div>
         <button onClick={() => changeMonth(1)} className={styles['nav-button']}>
-          &gt;
+          <svg width="24" height="24" viewBox="0 0 32 32" className={styles['arrow-svg']}>
+            <polyline points="12,8 20,16 12,24" fill="none" stroke="currentColor" strokeWidth="2" />
+          </svg>
         </button>
       </div>
       <div className={styles['days-of-week']}>
