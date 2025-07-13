@@ -12,7 +12,7 @@
   text-transform: capitalize;
 
   @media (min-width: 768px) {
-    padding-inline: var(--spacing-4xl);
+    padding-inline: var(--spacing-2xl);
   }
 }
 
@@ -26,7 +26,7 @@
   width: 100%;
 
   @media (min-width: 768px) {
-    padding-inline: var(--spacing-4xl);
+    padding-inline: var(--spacing-2xl);
   }
 }
 

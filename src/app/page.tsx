@@ -22,26 +22,26 @@ const menuCategories = [
   {
     category: 'cuts',
     items: [
-      { name: 'Regular', price: '¥6,600' },
-      { name: 'Under18', price: '¥5,800' },
-      { name: 'Bangs', price: '¥3,300' },
+      { name: '[Regular]', price: '¥6,600' },
+      { name: '[Under18]', price: '¥5,800' },
+      { name: '[Bangs]', price: '¥3,300' },
     ],
   },
   {
     category: 'color',
     items: [
-      { name: 'Color', price: '¥8,800' },
-      { name: 'Perm', price: '¥8,800' },
-      { name: 'Straight perm', price: '¥15,000' },
-      { name: 'Relaxing', price: '¥20,000' },
-      { name: 'Digital perm', price: '¥18,000' },
+      { name: '[Color]', price: '¥8,800' },
+      { name: '[Perm]', price: '¥8,800' },
+      { name: '[Straight perm]', price: '¥15,000' },
+      { name: '[Relaxing]', price: '¥20,000' },
+      { name: '[Digital perm]', price: '¥18,000' },
     ],
   },
   {
     category: 'other',
     items: [
-      { name: 'Treatment', price: '¥4,400~' },
-      { name: 'Head spa', price: '¥5,500~' },
+      { name: '[Treatment]', price: '¥4,400~' },
+      { name: '[Head spa]', price: '¥5,500~' },
     ],
   },
 ]

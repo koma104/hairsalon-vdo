@@ -138,10 +138,6 @@
     color: var(--color-black-blend);
     transition: color 0.2s ease;
 
-    @media (min-width: 768px) {
-      font-size: var(--font-sm);
-    }
-
     &:focus-visible {
       color: #f938aa;
     }

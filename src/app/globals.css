@@ -111,15 +111,15 @@ select {
 /* コンポーネントサイズ */
 :root {
   --news-thumbnail-size-sp: 6.25rem; /* 100px */
-  --news-thumbnail-size-pc: 9rem; /* 128px */
+  --news-thumbnail-size-pc: 8rem;
   --carousel-width-sp: 15rem;
-  --carousel-width-pc: 18rem;
+  --carousel-width-pc: 16rem;
 }
 
 /* レイアウトサイズ */
 :root {
   --layout-max-width: 1280px;
-  --container-max-width: calc(var(--spacing-4xl) * 8);
+  --container-max-width: calc(var(--spacing-3xl) * 8);
 }
 
 /* Next.jsのスクロール動作制御 */
