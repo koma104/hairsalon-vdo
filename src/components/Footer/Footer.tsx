@@ -13,7 +13,7 @@ const Footer = () => {
               <br />
               東京都渋谷区渋谷1-2-3 渋谷ビルディング103-A
             </p>
-            <p>Tel: 03-1234-5678</p>
+            <p>TEL: 03-1234-5678</p>
           </div>
           <div className={styles.hours}>
             <p>月〜金: 11:00-21:00</p>
