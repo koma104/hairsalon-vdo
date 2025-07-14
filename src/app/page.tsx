@@ -142,7 +142,7 @@ function HomeContent() {
         { 
           scale: 1, 
           duration: 1.5, 
-          delay: 0.2, 
+          delay: 0, 
           ease: 'power2.out' 
         }
       )

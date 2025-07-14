@@ -50,7 +50,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: 38% center;
   transform-origin: center center;
   transform: scale(1.1);
   opacity: 0;
@@ -72,7 +72,7 @@
 
 .main-image-wrapper {
   @media (min-width: 768px) {
-    width: 50%;
+    width: 100%;
     height: 100%;
     overflow: hidden;
     display: flex;
