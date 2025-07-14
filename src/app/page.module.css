@@ -283,16 +283,6 @@
   align-content: start;
 }
 
-.news-subtitle {
-  font-size: var(--font-sm);
-  font-weight: var(--font-weight-regular);
-  letter-spacing: 0.01em;
-}
-
-.news-excerpt {
-  font-size: var(--font-xs);
-}
-
 .more-button-wrapper {
   text-align: center;
 }

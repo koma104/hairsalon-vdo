@@ -1,7 +1,7 @@
 .news-list {
   display: grid;
   grid-auto-flow: row;
-  gap: var(--spacing-lg);
+  gap: var(--spacing-xl);
   margin-block-end: var(--spacing-xl);
 }
 
@@ -67,9 +67,14 @@
 }
 
 .news-subtitle {
-  font-size: var(--font-sm);
+  font-size: var(--font-md);
   font-weight: var(--font-weight-regular);
   letter-spacing: 0.01em;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   @media (min-width: 768px) {
     font-size: var(--font-lg);
@@ -78,6 +83,11 @@
 
 .news-excerpt {
   font-size: var(--font-xs);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .more-button-wrapper {
