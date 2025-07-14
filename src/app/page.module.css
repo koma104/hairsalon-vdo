@@ -90,49 +90,37 @@
 }
 
 .main-visual-text {
-  display: none;
+  position: absolute;
+  bottom: var(--spacing-3xl);
+  right: 50%;
+  transform: translateX(50%);
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  place-items: center;
+  font-size: var(--font-xs);
+  line-height: 1;
+  white-space: nowrap;
 
   @media (min-width: 768px) {
-    position: absolute;
-    bottom: 5%;
-    right: 0;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    place-items: center;
-    padding-inline-end: 2cqh;
-    z-index: 2;
-    font-size: var(--font-2xl);
-    white-space: nowrap;
-
-    & .standard,
-    & .italic {
-      opacity: 0;
-      transform: translateX(15px);
-      animation: fadeInText 1s 1.8s forwards;
-    }
-
-    & .standard {
-      font-family: var(--font-figtree);
-      font-weight: 600;
-      color: var(--color-black);
-      font-style: normal;
-      letter-spacing: 0em;
-    }
-
-    & .italic {
-      font-family: var(--font-playfair-italic);
-      font-style: italic;
-      font-weight: 400;
-      color: var(--color-black);
-      letter-spacing: 0.04em;
-    }
+    bottom: var(--spacing-xl);
+    font-size: var(--font-sm);
   }
-}
 
-@keyframes fadeInText {
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  & .standard {
+    font-family: var(--font-figtree);
+    font-style: normal;
+    font-weight: 400;
+    color: var(--color-black);
+    letter-spacing: -0.01em;
+  }
+
+  & .italic {
+    font-family: var(--font-playfair-italic);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--color-black);
+    letter-spacing: 0.04em;
   }
 }
 

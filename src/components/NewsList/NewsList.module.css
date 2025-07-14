@@ -1,7 +1,7 @@
 .news-list {
   display: grid;
   grid-auto-flow: row;
-  gap: var(--spacing-sm);
+  gap: var(--spacing-lg);
   margin-block-end: var(--spacing-xl);
 }
 
@@ -9,7 +9,6 @@
   display: grid;
   grid-template-columns: 1fr auto;
   gap: var(--spacing-sm);
-  padding-block: var(--spacing-xs);
   padding-inline: 0;
   text-decoration: none;
   color: inherit;

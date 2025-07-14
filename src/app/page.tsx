@@ -390,10 +390,10 @@ function HomeContent() {
                   quality={90}
                 />
               </div>
-              <div className={styles['main-visual-text']} ref={mainVisualTextRef}>
-                <span className={styles['standard']}>A New You,</span>
-                <span className={styles['italic']}>Every Day</span>
-              </div>
+            </div>
+            <div className={styles['main-visual-text']} ref={mainVisualTextRef}>
+              <span className={styles['standard']}>A New You,</span>
+              <span className={styles['italic']}>Every Day</span>
             </div>
             <div className={styles['border-line']}></div>
           </div>
