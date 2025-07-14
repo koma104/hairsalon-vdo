@@ -114,7 +114,7 @@ select {
 /* コンポーネントサイズ */
 :root {
   --news-thumbnail-size-sp: 6.25rem; /* 100px */
-  --news-thumbnail-size-pc: 8rem;
+  --news-thumbnail-size-pc: 7rem;
   --carousel-width-sp: 15rem;
   --carousel-width-pc: 16rem;
 }
