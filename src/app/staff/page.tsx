@@ -48,30 +48,28 @@ const StaffPage = () => {
             const titleElement = staffCard.querySelector(`.${styles['staff-title']}`) as HTMLElement
             const specialtyElement = staffCard.querySelector(`.${styles['staff-specialty']}`) as HTMLElement
             
-            // 画像アニメーション
+            // 画像アニメーション（最初に開始）
             if (image) {
               image.classList.add(styles.animate)
             }
 
-            // 名前のアニメーション（画像アニメーションの後に開始）
+            // テキストアニメーション（画像の後に少し遅れて開始）
             if (nameElement) {
               setTimeout(() => {
                 nameElement.classList.add(styles.animate)
-              }, 200) // 画像アニメーション開始から0.2秒後
+              }, 200)
             }
 
-            // タイトルのアニメーション（名前の後に開始）
             if (titleElement) {
               setTimeout(() => {
                 titleElement.classList.add(styles.animate)
-              }, 350) // 画像アニメーション開始から0.35秒後
+              }, 300)
             }
 
-            // 専門分野のアニメーション（タイトルの後に開始）
             if (specialtyElement) {
               setTimeout(() => {
                 specialtyElement.classList.add(styles.animate)
-              }, 370) // 画像アニメーション開始から0.37秒後
+              }, 400)
             }
           }
         })
