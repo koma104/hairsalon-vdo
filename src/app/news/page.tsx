@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import styles from './news.module.css'
 import { newsItems } from '@/lib/newsData'
 import SectionTitle from '@/components/SectionTitle/SectionTitle'
@@ -11,9 +11,14 @@ import NewsList from '@/components/NewsList/NewsList'
 const ITEMS_PER_PAGE = 10
 
 const NewsListPage = () => {
-  const [currentPage, setCurrentPage] = useState(1)
-  const [isMobile, setIsMobile] = useState<boolean | null>(null)
   const router = useRouter()
+  const searchParams = useSearchParams()
+  const [isMobile, setIsMobile] = useState<boolean | null>(null)
+  
+  // URLパラメータからページ番号を取得
+  const pageParam = searchParams.get('page')
+  const initialPage = pageParam ? parseInt(pageParam, 10) : 1
+  const [currentPage, setCurrentPage] = useState(initialPage)
 
   useEffect(() => {
     // デバイス判定
@@ -26,6 +31,15 @@ const NewsListPage = () => {
     
     return () => window.removeEventListener('resize', checkMobile)
   }, [])
+
+  // URLパラメータの変更を監視
+  useEffect(() => {
+    const pageParam = searchParams.get('page')
+    const newPage = pageParam ? parseInt(pageParam, 10) : 1
+    if (newPage !== currentPage) {
+      setCurrentPage(newPage)
+    }
+  }, [searchParams, currentPage])
 
   // ページが変更された時にトップにスクロール
   useEffect(() => {
@@ -41,7 +55,12 @@ const NewsListPage = () => {
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
-      setCurrentPage((prev) => prev + 1)
+      const newPage = currentPage + 1
+      setCurrentPage(newPage)
+      // URLパラメータを更新
+      const url = new URL(window.location.href)
+      url.searchParams.set('page', newPage.toString())
+      window.history.pushState({}, '', url.toString())
       // ページトップにスクロール
       window.scrollTo(0, 0)
     }
@@ -49,7 +68,16 @@ const NewsListPage = () => {
 
   const handlePrevPage = () => {
     if (currentPage > 1) {
-      setCurrentPage((prev) => prev - 1)
+      const newPage = currentPage - 1
+      setCurrentPage(newPage)
+      // URLパラメータを更新
+      const url = new URL(window.location.href)
+      if (newPage === 1) {
+        url.searchParams.delete('page')
+      } else {
+        url.searchParams.set('page', newPage.toString())
+      }
+      window.history.pushState({}, '', url.toString())
       // ページトップにスクロール
       window.scrollTo(0, 0)
     }
