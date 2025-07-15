@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import styles from './news.module.css'
 import { newsItems } from '@/lib/newsData'
@@ -10,7 +10,8 @@ import NewsList from '@/components/NewsList/NewsList'
 
 const ITEMS_PER_PAGE = 10
 
-const NewsListPage = () => {
+// useSearchParamsを使用するコンポーネントを分離
+const NewsListContent = () => {
   const router = useRouter()
   const searchParams = useSearchParams()
   const [isMobile, setIsMobile] = useState<boolean | null>(null)
@@ -84,8 +85,7 @@ const NewsListPage = () => {
   }
 
   return (
-    <Container>
-      <SectionTitle>news</SectionTitle>
+    <>
       <NewsList
         items={displayedItems}
         maxItems={ITEMS_PER_PAGE}
@@ -125,6 +125,24 @@ const NewsListPage = () => {
           </button>
         </div>
       )}
+    </>
+  )
+}
+
+// ローディング状態のコンポーネント
+const NewsListLoading = () => (
+  <div style={{ padding: '2rem', textAlign: 'center' }}>
+    読み込み中...
+  </div>
+)
+
+const NewsListPage = () => {
+  return (
+    <Container>
+      <SectionTitle>news</SectionTitle>
+      <Suspense fallback={<NewsListLoading />}>
+        <NewsListContent />
+      </Suspense>
     </Container>
   )
 }
