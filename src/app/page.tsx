@@ -70,8 +70,7 @@ function HomeContent() {
   const menuTitleRef = useRef<HTMLHeadingElement>(null)
   const menuWrapperRef = useRef<HTMLDivElement>(null)
 
-  // ヒーローテキスト用のref
-  const mainVisualTextRef = useRef<HTMLDivElement>(null);
+
 
   // URLパラメータを監視してニュース詳細を表示（newsクエリパラメータのみ）
   useEffect(() => {
@@ -391,11 +390,12 @@ function HomeContent() {
                 />
               </div>
             </div>
-            <div className={styles['main-visual-text']} ref={mainVisualTextRef}>
-              <span className={styles['standard']}>A New You,</span>
-              <span className={styles['italic']}>Every Day</span>
-            </div>
+
             <div className={styles['border-line']}></div>
+            <div className={styles['scroll-indicator']}>
+              <span className={styles['scroll-text']}>SCROLL</span>
+              <div className={styles['scroll-arrow']}></div>
+            </div>
           </div>
       )}
 
