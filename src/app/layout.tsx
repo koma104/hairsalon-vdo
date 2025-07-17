@@ -61,7 +61,7 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <PageProvider isSPAEnabled={true}>
+        <PageProvider isSPAEnabled={false}>
           <Header />
           <main data-nextjs-scroll-focus-boundary>{children}</main>
           <Footer />

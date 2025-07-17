@@ -1,9 +1,9 @@
 'use client'
 
-import { useState, useEffect, Suspense, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import styles from './page.module.css'
 import { newsItems } from '@/lib/newsData'
 import Button from '@/components/Button/Button'
@@ -46,12 +46,11 @@ const menuCategories = [
   },
 ]
 
-// useSearchParamsを使用するコンポーネント
-function HomeContent() {
+// メインコンポーネント
+export default function Home() {
   const [currentArticleId, setCurrentArticleId] = useState<string | null>(null)
   const { currentPage, setCurrentPage } = usePageContext()
   const router = useRouter()
-  const searchParams = useSearchParams()
   
   // アニメーション用のref
   const conceptSectionRef = useRef<HTMLElement>(null)
@@ -70,21 +69,12 @@ function HomeContent() {
   const menuTitleRef = useRef<HTMLHeadingElement>(null)
   const menuWrapperRef = useRef<HTMLDivElement>(null)
 
-
-
-  // URLパラメータを監視してニュース詳細を表示（newsクエリパラメータのみ）
+  // 初期化時にページ状態をリセット（クエリパラメータを使わない）
   useEffect(() => {
-    const newsQueryParam = searchParams.get('news')
-    
-    if (newsQueryParam) {
-      setCurrentArticleId(newsQueryParam)
-      setCurrentPage('news')
-    } else {
-      setCurrentArticleId(null)
-    }
-  }, [searchParams, setCurrentPage])
-
-  // PCでの直接アクセス時の処理は削除（記事詳細ページで処理する）
+    // 初期状態では常にホームページを表示
+    setCurrentPage('home')
+    setCurrentArticleId(null)
+  }, [setCurrentPage])
 
   useEffect(() => {
     // DOMが完全にマウントされるまで少し待つ
@@ -377,18 +367,17 @@ function HomeContent() {
       {currentPage === 'home' && (
         <div className={styles['main-visual']}> 
             <div className={styles['main-visual-inner']}>
-              <div className={styles['main-image-wrapper']}>
                 <Image
                   src="/images/hero-photo.png"
                   alt="Salon main visual"
                   width={1360}
                   height={1360}
                   priority={true}
+                  loading="eager"
                   className={styles['main-image']}
                   sizes="100vw"
                   quality={90}
                 />
-              </div>
             </div>
 
             <div className={styles['border-line']}></div>
@@ -425,6 +414,7 @@ function HomeContent() {
                         alt="Store view 1"
                         width={592}
                         height={395}
+                        loading="eager"
                         className={styles['store-image']}
                       />
                     </div>
@@ -434,6 +424,7 @@ function HomeContent() {
                         alt="Store view 2"
                         width={592}
                         height={395}
+                        loading="eager"
                         className={styles['store-image']}
                       />
                     </div>
@@ -443,6 +434,7 @@ function HomeContent() {
                         alt="Store view 4"
                         width={592}
                         height={395}
+                        loading="eager"
                         className={styles['store-image']}
                       />
                     </div>
@@ -454,6 +446,7 @@ function HomeContent() {
                         alt="Store view 1"
                         width={592}
                         height={395}
+                        loading="eager"
                         className={styles['store-image']}
                       />
                     </div>
@@ -463,6 +456,7 @@ function HomeContent() {
                         alt="Store view 2"
                         width={592}
                         height={395}
+                        loading="eager"
                         className={styles['store-image']}
                       />
                     </div>
@@ -472,6 +466,7 @@ function HomeContent() {
                         alt="Store view 4"
                         width={592}
                         height={395}
+                        loading="eager"
                         className={styles['store-image']}
                       />
                     </div>
@@ -553,14 +548,5 @@ function HomeContent() {
         )}
       </div>
     </>
-  )
-}
-
-// メインのHomeコンポーネント（Suspenseでラップ）
-export default function Home() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <HomeContent />
-    </Suspense>
   )
 }

@@ -4,6 +4,7 @@ import { useState, forwardRef, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { usePageContext } from '@/contexts/PageContext'
 import styles from './NewsList.module.css'
 import { NewsItem } from '@/lib/newsData'
 
@@ -27,6 +28,7 @@ const NewsList = forwardRef<HTMLDivElement, NewsListProps>(({
   const [visibleCount, setVisibleCount] = useState(maxItems || 2)
   const [isMoreButtonVisible, setIsMoreButtonVisible] = useState(false)
   const router = useRouter()
+  const { setCurrentPage } = usePageContext()
   const moreButtonRefInternal = useRef<HTMLButtonElement>(null)
 
   const displayedItems = items.slice(0, visibleCount)
@@ -69,7 +71,8 @@ const NewsList = forwardRef<HTMLDivElement, NewsListProps>(({
       if (isMobile) {
         router.push(`/news/${item.id}`)
       } else {
-        router.push(`/?news=${item.id}`)
+        setCurrentPage('news')
+        // 記事IDを設定する方法を検討（必要に応じて）
       }
     }
   }

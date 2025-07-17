@@ -1,23 +1,20 @@
 'use client'
 
-import React, { useState, useEffect, Suspense } from 'react'
+import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { usePathname, useSearchParams } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import Nav from '../Nav/Nav'
 import styles from './Header.module.css'
 import Button from '../Button/Button'
 
-// useSearchParamsを使用するコンポーネント
-function HeaderContent() {
+export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [isClient, setIsClient] = useState(false)
   const pathname = usePathname()
-  const searchParams = useSearchParams()
   const isHomePage = pathname === '/'
   const isReservePage = pathname === '/reserve'
-  const hasNewsParam = searchParams.get('news') !== null
 
   useEffect(() => {
     // クライアントサイドであることを確認
@@ -28,8 +25,8 @@ function HeaderContent() {
     // クライアントサイドでのみ実行
     if (!isClient) return
 
-    // ホームページ以外、またはホームページでニュース詳細が表示されている場合は最初から小さいサイズにする
-    if (!isHomePage || hasNewsParam) {
+    // ホームページ以外の場合は最初から小さいサイズにする
+    if (!isHomePage) {
       setIsScrolled(true)
       return
     }
@@ -69,7 +66,7 @@ function HeaderContent() {
 
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [isClient, isHomePage, hasNewsParam])
+  }, [isClient, isHomePage])
 
   const toggleMenu = () => {
     setIsOpen(!isOpen)
@@ -161,14 +158,5 @@ function HeaderContent() {
 
       <Nav isOpen={isOpen} closeMenu={closeMenu} />
     </>
-  )
-}
-
-// メインのHeaderコンポーネント（Suspenseでラップ）
-export default function Header() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <HeaderContent />
-    </Suspense>
   )
 }

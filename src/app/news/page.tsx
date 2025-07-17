@@ -7,6 +7,7 @@ import { newsItems } from '@/lib/newsData'
 import SectionTitle from '@/components/SectionTitle/SectionTitle'
 import Container from '@/components/Container/Container'
 import NewsList from '@/components/NewsList/NewsList'
+import { usePageContext } from '@/contexts/PageContext'
 
 const ITEMS_PER_PAGE = 10
 
@@ -14,6 +15,7 @@ const ITEMS_PER_PAGE = 10
 const NewsListContent = () => {
   const router = useRouter()
   const searchParams = useSearchParams()
+  const { setCurrentPage: setPageContext } = usePageContext()
   const [isMobile, setIsMobile] = useState<boolean | null>(null)
   
   // URLパラメータからページ番号を取得
@@ -94,8 +96,9 @@ const NewsListContent = () => {
             // SPの場合は独立したページに遷移
             router.push(`/news/${item.id}`)
           } else {
-            // PCの場合はホームページのcontent-wrapper内で表示
-            router.push(`/?news=${item.id}`)
+            // PCの場合はホームページで状態管理で表示
+            setPageContext('news')
+            // 記事IDを設定する方法を検討（必要に応じて）
           }
         }}
       />
