@@ -8,21 +8,11 @@
   min-height: calc(var(--vh, 1vh) * 100);
   overflow: hidden;
   padding-block: calc(var(--spacing-2xl) + var(--spacing-xxs));
-  scroll-behavior: auto;
 
   @media (min-width: 768px) {
     height: 100vh;
     min-height: 100vh;
     padding-block-end: var(--spacing-2xl);
-  }
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
   }
 }
 
