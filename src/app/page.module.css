@@ -1,9 +1,3 @@
-/* ヒーロー画像エリアのプレースホルダー */
-.main-visual-placeholder {
-  height: 100vh;
-  width: 100%;
-}
-
 /* メインビジュアル */
 .main-visual {
   position: sticky;
