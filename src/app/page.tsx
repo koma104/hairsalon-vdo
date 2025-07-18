@@ -77,8 +77,18 @@ export default function Home() {
   }, [setCurrentPage])
 
   useEffect(() => {
+    // 初期ビューポート高さを取得して固定（一度だけ）
+    const setInitialViewportHeight = () => {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    };
+
+    // 即座に設定
+    setInitialViewportHeight();
+
     // DOMが完全にマウントされるまで少し待つ
     const timer = setTimeout(() => {
+
       // デバイス判定
       const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768
 
@@ -127,11 +137,15 @@ export default function Home() {
       })
       
       gsap.fromTo(mainImageElement, 
-        { scale: 1.1 },
+        { 
+          scale: 1.1,
+          opacity: 0 
+        },
         { 
           scale: 1, 
-          duration: 1.5, 
-          delay: 0, 
+          opacity: 1,
+          duration: 2.4, 
+          delay: 0.3, 
           ease: 'power2.out' 
         }
       )
